@@ -1,0 +1,3110 @@
+---
+title: "Curso de formación"
+subtitle: "Análisis de datos en R para RTVE"
+title-slide-attributes:
+  data-background-image: img/rtve.webp
+  data-background-size: cover
+  data-background-opacity: "0.2"
+author: "Curso impartido en RTVE • Javier Álvarez Liébana"
+affiliation: Facultad de Estudios Estadísticos (UCM)
+lang: es
+language: custom_lang.yml
+format: 
+  revealjs:
+    theme: [default, style.scss]
+    menu:
+      side: left
+      width: normal
+    footer: "[<strong>Javier Álvarez Liébana</strong>](...) • Curso de R impartido en RTVE"
+    slide-number: c/t
+execute:
+  echo: true
+---
+
+::: r-fit-text
+[¡Bienvenidos de nuevo a R!]{.flow}
+:::
+
+[**¿Me habéis echado de menos? :)**]{style="color:#444442;"}
+
+---
+
+## ¡Buenas!
+
+[**Correo**]{.hl-green}: **<javalv09@ucm.es>**. 
+
+::: columns
+::: {.column width="25%"}
+![](img/me.jpeg)
+:::
+
+::: {.column width="75%"}
+::: incremental
+-   [**Javier Álvarez Liébana**]{.hl-yellow}, de Carabanchel. Licenciado en Matemáticas (UCM). [**Doctor en estadística**]{.hl-yellow} (UGR)
+
+-   Encargado de la [**visualización y análisis de datos covid**]{.hl-yellow} del Principado de Asturias (2021-2022).
+
+-   Miembro de la [**Sociedad Española de Estadística e IO**]{.hl-yellow} y la [**Real Sociedad Matemática Española**]{.hl-yellow}.
+
+- Formador de `R` ISCIII (actualmente) y el Ayuntamiento de Madrid (2024).
+
+:::
+:::
+:::
+
+Actualmente, [**investigador y docente en la Facultad de Estadística de la UCM**]{.hl-yellow}, e investigador colaborador del [**Network Science Institute**]{.hl-yellow} de la Northeastern University (Boston). Divulgando por [**Twitter**](https://twitter.com/dadosdelaplace) e [**Instagram**](https://instagram.com/javieralvarezliebana)
+
+
+---
+
+## Objetivos
+
+::: columns
+::: {.column width="37%"}
+![](https://assets-global.website-files.com/6092cb6b4ac959f39728dd26/6188a97fa499b5fbfe410417_target%20(1).png)
+:::
+
+::: {.column width="63%"}
+::: incremental
+-   Quitarnos el [**miedo a los errores en programación**]{.hl-yellow} → a programar se aprende programando
+
+-   Entender los [**conceptos básicos de R**]{.hl-yellow} desde cero → aprender a abstraer ideas y algoritmos
+
+-   Utilidad de programar → flujos de trabajo [**reproducibles**, **transparentes**]{.hl-yellow} y mantenibles
+
+-   Profundizar en el [**análisis y preprocesamiento**]{.hl-yellow} de datos → `{tidyverse}`
+
+-   Adquirir habilidades en el [**análisis estadísticos de los datos**]{.hl-yellow}
+
+:::
+:::
+:::
+
+---
+
+## Planificación  {#planificacion}
+
+::: column-screen-inset-right
+::: {style="font-size:20px"}
+|  CLASE | SEMANA | FECHAS | TOPIC | EJ. | WORKBOOK | ENTREGA | 
+|:------:|:--------:|:--------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
+| [1](#clase-1) | S1 | 8 ene | Repaso: re-toma de contacto | [💻](#tu-turno-1-1) [💻](#tu-turno-1-2) [💻](#tu-turno-1-3) | [🐣](#caso-practico-1-1) [🐣](#caso-practico-1-2) [🐣](#caso-practico-1-3) [🐣](#caso-practico-1-4) [🐣](#caso-practico-1-5) |  | 
+:::
+:::
+
+---
+
+## Materiales
+
+* [**Diapositivas**]{.hl-yellow}: diapositivas en `Quarto` disponibles y actualizadas en **<https://javieralvarezliebana.es/docencia/R-datascience>**. En el menú de las diapositivas (abajo a la izquierda) tienes una [**opción para descargarlas en pdf**]{.hl-yellow} en `Tools`
+  
+&nbsp;
+
+* [**Material**]{.hl-yellow}: [**cuadernos de trabajo**](https://javieralvarezliebana.es/docencia/R-datascience/material/) y materiales extras y **resúmenes de paquetes**
+
+* [🗃 **Datos**]{.hl-yellow}: datasets que usaremos a lo largo de la asignatura, disponibles en Github **<https://javieralvarezliebana.es/docencia/R-datascience/material>** y drive <https://drive.google.com/drive/folders/1iG_wzHOavm8PB6pvrXk7jnGJ5lJCpUFK?usp=sharing>
+
+* [📚 **Recursos de apoyo**]{.hl-yellow}: en inglés <https://r4ds.had.co.nz/> y en castellano <https://cdr-book.github.io/>, y <https://ivelasq.quarto.pub/intro-to-quarto/> para Quarto.
+
+
+# Clase 1: [welcome to R again]{.flow} {#clase-1}
+
+[**Refrescando R**]{style="color:#444442;"}
+
+* [Reminders](#reminders)
+* [Tidy data](#tidy-data)
+* [Preprocesamiento: dplyr](#tidy-data)
+* [Importar y exportar](#import-export)
+
+
+---
+
+## Reminder: ¿por qué programar? {#reminders}
+
+-   [**Automatizar**]{.hl-yellow} → te permitirá automatizar tareas recurrentes.
+
+-   [**Replicabilidad**]{.hl-yellow} → podrás replicar tu análisis siempre de la misma manera.
+
+-   [**Flexibilidad**]{.hl-yellow} → podrás adaptar el software a tus necesidades.
+
+-   [**Transparencia**]{.hl-yellow} → ser auditado por la comunidad.
+
+![](img/the_general_problem.png)
+
+---
+
+## Reminder: requisitos
+
+Por si se te había olvidado, para el curso los únicos requisitos serán:
+
+1.  [**Conexión a internet**]{.hl-yellow} (para la descarga de algunos datos y paquetes).
+
+. . .
+
+2.  [**Instalar R**]{.hl-yellow}: será nuestro lenguaje. La descarga la haremos (gratuitamente) desde <https://cran.r-project.org/>
+
+. . .
+
+3.  [**Instalar RStudio**]{.hl-yellow} desde <https://posit.co/download/rstudio-desktop/>
+
+
+::: columns
+::: {.column width="50%"}
+![](img/cranR.jpg){width="420"}
+:::
+
+::: {.column width="50%"}
+![](img/rstudio.jpg){width="420"}
+:::
+:::
+
+---
+
+## Reminder: R vs RStudio
+
+::: columns
+::: {.column width="50%"}
+![](img/gramatica.webp){width="360"}
+:::
+
+::: {.column width="50%"}
+![](img/word.jpg){width="430"}
+:::
+:::
+
+::: {.fragment .fade-in-then-out}
+Programaremos como escribimos (castellano, por ejemplo) → `R` es [**lenguaje**]{.hl-yellow}
+:::
+
+::: {.fragment .fade-up}
+-   Necesitaremos una [**gramática, un lenguaje**]{.hl-yellow} (`R`)
+
+::: {.fragment .fade-in}
+-   Y un entorno, por ejemplo un [**Word**]{.hl-yellow} (`RStudio`), para escribirlo
+:::
+:::
+
+---
+
+
+## Reminder: asignación, ¿igual?, argumentos
+
+No se si recuerdas que en `R` vamos a distinguir [**tres tipos de «igual»**]{.hl-yellow}:
+
+* [**Asignación**]{.hl-yellow}: usaremos `<-` para asignar el valor de la derecha a la variable cuyo nombre tenemos a la izquierda
+
+
+```{r}
+a <- c(1, 2)
+```
+
+* [**Comparación lógica**]{.hl-yellow}: usaremos `==` para preguntar si lo de la izquierda es igual a lo de la derecha (la respuesta será un vector lógico)
+
+
+```{r}
+a == 1
+```
+
+
+* [**Argumentos**]{.hl-yellow}: usaremos `=` para asignar argumentos dentro de una función
+
+
+```{r}
+mean(x = a, na.rm = TRUE)
+```
+
+
+---
+
+
+## Reminder: errores y warning
+
+Durante tu aprendizaje va a ser muy habitual que las cosas no salgan a la primera → [**te vas equivocar**]{.hl-yellow}. No solo será importante asumirlo sino que es [**importante leer los mensajes de error**]{.hl-yellow} para aprender de ellos.
+
+. . .
+
+-   [**Mensajes de error**]{.hl-red}: precedidos de **«Error in...»** y serán aquellos fallos que [**impidan la ejecución**]{.hl-red}
+
+```{r}
+#| error: true
+"a" + 1 
+```
+
+. . .
+
+-   [**Mensajes de warning**]{.hl-orange}: precedidos de **«Warning in...»** son los (posibles) fallos más delicados ya que son incoherencias que [**no impiden la ejecución**]{.hl-orange}
+
+```{r}
+#| warning: true
+# Ejecuta la orden pero el resultado es NaN, **Not A Number**, un valor que no existe
+sqrt(-1)
+```
+
+
+---
+
+## Reminder: proyectos
+
+De la misma manera que en el ordenador solemos trabajar de manera [**ordenada por carpetas**]{.hl-yellow}, en `RStudio` podemos hacer lo mismo para trabajar de [**manera eficaz creando proyectos**]{.hl-yellow}.
+
+. . .
+
+::: columns
+::: {.column width="60%"}
+Un [**proyecto será una «carpeta»**]{.hl-yellow} dentro de `RStudio`, de manera que nuestro directorio raíz automáticamente será la propia carpeta de proyecto (pudiendo pasar de un proyecto a otro con el menu superior derecho).
+
+Podemos crear uno en una carpeta nueva o en una carpeta ya existente.
+:::
+
+::: {.column width="40%"}
+![](img/rstudio_proyectos.png){width="370"}
+:::
+:::
+
+
+---
+
+
+## Reminder: tipos de datos
+
+¿Qué [**tipo de dato**]{.hl-yellow} podemos tener en cada celda de una **tabla**?
+
+![](img/celdas.jpg)
+
+::: incremental
+-   [**Celda**]{.hl-yellow}: dato individual de un tipo concreto.
+-   [**Variable**]{.hl-yellow}: **concatenación** de valores del mismo tipo ([**vectores en R**]{.hl-purple}).
+-   [**Matriz**]{.hl-yellow}: concatenación de variables del **mismo tipo y longitud**.
+-   [**Tabla**]{.hl-yellow}: concatenación de variables de [**distinto tipo pero igual longitud**]{.hl-purple}
+-   [**Lista**]{.hl-yellow}: concatenación de variables de [**distinto tipo y distinta longitud**]{.hl-purple}
+:::
+
+---
+
+## Reminder: tipos de datos
+
+¿Existen [**variables más allá de los números**]{.hl-yellow}? Piensa por ejemplo en los datos que podrías guardar de una persona:
+
+::: {.fragment .fade-up}
+-   La edad o el peso será un [**número**]{.hl-yellow}.
+
+```{r}
+edad <- 33
+```
+:::
+
+::: {.fragment .fade-up}
+-   Su nombre será una cadena de [**texto (conocida como string o char)**]{.hl-yellow}.
+
+```{r}
+nombre <- "javi"
+```
+:::
+
+::: {.fragment .fade-up}
+-   A la pregunta «¿estás matriculado en la Facultad?» la respuesta será lo que llamamos una [**variable lógica**]{.hl-yellow} (`TRUE` si está matriculado o `FALSE` en otro caso).
+
+```{r}
+matriculado <- TRUE
+```
+:::
+
+::: {.fragment .fade-up}
+-   Su fecha de nacimiento será precisamente eso, una [**fecha**]{.hl-yellow}.
+
+```{r}
+birth_day <- lubridate::as_date("1989-09-10")
+```
+:::
+
+---
+
+## Reminder: tipos de datos
+
+
+
+Imagina que además de la edad de una persona queremos guardar su nombre: ahora la variable será de tipo `character`
+
+```{r}
+nombre <- "Javier"
+class(nombre)
+```
+
+. . .
+
+Las [**cadenas de texto**]{.hl-yellow} son un tipo con el que obviamente [**no podremos hacer operaciones aritméticas**]{.hl-red} (sí otras operaciones como pegar o localizar patrones).
+
+```{r}
+#| error: true
+nombre + 1 # error al sumar número a texto
+```
+
+. . .
+
+::: callout-warning
+## Recuerda que...
+
+Las variables de tipo texto (character o string) van [**SIEMPRE entre comillas**]{.hl-orange}: no es lo mismo `TRUE` (valor lógico, binario) que `"TRUE"` (texto).
+:::
+
+---
+
+## Reminder: tipos de datos
+
+Otro tipo fundamental serán las [**variables lógicas o binarias**]{.hl-yellow} (**dos valores**):
+
+-   `TRUE`: [**verdadero**]{.hl-yellow} guardado internamente como un 1.
+-   `FALSE`: [**falso**]{.hl-yellow} guardado internamente como un 0.
+
+```{r}
+soltero <- TRUE # ¿Es soltero? --> SÍ
+class(soltero)
+```
+
+. . .
+
+Dado que internamente están guardados como variables binarias, podemos [**realizar operaciones aritméticas**]{.hl-yellow} con ellas
+
+```{r}
+2 * TRUE
+FALSE - 1
+```
+
+---
+
+## Reminder: tipos de datos
+
+Las variables lógicas en realidad puede tomar un tercer valor: `NA` o [**dato ausente**]{.hl-yellow}, representando las siglas de *not available*, y será muy habitual encontrarlo dentro de una base de datos.
+
+```{r}
+ausente <- NA
+ausente + 1
+```
+
+
+. . .
+
+::: callout-important
+## Importante
+
+Las variables lógicas [**NO son variables de texto**]{.hl-red}: `"TRUE"` es un texto, `TRUE` es un valor lógico.
+
+```{r}
+#| error: true
+TRUE + 1
+"TRUE" + 1
+```
+:::
+
+---
+
+## Reminder: tipos de datos
+
+Un tipo de datos muy especial: los [**datos de tipo fecha**]{.hl-yellow}.
+
+```{r}
+fecha_char <- "2021-04-21"
+```
+
+Parece una simple cadena de texto pero [**debería representar un instante en el tiempo**]{.hl-yellow}. ¿Qué debería suceder si [**sumamos un 1 a una fecha**]{.hl-purple}?
+
+. . .
+
+```{r}
+#| error: true
+fecha_char + 1
+```
+
+
+Las fechas [**NO pueden ser texto**]{.hl-red}: debemos convertir la cadena de texto a fecha. Para trabajar con fechas usaremos el paquete `{lubridate}`, que deberemos instalar antes de poder usarlo.
+
+
+```{r}
+#| eval: false
+install.packages("lubridate")
+```
+
+
+---
+
+## Reminder: vectores
+
+Cuando trabajamos con datos normalmente tendremos [**columnas que representan variables**]{.hl-yellow}: llamaremos [**vectores**]{.hl-yellow} a una [**concatenación**]{.hl-purple} de celdas (valores) del [**mismo tipo**]{.hl-purple} (lo que sería una columna de una tabla).
+
+. . .
+
+La forma más sencilla es con el comando `c()` (c de **concatenar**), y basta con introducir sus **elementos entre paréntesis y separados por comas**
+
+```{r}
+edades <- c(32, 27, 60, 61)
+edades
+```
+
+. . .
+
+
+La [**longitud de un vector**]{.hl-yellow} se puede calcular con `length()`
+
+```{r}
+length(edades)
+```
+
+---
+
+## Reminder: secuencias
+
+El vector más famoso será el de tipo numérico, y en concreto, las conocidas como [**secuencias numéricas**]{.hl-yellow}. El comando `seq(inicio, fin)` nos permite crear una [**secuencia numérica**]{.hl-yellow} desde un elemento inicial hasta uno final, [**avanzando de uno en uno**]{.hl-purple}.
+
+```{r}
+seq(1, 21)
+```
+
+. . .
+
+Un atajo es el comando `1:n`, que nos devuelve lo mismo que `seq(1, n)`
+
+```{r}
+1:7
+```
+
+. . .
+
+También podemos definir [**otro tipo de distancia**]{.hl-yellow} (paso) entre consecutivos con el argumento `by = ...` o su longitud con `l = ...`
+
+```{r}
+seq(1, 7, by = 0.5) # secuencia desde 1 a 7 de 0.5 en 0.5
+seq(1, 10, l = 7) # secuencia desde 1 a 50 de longitud 7
+```
+
+
+---
+
+
+## Reminder: vectores
+
+Con los vectores numéricos podemos hacer las mismas [**operaciones aritméticas**]{.hl-yellow} que con los números → un [**número es un vector**]{.hl-purple} (de longitud uno)
+
+. . .
+
+¿Qué sucederá si [**sumamos o restamos un valor**]{.hl-yellow} a un vector?
+
+. . .
+
+```{r}
+x <- c(1, 3, 5, 7)
+x + 1
+x * 2
+```
+
+::: callout-warning
+## Cuidado
+
+Salvo que indiquemos lo contrario, en `R` las operaciones con vectores son siempre [**elemento a elemento**]{.hl-orange}
+:::
+
+---
+
+## Reminder: vectores
+
+
+Una operación muy habitual es [**preguntar a los datos**]{.hl-yellow} mediante el uso de [**condiciones lógicas**]{.hl-purple}. Por ejemplo, si definimos un vector de temperaturas...
+
+[**¿Qué días hizo menos de 22 grados?**]{.hl-yellow}
+
+```{r}
+x <- c(15, 20, 31, 27, 15, 29)
+```
+
+. . .
+
+```{r}
+x < 22
+```
+
+Nos devolverá un [**vector lógico**]{.hl-yellow}, en función de si **cada elemento** cumple o no la condición pedida (de **igual longitud** que el vector preguntado)
+
+. . .
+
+Si tuviéramos un [**dato ausente**]{.hl-yellow} (por error del aparato ese día), la condición evaluada también sería `NA`
+
+```{r}
+y <- c(15, 20, NA, 31, 27, 7, 29, 10)
+y < 22
+```
+
+---
+
+## Reminder: vectores
+
+Las [**condiciones lógicas pueden ser combinadas**]{.hl-yellow} de dos maneras:
+
+-   [**Intersección**]{.hl-yellow}: [**todas**]{.hl-purple} las condiciones concatenadas se deben cumplir ([**conjunción y**]{.hl-purple} con `&`) para devolver un `TRUE`
+
+```{r}
+x < 30 & x > 15
+```
+
+-   [**Unión**]{.hl-yellow}: basta con que [**al menos una**]{.hl-purple} se cumpla ([**conjunción o**]{.hl-purple} con `|`)
+
+```{r}
+x < 30 | x > 15
+```
+
+. . .
+
+Con `any()` y `all()` podemos comprobar que [**todos los elementos**]{.hl-yellow} cumplen
+
+```{r}
+any(x < 30)
+all(x < 30)
+```
+
+---
+
+## Reminder: vectores
+
+Otra operación muy habitual es la de [**acceder a elementos**]{.hl-yellow}. La forma más sencilla es usar el operador `[i]` (acceder al elemento i-ésimo)
+
+```{r}
+edades <- c(20, 30, 33, NA, 61) 
+edades[3] # accedemos a la edad de la tercera persona 
+```
+
+. . .
+
+
+Dado que un número no es más que un vector de longitud uno, esta operación también la podemos aplicar usando un [**vector de índices a seleccionar**]{.hl-yellow}
+
+```{r}
+y <- c("hola", "qué", "tal", "estás", "?")
+y[c(1:2, 4)] # primer, segundo y cuarto elemento
+```
+
+. . .
+
+::: callout-tip
+Para acceder al último, sin preocuparnos de cuál es, podemos pasarle como índice la propia longitud `x[length(x)]`
+:::
+
+---
+
+## Reminder: vectores
+
+Otras veces no querremos seleccionar sino [**eliminar algunos elementos**]{.hl-yellow}. Deberemos repetir la misma operación pero con el signo - delante: el operador `[-i]` no selecciona el elemento i-ésimo del vector sino que lo «des-selecciona»
+
+```{r}
+y
+y[-2]
+```
+
+
+. . .
+
+En muchas ocasiones los queremos [**seleccionar o eliminar en base a condiciones lógicas**]{.hl-yellow}, en función de los valores, así que pasaremos como índice la propia condición (recuerda, `x < 2` nos devuelve un vector lógico)
+
+```{r}
+edades <- c(15, 21, 30, 17, 45)
+nombres <- c("javi", "maría", "laura", "carla", "luis")
+nombres[edades < 18] # nombres de los menores de edad
+```
+
+---
+
+
+## Reminder: vectores
+
+
+También podemos hacer uso de [**operaciones estadísticas**]{.hl-yellow} como por ejemplo `sum()` que, dado un vector, nos devuelve la suma de todos sus elementos.
+
+```{r}
+x <- c(1, -2, 3, -1)
+sum(x)
+```
+
+[**¿Qué sucede cuando falta un dato (ausente)?**]{.hl-yellow}
+
+. . .
+
+```{r}
+x <- c(1, -2, 3, NA, -1)
+sum(x)
+```
+
+Por defecto, si tenemos un dato ausente, la [**operación también será ausente**]{.hl-yellow}. Para poder [**obviar ese dato**]{.hl-purple}, usamos un argumento opcional `na.rm = TRUE`
+
+```{r}
+sum(x, na.rm = TRUE)
+```
+
+---
+
+## Reminder: vectores
+
+
+Por último, una acción habitual es saber [**ordenar valores**]{.hl-yellow}:
+
+-   `sort()`: devuelve el [**vector ordenado**]{.hl-yellow}. Por defecto de menor a mayor pero con `decreasing = TRUE` podemos cambiarlo
+
+```{r}
+edades <- c(81, 7, 25, 41, 65, 20, 33, 23, 77)
+sort(edades)
+sort(edades, decreasing = TRUE)
+```
+
+. . .
+
+-   `order()`: devuelve el [**vector de índices**]{.hl-yellow} que tendríamos que usar para tener el vector ordenado
+
+```{r}
+order(x)
+x[order(x)]
+```
+
+---
+
+## Reminder: bases de datos
+
+Cuando analizamos datos solemos tener [**varias variables**]{.hl-yellow} de cada individuo: necesitamos una «tabla» que las recopile.
+
+
+* La opción más inmediata son las [**matrices**]{.hl-yellow}: concatenación de variables del [**mismo tipo e igual longitud**]{.hl-purple}. La opción más habitual es usando `cbind()`: [**concatenamos (bind) vectores en forma de columnas (c)**]{.hl-yellow}
+
+```{r}
+#| code-line-numbers: "3"
+estaturas <- c(150, 160, 170, 180)
+pesos <- c(63, 70, 85, 95)
+datos_matriz <- cbind(estaturas, pesos)
+datos_matriz
+```
+
+---
+
+## Reminder: bases de datos
+
+Dado que ahora tenemos dos dimensiones en nuestros datos, para [**acceder a elementos con `[]`**]{.hl-yellow} deberemos proporcionar **dos índices separados por comas**: índice de la fila y de la columna 
+
+```{r}
+datos_matriz[2, 1] # segunda fila, primera columna
+datos_matriz[1, 2] # primera fila, segunda columna 
+datos_matriz[2, ] # segundo individuo
+datos_matriz[, 1] # primera variable
+```
+
+---
+
+## Reminder: bases de datos
+
+Las matrices tienen el mismo problema que los vectores: si juntamos datos de distinto tipo, se [**perturba la integridad del dato**]{.hl-red} ya que los convierte
+
+```{r}
+edades <- c(14, 24, NA)
+soltero <- c(TRUE, NA, FALSE)
+nombres <- c("javi", "laura", "lucía")
+matriz <- cbind(edades, soltero, nombres)
+matriz
+```
+
+. . .
+
+Para poder trabajar con [**variables de distinto tipo**]{.hl-yellow} tenemos en `R` lo que se conoce como [**data.frame**]{.hl-yellow}: concatenación de variables de igual longitud pero que pueden ser de [**tipo distinto**]{.hl-purple}.
+
+```{r}
+tabla <- data.frame(edades, soltero, nombres)
+tabla
+```
+
+---
+
+## Reminder: bases de datos
+
+Si queremos acceder a sus elementos, al ser de nuevo **datos tabulados**, podemos acceder como en las matrices ([**no recomendable**]{.hl-red}): de nuevo [**tenemos dos índices**]{.hl-yellow} (filas y columnas, dejando libre la que no usemos)
+
+```{r}
+tabla[2, ]  # segunda fila (todas sus variables)
+tabla[, 3]  # tercera columna (de todos los individuos)
+tabla[2, 1]  # primera característica de la segunda persona
+```
+
+. . .
+
+::: columns
+::: {.column width="25%"}
+![](img/menu_data_frame.jpg)
+:::
+
+::: {.column width="75%"}
+Pero también tiene las ventajas de una [**«base» de datos**]{.hl-yellow} : podemos [**aceder a las variables por su nombre**]{.hl-purple} ([**lo recomendable**]{.hl-green} ya que las variables pueden cambiar de posición y ahora sí tienen un significado), poniendo el nombre de la tabla seguido del símbolo `$` (con el **tabulador**, nos aparecerá un menú de columnas a elegir)
+:::
+:::
+
+---
+
+---
+
+## Reminder: bases de datos
+
+Las tablas en formato `data.frame` tienen algunas [**limitaciones**]{.hl-red}. La principal es que [**no permite la recursividad**]{.hl-red}. En adelante usaremos el formato `tibble` ([**data.frame mejorado**]{.hl-yellow}) del paquete `{tibble}`
+
+```{r}
+library(tibble)
+datos_tb <- 
+  tibble("estatura" = c(1.7, 1.8, 1.6), "peso" = c(80, 75, 70),
+         "IMC" = peso / (estatura^2))
+class(datos_tb)
+datos_tb
+```
+
+---
+
+
+## 💻 Tu turno {#tu-turno-1-1}
+
+[**Intenta realizar los siguientes ejercicios sin mirar las soluciones**]{style="color:#444442;"}
+
+::: panel-tabset
+### [**Ejercicio 1**]{.hl-yellow}
+
+📝 Define el vector `x` como la concatenación de los 5 primeros números impares. Calcula la longitud del vector
+
+```{r}
+#| code-fold: true
+#| eval: false
+# Dos formas
+x <- c(1, 3, 5, 7, 9)
+x <- seq(1, 9, by = 2)
+
+length(x)
+```
+
+### [**Ejercicio 2**]{.hl-yellow}
+
+📝 Accede al tercer elemento de `x`. Accede al último elemento (sin importar la longitud, un código que pueda ejecutarse siempre). Elimina el primer elemento.
+
+```{r}
+#| code-fold: true
+#| eval: false
+x[3]
+x[length(x)]
+x[-1]
+```
+
+### [**Ejercicio 3**]{.hl-yellow}
+
+📝 Obtén los elementos de `x` mayores que 4. Calcula el vector `1/x` y guárdalo en una variable.
+
+```{r}
+#| code-fold: true
+#| eval: false
+x[x > 4]
+z <- 1/x
+z
+```
+
+### [**Ejercicio 4**]{.hl-yellow}
+
+📝 Crea un vector que represente los nombres de 5 personas, de los cuales uno es desconocido.
+
+```{r}
+#| code-fold: true
+#| eval: false
+nombres <- c("Javi", "Sandra", NA, "Laura", "Carlos")
+nombres
+```
+
+### [**Ejercicio 5**]{.hl-yellow}
+
+📝 Encuentra del vector `x` de ejercicios anteriores los elementos mayores (estrictos) que 1 Y ADEMÁS menores (estrictos) que 7. Encuentra una forma de averiguar si todos los elementos son o no positivos.
+
+```{r}
+#| code-fold: true
+#| eval: false
+x[x > 1 & x < 7]
+all(x > 0)
+```
+
+
+
+### [**Ejercicio 6**]{.hl-yellow}
+
+📝 Dado el vector `x` del ejercicio anterior, ¿cuales tienen un dato ausente? Pista: las funciones `is.algo()` comprueban si el elemento es tipo `algo` (tabula)
+
+```{r}
+#| code-fold: true
+#| eval: false
+is.na(x)
+```
+
+
+
+### [**Ejercicio 7**]{.hl-yellow}
+
+📝 Calcula el vector `1/x` y obtén la versión ordenada (de menor a mayor) de las dos formas posibles
+
+```{r}
+#| code-fold: true
+#| eval: false
+z <- 1/x
+sort(z)
+z[order(z)]
+```
+
+
+### [**Ejercicio 8**]{.hl-yellow}
+
+📝 Encuentra del vector `x` los elementos mayores (estrictos) que 1 y menores (estrictos) que 6. Encuentra una forma de averiguar si todos los elementos son o no negativos.
+
+```{r}
+#| code-fold: true
+#| eval: false
+x[x > 1 & x < 7]
+all(x > 0)
+```
+
+
+
+### [**Ejercicio 9**]{.hl-yellow}
+
+📝 Carga del paquete `{datasets}` el conjunto de datos `airquality` (variables de la calidad del aire de Nueva York desde mayo hasta septiembre de 1973). ¿Es el conjunto de datos airquality de tipo tibble? En caso negativo, conviértelo a tibble (busca en la documentación del paquete en <https://tibble.tidyverse.org/index.html>).
+
+```{r}
+#| code-fold: true
+#| eval: false
+library(tibble)
+class(datasets::airquality)
+airquality_tb <- as_tibble(datasets::airquality)
+```
+
+### [**Ejercicio 10**]{.hl-yellow}
+
+📝 Una vez convertido a `tibble` obtén el nombre de las variables y las dimensiones del conjunto de datos. ¿Cuántas variables hay? ¿Cuántos días se han medido?
+
+```{r}
+#| code-fold: true
+#| eval: false
+names(airquality_tb)
+ncol(airquality_tb)
+nrow(airquality_tb)
+```
+
+
+### [**Ejercicio 11**]{.hl-yellow}
+
+📝 Cambia el código inferior para filtrar solo los datos de la quinta observación
+
+```{r}
+#| eval: false
+airquality_tb[Month == 8, ]
+```
+
+```{r}
+#| code-fold: true
+#| eval: false
+airquality_tb[5, ]
+```
+
+### [**Ejercicio 12**]{.hl-yellow}
+
+📝 Cambia el código inferior para filtrar solo los datos del mes de agosto.
+
+
+```{r}
+#| eval: false
+airquality_tb[Month == 8, ]
+```
+
+```{r}
+#| code-fold: true
+#| eval: false
+airquality_tb[airquality_tb$Month == 8, ]
+```
+
+
+:::
+
+
+---
+
+
+## 🐣 Caso práctico I: manejo de vectores {#caso-practico-1-1}
+
+En el paquete `{datasets}` (ya instalado por defecto) tenemos diversos conjuntos de datos y uno de ellos es `airquality`. 
+
+Los datos capturan [**medidas diarias (n = 153 observaciones) de la calidad del aire**]{.hl-yellow} en Nueva York, de mayo a septiembre de 1973. Se midieron **6 variables**: niveles de ozono, radiación solar, viento, temperatura, mes y día.
+
+```{r}
+#| eval: false
+library(datasets)
+airquality
+```
+
+Intenta responder a las preguntas planteadas en el [**workbook**](https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-i-airquality-manejo-de-vectores)
+
+
+---
+
+## ¿Qué era tidyverse? {#tidy-data}
+
+::: columns
+::: {.column width="50%"}
+![](img/tidyverrse_universe.jpg)
+:::
+
+::: {.column width="50%"}
+![](img/flow_tidyverse.jpg)
+:::
+:::
+
+En ese contexto de programación funcional, hace una década nacía `{tidyverse}`, un [**«universo» de paquetes**]{.hl-yellow} para garantizar un flujo de trabajo eficiente, coherente y lexicográficamente sencillo de entender, basado en la idea de que [**nuestros datos están limpios y ordenados (tidy)**]{.hl-purple}
+
+---
+
+## ¿Qué era tidyverse?
+
+::: columns
+::: {.column width="45%"}
+![](img/tidyverrse_universe.jpg)
+
+-   `{lubridate}` manejo de fechas
+-   `{rvest}`: web scraping
+-   `{tidymodels}`: modelización/predicción
+
+:::
+
+::: {.column width="55%"}
+-   `{tibble}`: optimizando data.frame
+-   `{tidyr}`: limpieza de datos
+-   `{readr}`: carga datos rectangulares (.csv), `{readxl}` para importar archivos .xls y .xlsx
+-   `{dplyr}`: gramática para depurar
+-   `{stringr}`: manejo de textos
+-   `{purrr}`: manejo de listas
+-   `{forcats}`: manejo de cualitativas
+-   `{ggplot2}`: visualización de datos
+
+
+
+:::
+:::
+
+
+
+---
+
+## ¿Qué era tidyverse?
+
+::: columns
+::: {.column width="45%"}
+![](img/tidyverrse_universe.jpg)
+
+-   `{lubridate}` manejo de fechas
+-   `{rvest}`: web scraping
+-   `{tidymodels}`: modelización/predicción
+
+
+:::
+
+::: {.column width="55%"}
+-   `{tibble}`: [**optimizando data.frame**]{.hl-yellow}
+-   `{tidyr}`: [**limpieza de datos**]{.hl-yellow}
+-   `{readr}`: carga datos rectangulares (.csv), `{readxl}` para importar archivos .xls y .xlsx
+-   `{dplyr}`: gramática para depurar
+-   `{stringr}`: manejo de textos
+-   `{purrr}`: manejo de listas
+-   `{forcats}`: manejo de cualitativas
+-   `{ggplot2}`: visualización de datos
+
+:::
+:::
+
+
+---
+
+## Filosofía base: tidy data
+
+> Tidy datasets are all alike, but every messy dataset is messy in its own way (Hadley Wickham, Chief Scientist en RStudio)
+
+::: {style="font-size:120px; text-align: center; color:#F8DF58;"}
+<b>TIDY</b><b>[VERSE</b>]{style="color:#CAB0EE;"}
+:::
+
+El [**universo**]{.hl-purple} de paquetes `{tidyverse}` se basa en la idea introducida por **Hadley Wickham** (el Dios al que rezamos) de [**estandarizar**]{.hl-yellow} el formato de los datos para
+
+::: incremental
+-   [**sistematizar**]{.hl-green} la depuración
+-   hacer más [**sencillo**]{.hl-green} su manipulación.
+-   código [**legible**]{.hl-green}
+:::
+
+---
+
+## Reglas del tidy data
+
+Lo primero por tanto será entender qué son los [**conjuntos tidydata**]{.hl-yellow} ya que todo `{tidyverse}` se basa en que los datos están estandarizados.
+
+::: columns
+::: {.column width="50%"}
+::: {.fragment .fade-in}
+1.  Cada [**variable**]{.hl-yellow} en una [**única columna**]{.hl-purple}
+:::
+
+::: {.fragment .fade-in}
+2.  Cada [**individuo**]{.hl-yellow} en una [**fila diferente**]{.hl-purple}
+:::
+
+::: {.fragment .fade-in}
+3.  Cada [**celda**]{.hl-yellow} con un [**único valor**]{.hl-purple}
+:::
+
+::: {.fragment .fade-in}
+4.  Cada [**dataset**]{.hl-yellow} en un [**tibble**]{.hl-purple}
+:::
+
+::: {.fragment .fade-in}
+5.  Si queremos cruzar [**múltiples tablas**]{.hl-yellow} debemos tener una [**columna común**]{.hl-purple}
+:::
+:::
+
+::: {.column width="50%"}
+![](img/tidy_def.jpg){width="160%"}
+:::
+:::
+
+---
+
+## Tubería (pipe)
+
+En `{tidyverse}` será clave el [**operador pipe (tubería)**]{.hl-yellow} definido como `|>` ([**ctrl+shift+M**]{.hl-purple}): será una [**tubería que recorre los datos**]{.hl-yellow} y los transforma.
+
+. . .
+
+::: columns
+::: {.column width="50%"}
+En R base, si queremos aplicar tres funciones `first()`, `second()` y `third()` en orden, sería
+
+```{r}
+#| eval: false
+third(second(first(datos)))
+```
+:::
+
+::: {.column width="50%"}
+En `{tidyverse}` podremos [**leer de izquierda a derecha**]{.hl-yellow} y separar los datos de las acciones
+
+```{r}
+#| eval: false
+datos |> first() |> second() |> third()
+```
+:::
+:::
+
+
+. . .
+
+::: callout-caution
+## Apunte importante
+
+Desde la versión 4.1.0 de `R` disponemos de `|>`, un pipe **nativo** disponible [**fuera de tidyverse**]{.hl-purple}, sustituyendo al [**antiguo pipe**]{.hl-red} `%>%` que dependía del paquete `{magrittr}` (bastante problemático).
+:::
+
+---
+
+## Tubería (pipe)
+
+La principal ventaja es que el [**código sea muy legible (casi literal)**]{.hl-yellow} pudiendo hacer grandes operaciones con los datos con apenas código.
+
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| eval: false
+datos |>
+  limpio(...) |>
+  filtro(...) |>
+  selecciono(...) |>
+  ordeno(...) |>
+  modifico(...) |>
+  renombro(...) |>
+  agrupo(...) |>
+  cuento(...) |>
+  resumo(...) |>
+  pinto(...)
+```
+:::
+
+::: {.column width="50%"}
+<center><img src="img/logo_pipe.png" width="360px"/></center>
+:::
+:::
+
+---
+
+## Datos SUCIOS: messy data
+
+¿Pero qué aspecto tienen los [**datos no tidy**]{.hl-yellow}? Vamos a cargar la tabla `table4a` del paquete `{tidyr}` (ya lo tenemos cargado del entorno tidyverse).
+
+
+```{r}
+library(tidyr)
+table4a
+```
+
+
+[**¿Qué puede estar fallando?**]{.hl-red}
+
+---
+
+## Pivotar: pivot_longer()
+
+::: columns
+::: {.column width="40%"}
+```{r}
+table4a
+```
+:::
+
+::: {.column width="60%"}
+❎ Cada [**fila representa dos observaciones**]{.hl-red} (1999 y 2000) → las columnas `1999` y `2000` en realidad deberían ser en sí [**valores de una variable**]{.hl-yellow} y no nombres de columnas.
+:::
+:::
+
+. . .
+
+Incluiremos una [**nueva columna**]{.hl-yellow} que nos guarde el año y otra que guarde el valor de la variable de interés en cada uno de esos años. Y lo haremos con la función `pivot_longer()`: [**pivotaremos la tabla**]{.hl-yellow} a formato long:
+
+```{r}
+table4a |> 
+  pivot_longer(cols = c("1999", "2000"), names_to = "year", values_to = "cases")
+```
+
+---
+
+## Pivotar: pivot_longer()
+
+::: columns
+::: {.column width="50%"}
+```{r}
+table4a |> 
+  pivot_longer(cols = c("1999", "2000"),
+               names_to = "year",
+               values_to = "cases")
+```
+:::
+
+::: {.column width="50%"}
+![](img/table4a.jpg)
+:::
+:::
+
+
+
+-   `cols`: [**nombre de las variables a pivotar**]{.hl-yellow}
+-   `names_to`: nombre de la nueva variable a la quemandamos la [**cabecera**]{.hl-yellow} de la tabla (los nombres).
+-   `values_to`: nombre de la nueva variable a la que vamos a mandar los [**datos**]{.hl-yellow}.
+
+---
+
+## Datos SUCIOS: messy data
+
+Veamos otro ejemplo con la tabla `table2`
+
+
+```{r}
+table2
+```
+
+
+[**¿Qué puede estar fallando?**]{.hl-red}
+
+---
+
+## Pivotar: pivot_wider()
+
+::: columns
+::: {.column width="60%"}
+```{r}
+#| echo: false
+table2
+```
+:::
+
+::: {.column width="40%"}
+❎ Cada [**observación está dividido en dos filas**]{.hl-red} → los [**registros con el mismo año deberían ser el mismo**]{.hl-yellow}
+:::
+:::
+
+. . .
+
+Lo que haremos será lo opuesto: con `pivot_wider()` [**ensancharemos la tabla**]{.hl-yellow}
+
+```{r}
+table2 |>  pivot_wider(names_from = type, values_from = count)
+```
+
+---
+
+## Datos SUCIOS: messy data
+
+Veamos otro ejemplo con la tabla `table3`
+
+
+```{r}
+table3
+```
+
+
+[**¿Qué puede estar fallando?**]{.hl-red}
+
+---
+
+## Separar: separate()
+
+::: columns
+::: {.column width="60%"}
+```{r}
+table3
+```
+:::
+
+::: {.column width="40%"}
+❎ Cada [**celda contiene varios valores**]{.hl-red}
+:::
+:::
+
+. . .
+
+Lo que haremos será hacer uso de la función `separate()` para mandar [**separar cada valor**]{.hl-yellow} a una columna diferente.
+
+```{r}
+table3 |> separate(rate, into = c("cases", "pop"))
+```
+
+---
+
+## Separar: separate()
+
+```{r}
+table3 |> separate(rate, into = c("cases", "pop"))
+```
+
+Fíjate que los datos, aunque los ha separado, [**los ha mantenido como texto**]{.hl-red} cuando en realidad deberían ser variables numéricas. Para ello podemos añadir el argumento opcional `convert = TRUE`
+
+. . .
+
+```{r}
+table3 |> separate(rate, into = c("cases", "pop"), convert = TRUE)
+```
+
+---
+
+## Datos SUCIOS: messy data
+
+Veamos el último ejemplo con la tabla `table5`
+
+
+```{r}
+table5
+```
+
+
+[**¿Qué puede estar fallando?**]{.hl-red}
+
+---
+
+## Unir unite()
+
+::: columns
+::: {.column width="50%"}
+```{r}
+table5
+```
+:::
+
+::: {.column width="50%"}
+❎ Tenemos [**mismos valores divididos en dos columnas**]{.hl-red}
+:::
+:::
+
+. . .
+
+Usaremos `unite()` para [**unir los valores**]{.hl-yellow} de siglo y año en una misma columna
+
+```{r}
+table5 |> unite(col = year_completo, century, year, sep = "")
+```
+
+---
+
+## Ejemplo: relig_income
+
+Vamos a realizar un ejemplo juntos con la tabla `relig_income` del paquete `{tidyr}`. Como se indica en la ayuda `? relig_income`, la tabla representa la cantidad de personas que hay en cada tramo de ingresos anuales (20k = 20 000$) y en cada religión.
+
+```{r}
+relig_income
+```
+
+---
+
+## Ejemplo: relig_income
+
+```{r}
+relig_income
+```
+
+[**¿Es tidydata?**]{.hl-yellow} 
+
+---
+
+## Ejemplo: relig_income
+
+```{r}
+relig_income
+```
+
+No lo es ya que en realidad [**solo deberíamos tener una variable de ingresos**]{.hl-red} y la tenemos dividida en 11: todas ellas es la misma variable solo que adopta un valor diferente.  [**¿Cómo convertirla a tidy data?**]{.hl-green}
+
+---
+
+## Ejemplo: relig_income
+
+
+La idea es [**pivotar todas las columnas de ingresos**]{.hl-yellow} para que acaben en una sola columna llamada `income`, y los valores (el número de personas) en otra llamada `people` (por ejemplo). La tabla la haremos más larga y menos ancha así que...
+
+. . .
+
+```{r}
+relig_tidy <-
+  relig_income |>
+  pivot_longer(cols = "<$10k":"Don't know/refused", names_to = "income",
+               values_to = "people")
+relig_tidy 
+```
+
+---
+
+## Ejemplo: relig_income
+
+Vamos a hilar más fino: ahora mismo en la variable `income` en realidad tenemos dos valores, el límite inferior y el superior de la renta. Vamos a [**separar dicha variable e ingresos**]{.hl-yellow} en dos, llamadas `income_inf` y `income_sup`
+
+```{r}
+#| code-fold: true
+relig_tidy |>
+  # Separamos por -
+  separate(income, into = c("income_inf", "income_sup"), sep = "-")
+```
+
+. . .
+
+¿Está ya ok? Fíjate bien...
+
+---
+
+## Ejemplo: relig_income
+
+Si te fijas la primera columna el `"$10k"` debería ser una cota superior, no inferior. ¿Cómo indicarle que separe bien ese caso?
+
+. . .
+
+Le indicaremos que separe si encuentra `"-"` o `"<"` (usamos `|` para separar ambas opciones)
+
+```{r}
+#| code-fold: true
+relig_tidy <-
+  relig_tidy |>
+  # Separamos por -
+  separate(income, into = c("income_inf", "income_sup"), sep = "-|<")
+```
+
+---
+
+## Ejemplo: relig_income
+
+
+Piensa ahora como podemos [**convertir los límites de ingresos a numéricas (eliminando símbolos, letras, etc)**]{.hl-yellow}
+
+. . .
+
+Para ello usaremos el paquete `{stringr}`, en concreto la función `str_remove_all()` a la que le podemos pasar los caracteres que queremos eliminar (fíjate que `$` al ser un caracter reservado en `R` hay que indicárselo con `\\$`)
+
+```{r}
+#| code-fold: true
+library(stringr)
+relig_tidy$income_inf <-
+  str_remove_all(relig_tidy$income_inf, "\\$|>|k")
+relig_tidy$income_sup <-
+  str_remove_all(relig_tidy$income_sup, "\\$|>|k")
+
+relig_tidy
+```
+
+
+---
+
+## 💻 Tu turno {#tu-turno-1-2}
+
+[**Intenta realizar los siguientes ejercicios sin mirar las soluciones**]{style="color:#444442;"}
+
+::: panel-tabset
+
+### [**Ejercicio 1**]{.hl-yellow}
+
+
+📝 Echa un vistazo a la tabla `table4b` del paquete `{tidyr}`. ¿Es tidydata? En caso negativo, ¿qué falla? ¿Cómo convertirla a tidy data en caso de que no lo sea ya?
+
+```{r}
+#| code-fold: true
+#| eval: false
+table4b |>
+  pivot_longer(cols = "1999":"2000", names_to = "year",
+               values_to = "cases")
+```
+
+
+### [**Ejercicio 2**]{.hl-yellow}
+
+📝 Echa un vistazo a la tabla `billboard` del paquete `{tidyr}`. ¿Es tidydata? En caso negativo, ¿qué falla? ¿Cómo convertirla a tidy data en caso de que no lo sea ya?
+
+```{r}
+#| code-fold: true
+#| eval: false
+billboard |>
+  pivot_longer(cols = "wk1":"wk76",
+               names_to = "week",
+               names_prefix = "wk",
+               values_to = "position",
+               values_drop_na = TRUE)
+```
+
+### [**Ejercicio 3**]{.hl-yellow}
+
+📝 En el paquete `{tidyr}` contamos con el dataset `who2` (dataset de la Organización Mundial de la Salud). ¿Es tidy data? ¿Por qué? Convierte a tidy data
+
+```{r}
+#| code-fold: true
+who_tidy <-
+  who2 |> 
+  # con values_drop_na = TRUE eliminamos los NA
+  pivot_longer(cols = -(country:year), names_to = "type",
+               values_to = "cases", values_drop_na = TRUE)
+who_tidy
+```
+
+### [**Ejercicio 4**]{.hl-yellow}
+
+📝 Si te fijas ahora en type tenemos codificada la información como diagnosis_sexo_edad. ¿Cómo separarlo en 3 columnas? Investiga tanto `separate()` como las opciones de `pivot_longer()`
+
+```{r}
+#| code-fold: true
+# con separate
+who_tidy <-
+  who_tidy |> 
+  separate(col = "type", into = c("diagnosis", "sex", "age"))
+
+# con pivot_longer
+who_tidy <-
+  who2 |> 
+  pivot_longer(cols = -(country:year),
+               names_to = c("diagnosis", "sex", "age"),
+               values_to = "cases", values_drop_na = TRUE, names_sep = "_")
+who_tidy
+```
+
+
+### [**Ejercicio 5**]{.hl-yellow}
+
+📝 Por último, separa en dos (age_inf, age_sup) el tramo etario (que sean números). Piensa cómo hacerlo ya que no siempre son 4 números
+
+```{r}
+#| code-fold: true
+# Usamos separate y le indicamos las posiciones, pero desde atrás 
+# ya que siempre el límite superior es un número de 2 cifras
+# y usamos convert = TRUE para convertir a números
+who_tidy <-
+  who_tidy |> 
+  separate(col = "age", into = c("age_inf", "age_sup"),
+           sep = -2, convert = TRUE)
+```
+
+:::
+
+---
+
+## 🐣 Caso práctico II: tidydata {#caso-practico-1-2}
+
+
+En el fichero `messy_covid_data.csv` tienes un archivo con la cantidad de casos reportados durante la pandemia covid pero en **formato messy**: el nombre de las columnas codifica el sexo (H hombre, M mujer, NC no consta) y el grupo etario (0-9, 10-19, 20-29, 30-39, 40-49, 50-59, 60-69, 70-79, ≥80 años y NC no consta). Las soluciones serán asumiendo que no se conoce aún las opciones de tidyverse para modificar y filtrar tablas.
+
+&nbsp;
+
+Intenta responder a las preguntas planteadas en el [**workbook**](https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-ii-covid-tidy-data)
+
+---
+
+## Preprocesamiento: dplyr {#dplyr}
+
+Como vimos dentro de `{tidyverse}` tenemos el paquete `{dplyr}` para el [**preprocesamiento y depuración**]{.hl-yellow} de los datos.
+
+::: columns
+::: {.column width="60%"}
+![](img/dplyr.png){width=450}
+:::
+
+::: {.column width="40%"}
+```{r}
+#| eval: false
+datos |>
+  limpio(...) |>
+  filtro(...) |>
+  selecciono(...) |>
+  ordeno(...) |>
+  modifico(...) |>
+  renombro(...) |>
+  agrupo(...) |>
+  cuento(...) |>
+  resumo(...) |>
+  pinto(...)
+```
+:::
+:::
+
+La idea es que el [**código sea legible**]{.hl-yellow}, como si fuese una **lista de instrucciones** que al leerla nos diga de manera muy evidente lo que está haciendo.
+
+---
+
+## Preprocesamiento: dplyr
+
+Vamos a repasar con el dataset `accidentes2020_data` del paquete `{CDR}` que recopila los **datos de accidentes de tráfico** con víctimas y/o daños al patrimonio en la ciudad de Madrid registrados por la Policía Municipal durante 2020.
+
+```{r}
+accidentes_tb <- as_tibble(CDR::accidentes2020_data)
+accidentes_tb
+```
+
+---
+
+## Muestreo
+
+:::: columns
+::: {.column width="60%"}
+
+Una de las operaciones más comunes es lo que se conoce en estadística como [**muestreo**]{.hl-yellow}: una [**selección o filtrado de registros**]{.hl-yellow} (una submuestra)
+
+:::
+
+::: {.column width="40%"}
+
+![](img/muestreo.jpeg){width=500}
+:::
+::::
+
+. . .
+
+
+* [**No aleatorio (por cuotas)**]{.hl-purple}: en base a condiciones lógicas sobre los registros (`filter()`)
+
+. . .
+
+* [**No aleatorio (intencional/discreccional)**]{.hl-purple}: en base a posición (`slice()`)
+
+. . .
+
+* [**Aleatorio simple**]{.hl-purple} (`slice_sample()`)
+
+. . .
+
+* [**Aleatorio estratificado**]{.hl-purple} (`group_by()` + `slice_sample()`)
+
+
+---
+
+## Filtrar filas: filter()
+
+El muestreo más simple es cuando [**filtramos registros**]{.hl-yellow} en base a alguna condición lógica: con `filter()` se seleccionarán solo individuos que cumplan ciertas condiciones
+
+¿Cuáles son los **accidentes que se produjeron en Carabanchel**?
+
+. . .
+
+```{r}
+library(dplyr)
+accidentes_tb |> 
+  filter(distrito == "CARABANCHEL")
+```
+
+---
+
+## Filtrar filas: filter()
+
+¿Cuáles fueron los accidentes ocurridos el 31 de diciembre?
+
+. . .
+
+```{r}
+library(lubridate)
+accidentes_tb |> 
+  filter(as_date(fecha, format = "%d/%m/%Y") == "2020/12/31")
+```
+
+---
+
+## Filtrar filas: filter()
+
+¿Cuáles fueron los accidentes ocurridos en diciembre en el que hay mujeres conductoras involucradas?
+
+. . .
+
+```{r}
+accidentes_tb |> 
+  filter(month(as_date(fecha, format = "%d/%m/%Y")) == 12 &
+           tipo_persona == "Conductor" & sexo == "Mujer")
+```
+
+---
+
+## Filtrar filas: filter()
+
+¿Cuáles fueron los accidentes cuando hubo granizo, lluvia (intensa o débil) o nieve?
+
+. . .
+
+```{r}
+accidentes_tb |> 
+  filter(estado_meteorológico %in%
+           c("Granizando", "LLuvia intensa", "Lluvia débil", "Nevando"))
+```
+
+---
+
+## Filtrar filas: filter()
+
+¿Cuáles fueron los accidentes cuya lesividad se sitúa entre 1 y 3 (ambos inclusive)?
+
+. . .
+
+```{r}
+accidentes_tb |> 
+  filter(between(as.numeric(lesividad), 1, 3))
+```
+
+
+
+---
+
+## Filtrar filas: filter()
+
+Las [**condiciones lógicas**]{.hl-yellow} las podemos [**combinar**]{.hl-yellow} de diferentes maneras (y, o, o excluyente)
+
+![](img/tablas_verdad.png)
+
+. . .
+
+
+::: callout-tip
+## Importante
+
+Recuerda que dentro de `filter()` debe ir siempre algo que devuelva un [**vector de valores lógicos**]{.hl-green}.
+:::
+
+
+---
+
+## Eliminar ausentes
+
+¿Cuáles fueron los accidentes en los que el sexo de la persona involucrada es desconocido?
+
+. . .
+
+Los [**ausentes deberían estar codificados como `NA`**]{.hl-yellow}, y usar `drop_na()` para depurarlos, pero no siempre van a estar ya codificados así.
+
+```{r}
+accidentes_tb |> 
+  filter(sexo == "Desconocido")
+```
+
+
+---
+
+## Rebanadas de datos: slice()
+
+A veces nos puede interesar realizar un [**muestreo no aleatorio discreccional**]{.hl-yellow}, o lo que es lo mismo, [**filtrar por posición**]{.hl-yellow}: con `slice(posiciones)` podremos seleccionar filas concretas pasando como argumento un [**vector de índices**]{.hl-yellow}
+
+
+¿Cuáles son los **7 primeros accidentes guardados** en la base de datos?
+
+. . .
+
+```{r}
+accidentes_tb |> 
+  slice(1:7)
+
+# otra forma:
+# accidentes_tb |> 
+#   slice_head(n = 7)
+```
+
+
+---
+
+## Rebanadas de datos: slice()
+
+¿Cuáles fueron los **primeros 100 accidentes** del año (usando fecha y hora)?
+
+. . .
+
+```{r}
+accidentes_tb |> 
+  slice_min(dmy_hms(paste(fecha, hora)), n = 100)
+```
+
+
+---
+
+## Rebanadas de datos: slice()
+
+¿Cuáles fue el **último accidente** del año (usando fecha y hora)?
+
+. . .
+
+```{r}
+accidentes_tb |> 
+  slice_max(dmy_hms(paste(fecha, hora)), n = 1)
+```
+
+
+---
+
+## Aleatorio: slice_sample()
+
+
+El conocido como [**muestreo aleatorio simple**]{.hl-yellow} se basa en [**seleccionar individuos aleatoriamente**]{.hl-yellow}, de forma que cada uno tenga ciertas [**probabilidades**]{.hl-yellow} de ser seleccionado. Con `slice_sample(n = ...)` o `slice_sample(prop = ...)` podemos extraer n registros aleatoriamente (a priori equiprobables).
+
+
+**Extrae el 10%** de la muestra de manera aleatoria
+
+. . .
+
+```{r}
+accidentes_tb |> 
+  slice_sample(prop = 0.1)
+```
+
+
+---
+
+## Aleatorio: slice_sample()
+
+
+::: callout-important
+## Importante...
+
+[**«Aleatorio» no implica equiprobable**]{.hl-yellow}: es igual de aleatorio un dado normal que uno trucado. No hay cosas «más aleatorias» que otras, simplemente tienen subyacente distintas leyes de probabilidad.
+
+:::
+
+**Extrae el 10% de la muestra de manera aleatoria pero** siendo más probable de muestrear a los accidentes en los primeros días de mes
+
+. . .
+
+```{r}
+accidentes_tb |> 
+  slice_sample(prop = 0.1, weight_by = day(dmy(fecha)))
+```
+
+
+---
+
+
+## Reordenar filas: arrange()
+
+
+También podemos [**ordenar filas**]{.hl-yellow} en función de alguna variable con `arrange()`
+
+**Ordena** los accidentes por fecha
+
+. . .
+
+```{r}
+accidentes_tb |> 
+  arrange(dmy(fecha))
+```
+
+
+---
+
+## Eliminar duplicados: distinct()
+
+Muchas veces necesitaremos asegurarnos que no hay duplicados en alguna variable y podemos [**eliminar filas duplicadas**]{.hl-yellow} con `distinct()`.
+
+
+**Elimina los duplicados** considerando duplicados aquellos registros con mismo `num_expediente`, mismo `tipo_accidente` y mismo `tipo_persona`
+
+. . .
+
+```{r}
+accidentes_tb |>
+  distinct(num_expediente, tipo_accidente, tipo_persona)
+```
+
+---
+
+
+## Selección columnas: select()
+
+Hasta ahora todas las operaciones realizadas (aunque usásemos info de columnas) eran por filas. En el caso de columnas, la acción más sencilla es [**seleccionar variables por nombre**]{.hl-yellow} con `select()`, dando como argumentos los nombres de columnas [**sin comillas**]{.hl-purple}.
+
+**Selecciona solo las columnas** `num_expediente`, `fecha`, `hora`, `distrito`, `tipo_persona`, `rango_edad` y `sexo`.
+
+. . .
+
+```{r}
+accidentes_tb |> 
+  select(num_expediente:hora, distrito, tipo_persona:sexo)
+```
+
+
+---
+
+## Selección columnas: select()
+
+**Elimina la columna** `localizacion`.
+
+. . .
+
+```{r}
+accidentes_tb |> 
+  select(-localizacion)
+```
+
+
+---
+
+
+## Selección columnas: select()
+
+También podemos jugar con [**patrones**]{.hl-yellow} en el nombre, aquellas que [**comiencen/termina por un patrón**]{.hl-purple}, que lo contengan o que cumplan una [**expresión regular**]{.hl-purple} (`matches()`).
+
+
+**Selecciona las columnas** `num_expediente`, `fecha`, `hora` y aquellas que apelen a coordenas o a `tipo_`.
+
+. . .
+
+```{r}
+accidentes_tb |> 
+  select(num_expediente, fecha, hora, starts_with("coordenada"), 
+         starts_with("tipo_"))
+```
+
+
+
+---
+
+## Selección columnas: select()
+
+
+También podemos seleccionar columnas por [**tipo de dato**]{.hl-yellow} haciendo uso de `where()` y dentro una función que devuelva un valor lógico de tipo de dato.
+
+**Selecciona las columnas** de tipo character.
+
+. . .
+
+```{r}
+accidentes_tb |> 
+  select(where(is.character))
+```
+
+
+---
+
+## Renombrar: rename()
+
+
+A veces también podemos querer [**modificar la «metainformación»**]{.hl-yellow} de los datos, [**renombrando columnas**]{.hl-yellow}. Para ello usaremos de `rename()` poniendo [**primero el nombre nuevo**]{.hl-purple} y luego el [**antiguo**]{.hl-purple}.
+
+
+**Renombra las columnas** `num_expediente` como `numero_exp`
+
+. . .
+
+```{r}
+accidentes_tb |> 
+  rename(numero_exp = num_expediente)
+```
+
+---
+
+
+## Modificar columnas: mutate()
+
+En muchas ocasiones querremos [**modificar o crear variables**]{.hl-yellow} con `mutate()`. 
+
+Haciendo uso de las funciones de `{lubridate}` **crea una nueva columna** llamada `fecha_hora` que guarde la fecha y hora en un formato fecha-hora (`datetime`) y elimina dichas variables originales
+
+. . .
+
+```{r}
+accidentes_tb |> 
+  mutate("fecha_hora" = dmy_hms(paste(fecha, hora)), .after = num_expediente) |> 
+  select(-fecha, -hora)
+```
+
+---
+
+
+## Modificar columnas: mutate()
+
+
+**Modifica la columna** `numero` que ya existe para convertirla a tipo numeric.
+
+```{r}
+accidentes_tb <-
+  accidentes_tb |> 
+  mutate("numero" = as.numeric(numero))
+accidentes_tb
+```
+
+
+---
+
+## Modificar columnas: mutate()
+
+::: callout-important
+## Importante...
+
+Cuando aplicamos `mutate()`, debemos de acordarnos que las [**operaciones se realizan de manera vectorial**]{.hl-yellow}, elemento a elemento, por lo que la función que usemos dentro debe devolver un vector de igual longitud. En caso contrario, [**devolverá una constante**]{.hl-red}
+:::
+
+```{r}
+#| message: false
+#| warning: false
+accidentes_tb |> 
+  mutate("dummy" = mean(numero, na.rm = TRUE),
+         .before = everything())
+```
+
+
+---
+
+## Recategorizar
+
+
+**Recodifica** la variable sexo tal que si no se conoce su valor se incluye `NA`
+
+. . .
+
+```{r}
+accidentes_tb |> 
+  mutate("sexo" = if_else(sexo == "Desconocido", NA, sexo)) |> 
+  select(num_expediente, sexo)
+```
+
+---
+
+## Recategorizar
+
+
+**Recodifica** la variable `estado_meteorológico` para dejar solo `"Despejado"`, `"Precipitación"` (incluye lluvia, nieve, granizo), `"Nublado"` y `NA`
+
+. . .
+
+```{r}
+accidentes_tb |> 
+  mutate("estado_meteorológico" =
+           case_when(estado_meteorológico == "Despejado" ~ "Despejado",
+                     estado_meteorológico %in%
+                       c("Granizando", "Lluvia intensa",
+                         "Lluvia débil", "Nevando") ~ "Precipitación",
+                     estado_meteorológico == "Nublado" ~ "Nublado",
+                     TRUE ~ NA)) |> 
+  select(num_expediente, estado_meteorológico)
+```
+
+
+---
+
+
+## Contar: count()
+
+
+Hasta ahora solo hemos transformado o consultado los datos pero no hemos generado estadísticas. Empecemos por lo sencillo: [**¿cómo contar (frecuencias)?**]{.hl-yellow}
+
+
+¿Cuántos accidentes hay guardados de cada sexo? 
+
+. . .
+
+
+```{r}
+accidentes_tb |> 
+  count(sexo, sort = TRUE)
+```
+
+---
+
+## Contar: count()
+
+
+¿Qué % del total representa cada sexo?
+
+
+. . .
+
+```{r}
+accidentes_tb |> 
+  count(sexo, sort = TRUE) |> 
+  mutate("prop" = n/sum(n))
+```
+
+. . .
+
+```{r}
+# modo R base
+prop.table(table(accidentes_tb$sexo))
+```
+
+
+
+---
+
+## Contar: count()
+
+¿Cuántos accidentes hubo para cada sexo y cada tipo de persona (conductor, peatón, etc)?
+
+. . .
+
+```{r}
+accidentes_tb |> 
+  count(sexo, tipo_persona, sort = TRUE)
+```
+
+---
+
+## Agrupar: group_by()
+
+
+¿Cuál fueron los primeros accidente del año por cada sexo?
+
+. . .
+
+```{r}
+accidentes_tb |> 
+  slice_min(dmy_hms(paste(fecha, hora)), n = 1, by = sexo,
+            with_ties = FALSE)
+```
+
+---
+
+## Agrupar: group_by()
+
+
+Cuando apliquemos `group_by()` es importante entender que [**NO MODIFICA los datos**]{.hl-yellow}, sino que nos crea una [**variable de grupo**]{.hl-yellow} que modificará las acciones futuras.
+
+¿Cuál fue el accidente más lesivo por cada tipo de persona y sexo?
+
+. . .
+
+```{r}
+accidentes_tb |> 
+  slice_max(lesividad, n = 1, by = c(sexo, tipo_persona))
+```
+
+
+---
+
+
+## Resumir: summarise()
+
+
+Por último tenemos `summarise()`, que nos permitirá sacar resúmenes estadísticos. 
+
+
+**Calcula la media** de accidentes diarios por sexo
+
+. . .
+
+
+```{r}
+accidentes_tb |> 
+  count(sexo, fecha) |> 
+  summarise("media_diaria" = mean(n), .by = sexo)
+```
+
+---
+
+## Resumir: summarise()
+
+
+::: callout-warning
+## Cuidado
+
+Fíjate que `mutate()` devuelve [**tantas filas como registros originales**]{.hl-yellow}, mientras que con `summarise()` calcula un [**nuevo dataset de resumen**]{.hl-purple}, solo incluyendo aquello que esté indicado.
+:::
+
+
+**Calcula la media de lesividad** de los accidentes por tipo de persona
+
+. . .
+
+
+```{r}
+accidentes_tb |>
+  mutate("lesividad" = as.numeric(lesividad)) |> 
+  drop_na(lesividad) |> 
+  summarise("media_lesividad" = mean(lesividad), .by = tipo_persona)
+```
+
+
+---
+
+## Resumir: reframe()
+
+
+En el nuevo `{dplyr}` han incluido `reframe()` para evitar problemas de `summarise()` cuando [**devolvemos más de un valor por variable**]{.hl-yellow}.
+
+
+**Calcula los cuartiles de la variables lesividad** 
+
+. . .
+
+
+```{r}
+accidentes_tb |> 
+  mutate("lesividad" = as.numeric(lesividad)) |> 
+  drop_na(lesividad) |> 
+  reframe(quantile(lesividad))
+```
+
+---
+
+## Tip: percent_rank()
+
+
+La función `percent_rank()` es bastante útil para, dada una variable, calcular en qué [**percentil se sitúa cada observación**]{.hl-yellow} (de 0 a 1: si 0.468, ese registro para dicha variable ocupa el percentil 46.8%).
+
+```{r}
+accidentes_tb |> 
+  mutate("lesividad" = as.numeric(lesividad)) |> 
+  drop_na(lesividad) |> 
+  mutate("lesividad_rank" = percent_rank(lesividad)) |> 
+  select(num_expediente, lesividad, lesividad_rank)
+```
+
+
+---
+
+
+## Relacionando datos
+
+Al trabajar con datos [**no siempre tendremos la información en una sola tabla**]{.hl-yellow} y a veces nos interesará cruzar la información de distintas fuentes.
+
+. . .
+
+Para ello usaremos un clásico de todo lenguaje que maneja datos: los famosos [**join**]{.hl-yellow}, que nos permitirán [**cruzar una o varias tablas**]{.hl-yellow}, haciendo uso de una [**columna identificadora**]{.hl-yellow} de cada una de ellas (por ejemplo, imagina que cruzamos datos de hacienda y de antecedentes penales, haciendo `join` por la columna `DNI`).
+
+---
+
+## Relacionando datos
+
+La estructura básica es la siguiente:
+
+```{r}
+#| eval: false
+tabla_1 |>
+  xxx_join(tabla_2, by = id)
+```
+
+![](img/sql-joins.jpg)
+
+. . .
+
+
+Vamos a probar los distintos joins con un ejemplo sencillo
+
+```{r}
+tb_1 <- tibble("key" = 1:3, "val_x" = c("x1", "x2", "x3"))
+tb_2 <- tibble("key" = c(1, 2, 4), "val_y" = c("y1", "y2", "y3"))
+```
+
+:::: columns
+::: {.column width="50%"}
+
+```{r}
+tb_1
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+tb_2
+```
+
+:::
+::::
+
+---
+
+## Left join
+
+
+* `left_join()`: mantiene [**todos los registros de la primera tabla**]{.hl-yellow}, y busca cuales tienen id también en la segunda (en caso de [**no tenerlo se rellena con NA**]{.hl-yellow} los campos de la 2ª tabla).
+
+En nuestra caso queremos incorporar a `tb_1` la información de `tb_2`, identificando los registros por la columna key (`by = "key"`, la columna por la que tiene que cruzar)
+
+:::: columns
+::: {.column width="50%"}
+
+
+```{r}
+tb_1  |> 
+  left_join(tb_2, by = "key")
+```
+
+:::
+::: {.column width="50%"}
+
+
+![](img/left_join.jpg)
+
+
+:::
+::::
+
+---
+
+## Left join
+
+```{r}
+tb_1 |> 
+  left_join(tb_2, by = "key")
+```
+
+Fíjate que los [**registros de la primera cuya key no ha encontrado en la segunda**]{.hl-yellow} les ha dado el valor de [**ausente**]{.hl-yellow}.
+
+---
+
+
+
+## Right join
+
+
+* `right_join()`: mantiene [**todos los registros de la segunda tabla**]{.hl-yellow}, y busca cuales tienen id también en la primera.
+
+
+Vamos ahora a incorporar a `tb_2` la información de `tb_1`, identificando los registros por la columna key (`by = "key"`)
+
+:::: columns
+::: {.column width="50%"}
+
+
+```{r}
+tb_1 |> 
+  right_join(tb_2, by = "key")
+```
+
+:::
+
+::: {.column width="50%"}
+
+![](img/right_join.jpg)
+
+:::
+::::
+
+---
+
+## Right join
+
+
+```{r}
+tb_1 |> 
+  right_join(tb_2, by = "key")
+```
+
+Fíjate que ahora los [**registros de la segunda cuya key no ha encontrado en la primera**]{.hl-yellow} son los que les ha dado el valor de [**ausente**]{.hl-yellow}.
+
+---
+
+
+## Claves y sufijos
+
+Las columnas clave que usaremos para el cruce [**no siempre se llamarán igual**]{.hl-yellow}.
+
+```{r}
+tb_1 <- tibble("key_1" = 1:3, "val_x" = c("x1", "x2", "x3"))
+tb_2 <- tibble("key_2" = c(1, 2, 4), "val_y" = c("y1", "y2", "y3"))
+```
+
+. . .
+
+* `by = c("key_2" = "key_2")`: le indicaremos en qué columna de cada tabla están las claves por las que vamos a cruzar.
+
+:::: columns
+::: {.column width="50%"}
+
+```{r}
+# Left
+tb_1 |> 
+  left_join(tb_2, by = c("key_1" = "key_2"))
+```
+
+:::
+
+
+::: {.column width="50%"}
+
+```{r}
+# Right
+tb_1  |> 
+  right_join(tb_2, by = c("key_1" = "key_2"))
+```
+
+:::
+::::
+
+
+---
+
+## Claves y sufijos
+
+Además podemos [**cruzar por varias columnas a la vez**]{.hl-yellow} (interpretará como igual registro aquel que tenga el conjunto de claves igual), con `by = c("var1_t1" = "var1_t2", "var2_t1" = "var2_t2", ...)`. Modifiquemos el ejemplo anterior
+
+```{r}
+tb_1 <- tibble("k_11" = 1:3, "k_12" = c("a", "b", "c"),  "val_x" = c("x1", "x2", "x3"))
+tb_2 <- tibble("k_21" = c(1, 2, 4), "k_22" = c("a", "b", "e"), "val_y" = c("y1", "y2", "y3"))
+```
+
+. . .
+
+```{r}
+# Left
+tb_1 |> 
+  left_join(tb_2,
+            by = c("k_11" = "k_21", "k_12" = "k_22"))
+```
+
+
+---
+
+## Claves y sufijos
+
+También podría suceder que al cruzar dos tablas, haya [**columnas de valores que se llamen igual**]{.hl-yellow}
+
+
+```{r}
+tb_1 <- tibble("key_1" = 1:3, "val" = c("x1", "x2", "x3"))
+tb_2 <- tibble("key_2" = c(1, 2, 4), "val" = c("y1", "y2", "y3"))
+```
+
+. . .
+
+```{r}
+# Left
+tb_1 |> 
+  left_join(tb_2, by = c("key_1" = "key_2"))
+```
+
+Fíjate que [**por defecto nos añade los sufijos**]{.hl-yellow} `.x` y `.y` para indicarnos de que tabla vienen.
+
+---
+
+## Claves y sufijos
+
+
+Dicho [**sufijo podemos especificárselo**]{.hl-yellow} en el argumento opcional `suffix = ...`, que nos permita [**distinguir las variables**]{.hl-yellow} de una tabla y de otra.
+
+
+```{r}
+# Left
+tb_1 |>
+  left_join(tb_2, by = c("key_1" = "key_2"), suffix = c("_tabla1", "_tabla2"))
+```
+
+
+---
+
+
+## Full join
+
+
+* `full_join()`: mantiene [**todos los registros de ambas**]{.hl-yellow} tablas.
+
+Los dos anteriores casos forman lo que se conoce como [**outer joins**]{.hl-yellow}: cruces donde se mantienen observaciones que salgan en al menos una tabla. El tercer outer join es el conocido como `full_join()` que nos [**mantendrá las observaciones de ambas**]{.hl-yellow} tablas, [**añadiendo las filas**]{.hl-yellow} que no casen con la otra tabla.
+
+:::: columns
+::: {.column width="50%"}
+
+
+```{r}
+tb_1 |> 
+  full_join(tb_2, by = c("key_1" = "key_2"))
+```
+
+:::
+
+
+::: {.column width="50%"}
+
+![](img/full_join.jpg)
+
+:::
+::::
+
+
+---
+
+## Inner join
+
+* `inner_join()`: solo sobreviven los [**registros cuyo id esté en ambas**]{.hl-yellow} tablas.
+
+Frente a los outer join está lo que se conoce como [**inner join**]{.hl-yellow}, con `inner_join()`: un cruce en el que solo se mantienen las [**observaciones que salgan en ambas tablas**]{.hl-yellow}, solo mantiene aquellos registros matcheados.
+
+:::: columns
+::: {.column width="50%"}
+
+
+```{r}
+tb_1 |> 
+  inner_join(tb_2, by = c("key_1" = "key_2"))
+```
+
+:::
+
+
+::: {.column width="50%"}
+
+![](img/inner_join.png)
+
+
+:::
+::::
+
+---
+
+## Inner join
+
+Fíjate que en términos de registros, `inner_join` si es conmutativa, **nos da igual el orden de las tablas**: lo único que cambia es el orden de las columnas que añade.
+
+:::: columns
+::: {.column width="50%"}
+
+
+```{r}
+tb_1 |> 
+  inner_join(tb_2, by = c("key_1" = "key_2"))
+```
+
+:::
+
+::: {.column width="50%"}
+
+
+```{r}
+tb_2 |> 
+  inner_join(tb_1, by = c("key_2" = "key_1"))
+```
+
+:::
+::::
+
+---
+
+## Anti/semi join
+
+Por último tenemos dos herramientas interesantes para [**filtrar (no cruzar) registros**]{.hl-yellow}: `semi_join()` y `anti_join()`. El [**semi join**]{.hl-yellow} nos deja en la [**primera tabla los registros que cuya clave está también en la segunda**]{.hl-yellow} (como un inner join pero sin añadir la info de la segunda tabla). Y el segundo, los anti join, hace justo lo contrario (aquellos que no están).
+
+
+:::: columns
+::: {.column width="50%"}
+
+```{r}
+# semijoin
+tb_1 |> 
+  semi_join(tb_2, by = c("key_1" = "key_2"))
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+# antijoin
+tb_1 |> 
+  anti_join(tb_2, by = c("key_1" = "key_2"))
+```
+
+:::
+::::
+
+
+---
+
+
+## 💻 Tu turno {#tu-turno-1-3}
+
+[**Intenta realizar los siguientes ejercicios sin mirar las soluciones**]{style="color:#444442;"}
+
+::: panel-tabset
+
+### [**Ejercicio 1**]{.hl-yellow}
+
+📝 Vamos a realizar un [**análisis de las canciones Taylor Swift**]{.hl-yellow} haciendo uso del paquete `{taylor}`
+
+
+```{r}
+library(taylor)
+taylor_album_songs
+```
+¿Cuántas canciones hay guardadas? ¿Cuántas características de cada una?
+
+```{r}
+#| code-fold: true
+#| eval: false
+taylor_album_songs |> nrow()
+taylor_album_songs |> ncol()
+```
+
+### [**Ejercicio 2**]{.hl-yellow}
+
+📝 Obtén los álbumes únicos del dataset. ¿Cuántos hay?
+
+```{r}
+#| code-fold: true
+#| eval: false
+taylor_album_songs |> distinct(album_name)
+taylor_album_songs |>
+  distinct(album_name) |>
+  nrow()
+```
+
+
+### [**Ejercicio 3**]{.hl-yellow}
+
+📝 ¿En cuántas canciones tuvo colaboración con otro artista? 
+
+```{r}
+#| code-fold: true
+#| eval: false
+
+# nº canciones con colaboración
+taylor_album_songs |>
+  drop_na(featuring) |>
+  nrow()
+```
+
+### [**Ejercicio 4**]{.hl-yellow}
+
+📝 ¿Cuántos artistas (únicos) han colaborado con ella?
+
+```{r}
+#| code-fold: true
+#| eval: false
+# nº de colaboradores únicos
+taylor_album_songs |>
+  drop_na(featuring) |> 
+  summarise(n_collabs = n_distinct(featuring))
+```
+
+### [**Ejercicio 5**]{.hl-yellow}
+
+📝 Crea un nuevo `tibble` solo con las variables `album_name`, `album_release`, `track_name`, `featuring` y `duration_ms`. Después ordena dicho tibble de más reciente a más antiguo
+
+```{r}
+#| code-fold: true
+#| eval: false
+nuevo_tb <-
+  taylor_album_songs |>
+  select(album_name, album_release, track_name, featuring, duration_ms)
+nuevo_tb |> 
+  arrange(desc(album_release))
+```
+
+
+### [**Ejercicio 6**]{.hl-yellow}
+
+📝 Añade al dataset anterior 2 variables con el mes y año de la variable de fecha `album_release`. Piensa cómo determinar el mes con más canciones
+
+```{r}
+#| code-fold: true
+#| eval: false
+library(lubridate)
+nuevo_tb <-
+  nuevo_tb |> 
+  mutate(month = month(album_release), year = year(album_release)) 
+nuevo_tb |> 
+  count(month, sort = TRUE)
+```
+
+### [**Ejercicio 7**]{.hl-yellow}
+
+📝 Obtén la duración media de las canciones en minutos (variable `duration_ms` en milisegundos). Extrae la info de la canción que más dura
+
+```{r}
+#| code-fold: true
+#| eval: false
+
+nuevo_tb |>
+  drop_na(duration_ms) |> 
+  summarise(avg_dur = mean(duration_ms/60000))
+
+nuevo_tb |> 
+  slice_max(duration_ms)
+```
+
+:::
+
+--- 
+
+## 🐣 Caso práctico III: starwars {#caso-practico-1-3}
+
+Vamos a usar al dataset `starwars` del paquete `{dplyr}`
+
+```{r}
+library(dplyr)
+starwars
+```
+
+Intenta responder a las preguntas planteadas en el [**workbook**](https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-iii-starwars-dplyr)
+
+
+---
+
+## 🐣 Caso práctico IV: aviones {#caso-practico-1-4}
+
+
+Para los ejercicios usaremos las tablas disponibles en el paquete `{nycflights13}` (echa un vistazo antes)
+
+```{r}
+library(nycflights13)
+```
+
+* [**airlines**]{.hl-yellow}: nombre de aerolíneas (con su abreviatura).
+* [**airports**]{.hl-yellow}: datos de aeropuertos (nombres, longitud, latitud, altitud, etc).
+* [**flights**]{.hl-yellow}: datos de vuelos.
+* [**planes**]{.hl-yellow}: datos de los aviones.
+* [**weather**]{.hl-yellow}: datos meteorológicos horarios de las estaciones LGA, JFK y EWR.
+
+Intenta responder a las preguntas planteadas en el [**workbook**](https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-iv-aviones-de-nyc-join)
+
+
+---
+
+
+## Importar/exportar {#import-export}
+
+Hasta ahora sólo hemos utilizado datos ya cargados en paquetes, pero muchas veces [**necesitaremos importar datos externamente**]{.hl-yellow}. Una de las principales [**fortalezas**]{.hl-yellow} de `R` es que podemos importar datos muy fácilmente en diferentes formatos:
+
+
+* [**Formatos nativos de R**]{.hl-yellow}: archivos `.rda`, `.RData` y `.rds`
+
+* [**Rectangular data (datos tabulados)**]{.hl-yellow}: archivos `.csv` y `.tsv`
+
+* [**Datos sin tabular**]{.hl-yellow}: archivos `.txt`.
+
+* [**Datos en excel**]{.hl-yellow}: archivos `.xls` y`.xlsx`.
+
+* [**Datos desde SAS/Stata/SPSS**]{.hl-yellow}: archivos `.sas7bdat`, `.sav` y `.dat`.
+
+* [**Datos desde Google Drive**]{.hl-yellow}
+
+* [**Datos desde API's**]{.hl-yellow}: aemet, catastro, censo, spotify, etc.
+
+---
+
+## Formatos nativos
+
+Los ficheros [**más sencillos**]{.hl-yellow} para importar a `R` (y que suelen ocupar menos espacio en disco) son sus propias [**extensiones nativas**]{.hl-yellow}: ficheros en formatos `.RData`, `.rda` y `.rds`. Para cargar los primeros basta con [**utilizar la función**]{.hl-yellow} `load()` proporcionándole la ruta del fichero.
+
+* Archivos `RData`: vamos a importar el archivo `world_bank_pop.RData` que incluye la tabla `world_bank_pop`
+
+
+```{r}
+load("./datos/world_bank_pop.RData")
+world_bank_pop
+```
+
+
+---
+
+## Formatos nativos
+
+* Archivos `.rda`: vamos a importar el dataset airquality desde `airquality.rda`
+
+```{r}
+load("./datos/airquality.rda")
+airquality |> as_tibble()
+```
+
+---
+
+## Formatos nativos
+
+Tenga en cuenta que los archivos cargados con `load()` se cargan [**automáticamente en el entorno**]{.hl-yellow} (con el nombre guardado originalmente), y no sólo se pueden cargar conjuntos de datos: `load()` nos permite cargar múltiples objetos (no sólo datos tabulares).
+
+Los archivos nativos `.rda` y `.RData` son una forma adecuada de guardar el entorno.
+
+```{r}
+load(file = "./datos/multiple_objects.rda")
+```
+
+
+---
+
+## Formatos nativos
+
+* Archivos `.rds`: para este tipo debemos utilizar `readRDS()`, y necesitamos incorporar un [**argumento `file`**]{.hl-yellow} con la ruta. En este caso vamos a importar [**datos de cáncer de pulmón**]{.hl-purple} del North Central Cancer Treatment Group. Observe que ahora [**los archivos .rds incorporar solo una tabla, no un objeto en general**]{.hl-red}
+
+
+```{r}
+lung_cancer <-
+  readRDS(file = "./datos/NCCTG_lung_cancer.rds") |>
+  as_tibble()
+lung_cancer
+```
+
+
+::: callout-important
+
+## Importante
+
+Las [**rutas**]{.hl-yellow deben ser siempre [**sin espacios, ñ, ni acentos**]{.hl-yellow}. 
+
+
+:::
+
+---
+
+## Datos tabulados: readr
+
+El paquete `{readr}` dentro del entorno `{tidyverse}` contiene varias funciones útiles para [**cargar datos rectangulares (sin formatear pero tabulados)**]{.hl-yellow}.
+
+
+:::: columns
+::: {.column width="50%"}
+
+* `read_csv()`: archivos `.csv` [**variables separadas por comas**]{.hl-purple}
+* `read_csv2()`: variables separadas por [**punto y coma**]{.hl-purple}
+* `read_tsv()`: variables separadas por [**tabuladores**]{.hl-purple}.
+* `read_table()`: variables separadas por [**espacios**]{.hl-purple}.
+* `read_delim()`: función generar con opción de [**especificar el delimitador**]{.hl-purple}.
+
+
+:::
+
+::: {.column width="50%"}
+
+![](img/data-import-readr.png)
+:::
+::::
+
+Todos ellos necesitan como **argumento la ruta del fichero** más **otros opcionales** (saltar cabecera o no, decimales, etc). Ver más en <https://readr.tidyverse.org/>
+
+---
+
+## Datos tabulados (.csv, .tsv)
+
+La principal ventaja de `{readr}` es que [**automatiza el formato**]{.hl-yellow} para pasar de un fichero plano (sin formato) a un tibble (en filas y columnas, con formato).
+
+
+. . .
+
+* Archivo `.csv`: con `read_csv()` cargaremos archivos [**separados por comas**]{.hl-purple}, pasando como [**argumento la ruta**]{.hl-yellow} en `file = ...`. Vamos a importar el conjunto de datos `chickens.csv` (sobre pollos de dibujos animados, por qué no). Si nos fijamos en la salida nos da el tipo de variables.
+
+```{r}
+library(readr)
+chickens <- read_csv(file = "./datos/chickens.csv")
+chickens
+```
+
+---
+
+## Datos tabulados (.csv, .tsv)
+
+
+El [**formato de la variable**]{.hl-yellow} se hará normalmente [**automáticamente**]{.hl-yellow} por `read_csv()`, y podemos consultarlo con `spec()`.
+
+
+```{r}
+spec(chickens)
+```
+
+---
+
+## Datos tabulados (.csv, .tsv)
+
+Aunque normalmente lo hace bien automáticamente podemos [**especificar el formato explícitamente**]{.hl-yellow} en `col_types = lista()` (en formato lista, con `col_xxx()` para cada tipo de variable, por ejemplo `eggs_laid` se importará como carácter). 
+
+
+```{r}
+chickens <-
+  read_csv(file = "./datos/chickens.csv",
+           col_types = list(col_character(), col_character(),
+                            col_character(), col_character()))
+chickens
+```
+
+---
+
+## Datos tabulados (.csv, .tsv)
+
+Incluso podemos indicar que [**variables queremos seleccionar**]{.hl-yellow} (sin ocupar memoria), indicándolo en `col_select = ...` (en formato lista, con `col_select = ...`).
+
+
+```{r}
+chickens <-
+  read_csv(file = "./datos/chickens.csv",
+           col_select = c(chicken, sex, eggs_laid))
+chickens
+```
+
+---
+
+## Datos tabulados (.txt)
+
+¿Qué ocurre cuando el [**separador no es correcto**]{.hl-red}?
+
+
+. . .
+
+Si usamos `read_csv()` espera que el separador entre columnas sea una coma pero, como puedes ver con el siguiente `.txt`, lo interpreta todo como una sola columna: [**no tiene coma y no sabe dónde separar**]{.hl-yellow}
+
+
+```{r}
+datos_txt <- read_csv(file = "./datos/massey-rating.txt")
+dim(datos_txt)
+as_tibble(datos_txt)
+```
+
+
+---
+
+## Datos tabulados (.txt)
+
+Para ello tenemos.
+
+* `read_csv2()` cuando el [**separador es punto y coma**]{.hl-yellow}, `read_tsv()` cuando es un [**tabulador**]{.hl-yellow} y `read_table()` cuando es un  [**espacio**]{.hl-yellow}.
+
+* `read_delim()` en general.
+
+```{r}
+datos_txt <- read_table(file = "./datos/massey-rating.txt")
+as_tibble(datos_txt)
+```
+
+
+---
+
+## Datos Excel (.xls, .xlsx)
+
+Otro paquete de importación clave será el paquete `{readxl}` para [**importar datos desde Excel**]{.hl-yellow}. Tres funciones serán clave:
+
+* `read_xls()` específica para `.xls`, `read_xlsx()` específica para `.xlsx`.
+* `read_excel()`: tanto para `.xls` como para `.xlsx`.
+
+
+. . .
+
+Vamos a importar `deaths.xlsx` con los registros de defunciones de famosos.
+
+```{r}
+library(readxl)
+deaths <- read_xlsx(path = "./datos/deaths.xlsx")
+deaths
+```
+
+---
+
+## Datos Excel (.xls, .xlsx)
+
+
+```{r}
+deaths |> slice(1:6)
+```
+
+[**Una desgracia muy común**]{.hl-red} es que haya algún tipo de comentario o texto al principio del fichero, teniendo que [**saltar esas filas**]{.hl-yellow}.
+
+
+---
+
+## Datos Excel (.xls, .xlsx)
+
+Podemos [**saltar estas filas**]{.hl-yellow} directamente en la carga con `skip = ...` (indicando el número de filas a saltar).
+
+
+```{r}
+deaths <- read_xlsx(path = "./datos/deaths.xlsx", skip = 4)
+deaths
+```
+
+
+---
+
+## Datos Excel (.xls, .xlsx)
+
+Además con `col_names = ...` ya podemos renombrar las columnas en la importación ([**proporcionar nombres supone 1ª línea ya como dato**]{.hl-yellow})
+
+
+```{r}
+#| code-line-numbers: "2-3"
+deaths <-
+  read_xlsx(path = "./datos/deaths.xlsx", skip = 5,
+            col_names = c("nombre", "profesion", "edad", "hijos", "nacimiento", "muerte"))
+deaths
+```
+
+---
+
+## Datos Excel (.xls, .xlsx)
+
+A veces las  [**fechas de Excel tienen un formato incorrecto**]{.hl-red} (sorpresa): podemos utilizar `convertToDate()` del paquete `{openxlsx}` para convertirlo.
+
+
+
+```{r}
+library(openxlsx)
+deaths$muerte <- convertToDate(deaths$muerte)
+deaths
+```
+   
+
+---
+
+## Datos Excel (.xls, .xlsx)
+
+También podemos [**cargar un Excel con varias hojas**]{.hl-yellow}: para [**indicar la hoja**]{.hl-yellow} (ya sea por su nombre o por su número) utilizaremos el argumento `sheet = ...`.
+
+
+```{r}
+mtcars <- read_xlsx(path = "./datos/datasets.xlsx", sheet = "mtcars")
+mtcars
+```
+
+---
+
+## Datos Excel (.xls, .xlsx)
+
+ 
+Incluso podemos indicar el [**rango de celdas**]{.hl-yellow} a cargar con `range = ...`.
+
+```{r}
+iris <- read_xlsx(path = "./datos/datasets.xlsx", sheet = "iris", range = "C1:E4")
+iris
+```
+
+---
+
+## Importar desde SAS/STATA/SPSS
+
+El paquete `{haven}` dentro del universo tidyverse nos permitirá [**importar ficheros de los 3 software de pago más importantes**]{.hl-yellow}: SAS, SPSS y Stata.
+
+
+```{r}
+library(haven)
+
+# SAS
+iris_sas <- read_sas(data_file = "./datos/iris.sas7bdat")
+
+# SPSS
+iris_spss <- read_sav(file = "./datos/iris.sav")
+
+# Stata
+iris_stata <- read_dta(file = "./datos/iris.dta")
+```
+
+---
+
+
+## Exportar
+
+De la misma forma que podemos importar también podemos [**exportar**]{.hl-yellow}
+
+* exportar en `.RData` (opción recomendada para variables almacenadas en `R`). Recuerda que esta extensión [**sólo se puede utilizar en `R`**]{.hl-yellow}. Para ello, basta con utilizar `save(object, file = path)`.
+
+```{r}
+table <- tibble("a" = 1:4, "b" = 1:4)
+save(table, file = "./datos/table.RData")
+rm(table) # eliminar
+load("./datos/table.RData")
+table
+```
+
+---
+
+## Exportar
+
+La ventaja de `.RData` es que podemos [**exportar múltiples variables de nuestro environment**]{.hl-yellow}, no solo un único dataset.
+
+```{r}
+table <- tibble("a" = 1:4, "b" = 1:4)
+a <- 1
+b <- c("javi", "sandra")
+save(table, a, b, file = "./datos/mult_obj.RData")
+rm(list = c("a", "b", "table"))
+load("./datos/mult_obj.RData")
+table
+```
+
+---
+
+## Exportar
+
+* [**exportado en `.csv`**]{.hl-yellow}. Para ello simplemente utilizamos `write_csv(object, file = path)`, y es el más recomendable para exportar bases de datos de tamaño pequeño o mediano. Ver <https://arrow.apache.org/docs/r/> para bases de datos masivas.
+
+```{r}
+write_csv(table, file = "./datos/table.csv")
+read_csv(file = "./datos/table.csv")
+```
+
+---
+
+## Importar desde web
+
+Una de las principales ventajas de `R` es que podemos hacer uso de todas las funciones anteriores de [**importar pero directamente desde una web**]{.hl-yellow}, sin necesidad de realizar la descarga manual: en lugar de pasarle la ruta local le indicaremos el [**enlace**]{.hl-yellow}. Por ejemplo, vamos a descargar los datos covid del ISCIII (<https://cnecovid.isciii.es/covid19/#documentaci%C3%B3n-y-datos>)
+
+```{r}
+#| eval: false
+covid_data <-
+  read_csv(file = "https://cnecovid.isciii.es/covid19/resources/casos_hosp_uci_def_sexo_edad_provres.csv")
+covid_data
+```
+
+```{r}
+#| echo: false
+covid_data <-
+  read_csv(file = "https://cnecovid.isciii.es/covid19/resources/casos_hosp_uci_def_sexo_edad_provres.csv", n_max = 500)
+covid_data
+```
+
+---
+
+## Importar desde wikipedia
+
+El paquete `{rvest}`, uno de los más útiles de `{tidyverse}` nos permite [**importar (scrappear) directamente desde un `html`**]{.hl-yellow}. Por ejemplo, para exportar tablas de wikipedia basta con `read_html()` para importar el html, `html_element(«table»)` para extraer los objetos tabla, y `html_table()` para convertir la tabla html a `tibble`.
+
+
+```{r}
+library(rvest)
+wiki_jump <- 'https://en.wikipedia.org/wiki/Men%27s_long_jump_world_record_progression'
+wiki_jump |> read_html() |> 
+  html_element("table") |> 
+  html_table()
+```
+
+---
+
+
+## 🐣 Caso práctico V: renta municipios {#caso-practico-1-5}
+
+En el archivo `municipios.csv` tenemos guardada la información de los municipios de España a fecha de 2019. La variable `LAU_code` representa el código como unidad administrativa local según la estandarización de la UE ([ver más](https://ec.europa.eu/eurostat/web/nuts/local-administrative-units)).La variable `codigo_ine` está construida uniendo el código de la provincia y el de la comunidad autónoma.
+
+
+Por otro lado el archivo `renta_mun` contiene datos de la renta per capita  de cada unidad administrativa (municipios, distritos, provincias, comunidades autonónomas, etc) para diferentes años.
+
+
+
+&nbsp;
+
+Intenta responder a las preguntas planteadas en el [**workbook**](https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-v-renta-de-municipios)
+
+
+
+
+

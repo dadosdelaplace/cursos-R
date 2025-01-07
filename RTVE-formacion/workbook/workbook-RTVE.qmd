@@ -1,0 +1,713 @@
+---
+title: "Análisis de datos en R"
+subtitle: "Workbooks del curso de formación en RTVE (2025)"
+author: "Javier Álvarez Liébana"
+format:
+  html:
+    theme: [default, style.scss]
+    toc: true
+    toc-title: Índice
+    toc-depth: 5
+    toc-location: left
+    number-sections: true
+embed-resources: true
+execute: 
+  echo: true
+---
+
+```{r}
+#| echo: false
+setwd(dir = getwd())
+```
+
+## Clase 1
+
+### 🐣 Caso práctico I: airquality (manejo de vectores)
+
+En el paquete `{datasets}` (ya instalado por defecto) tenemos diversos conjuntos de datos y uno de ellos es `airquality`. Los datos capturan [**medidas diarias (n = 153 observaciones) de la calidad del aire**]{.hl-yellow} en Nueva York, de mayo a septiembre de 1973. Se midieron **6 variables**: niveles de ozono, radiación solar, viento, temperatura, mes y día.
+
+```{r}
+library(datasets)
+airquality
+```
+
+#### Pregunta 1
+
+> ¿Cómo averiguar qué [**representan los datos**]{.hl-yellow}? Piensa algún comando que nos dé información sobre objetos en R, sabiendo que el nombre del dataset es `airquality`
+
+```{r}
+#| code-fold: true
+#| eval: false
+? airquality
+```
+
+Haciendo uso de `? ...` podemos consultar en el panel de ayuda lo que significa el objeto.
+
+#### Pregunta 2
+
+
+> Accede solo a los 5 primeros registros de temperaturas. Después accede al primero, segundo, quinto y décimo
+
+```{r}
+#| code-fold: true
+#| eval: false
+
+# secuencia de 1 a 5
+airquality$Temp[1:5] 
+
+# otra forma
+airquality$Temp[c(1, 2, 3, 4, 5)]
+
+# primero, segundo, quinto y décimo
+airquality$Temp[c(1, 2, 5, 10)]
+```
+
+
+
+#### Pregunta 3
+
+> Accede solo a los registros de temperaturas de mayo (tienes las temperaturas guardadas, piensa como acceder a ellos pero ahora usando una condición en lugar de índices concretos). Después accede a los elementos de mayo, abril y junio
+
+```{r}
+#| code-fold: true
+#| eval: false
+
+airquality$Temp[airquality$Month == 5]
+
+# abril, mayo y junio
+airquality$Temp[airquality$Month == 4 | airquality$Month == 5 |
+                  airquality$Month == 6]
+
+# otra forma más legible: %in% nos comprueba si 
+# los valores están dentro de una lista permitida
+airquality$Temp[airquality$Month %in% c(4, 5, 6)]
+```
+
+#### Pregunta 4
+
+> ¿Cuántos [**registros tenemos de mayo**]{.hl-yellow}? ¿Y de abril? 
+
+```{r}
+#| code-fold: true
+#| eval: false
+
+# Una forma para registros de mayo
+sum(airquality$Month == 5)
+
+# Otra forma: la longitud de un vector
+length(airquality$Temp[airquality$Month == 5])
+
+# ídem en abril
+sum(airquality$Month == 4)
+```
+
+#### Pregunta 5
+
+> Construye una nueva variable `date` con la fecha de cada registro (combinando año, mes y día), sabiendo que todos los datos son de 1973. Pista: para construir una fecha antes debes tener un vector de textos (por ejemplo, "1973-01-01")
+
+```{r}
+#| code-fold: true
+#| eval: false
+
+# variable de tipo date
+library(lubridate)
+dates <- as_date(glue("{1973}-{airquality$Month}-{airquality$Day}"))
+```
+
+#### Pregunta 6
+
+> Crea una nueva variable `temp_celsius` con la temperatura en ºC (sabiendo que se calcula como $celsius = (fahr - 32) * (5/9)$). Tras ello calcula cuántos días de junio superaron los 30 grados ºC.
+
+```{r}
+#| code-fold: true
+#| eval: false
+
+# Temperatura en celsius
+temp_celsius <- (airquality$Temp - 32) * (5/9)
+temp_celsius 
+
+# una forma
+sum(temp_celsius[airquality$Month == 6] > 30)
+
+# otra forma
+length(temp_celsius[airquality$Month == 6 & temp_celsius > 30])
+```
+
+#### Pregunta 7
+
+> Selecciona aquellos datos que no sean ni de julio ni de agosto.
+
+```{r}
+#| code-fold: true
+#| eval: false
+airquality_tb[airquality_tb$Month != 7 & airquality_tb$Month != 8, ]
+
+# otra opción
+airquality_tb[!(airquality_tb$Month %in% c(7, 8)), ]
+```
+
+#### Pregunta 8
+
+> ¿Cuál fue la media de temperatura del mes de agosto? 
+
+```{r}
+#| code-fold: true
+#| eval: false
+
+# media en agosto
+mean(airquality$Temp[airquality$Month == 8], na.rm = TRUE)
+mean(temp_celsius[airquality$Month == 8], na.rm = TRUE)
+```
+
+
+
+### 🐣 Caso práctico II: covid (tidy data)
+
+En el fichero `messy_covid_data.csv` tienes un archivo con la cantidad de casos reportados durante la pandemia covid pero en **formato messy**: el nombre de las columnas codifica el sexo (H hombre, M mujer, NC no consta) y el grupo etario (0-9, 10-19, 20-29, 30-39, 40-49, 50-59, 60-69, 70-79, ≥80 años y NC no consta).
+
+
+Las soluciones serán asumiendo que no se conoce aún las opciones de tidyverse para modificar y filtrar tablas.
+
+```{r}
+library(readr)
+datos <- read_csv(file = "./datos/messy_covid_data.csv")
+datos
+```
+
+#### Pregunta 1
+
+> Razona por qué no es tidydata y conviérte a tidy data en cuatro columnas: `provincia_iso`, `fecha`, `grupo`, `casos`.
+
+
+```{r}
+#| code-fold: true
+
+# pivot_longer(): le indicamos que columnas no queremos pivotar,
+# la variable a donde irán los nombres y cómo se llamará la variable
+# de casos
+# le incluimos `values_drop_na = TRUE` para que elimine los ausentes
+# si los hubiese
+library(tidyr)
+tidy_covid <-
+  datos |> 
+  pivot_longer(cols = -c("provincia_iso", "fecha"),
+               names_to = "grupo", values_to = "casos",
+               values_drop_na = TRUE)
+```
+
+#### Pregunta 2
+
+> Elimina los registros sin casos.
+
+
+```{r}
+#| code-fold: true
+
+# pivot_longer(): le indicamos que columnas no queremos pivotar,
+# la variable a donde irán los nombres y cómo se llamará la variable
+# de casos
+# le incluimos `values_drop_na = TRUE` para que elimine los ausentes
+# si los hubiese
+tidy_covid <- tidy_covid[tidy_covid$casos > 0, ]
+```
+
+#### Pregunta 3
+
+> Una de las columnas (`grupo`) la tenemos codificada a veces como `cosa-cosa_cosa`, otras como `80-Inf_cosa` (sin cota superior en edad), otras como `NC-NC_cosa` (`NC` codifica los "no consta"). Intenta separar dicha columna para generar tres columnas nuevas `edad_inf`, `edad_sup` y `sexo` de manera adecuada. Recuerda que `NC` es un ausente. Pista: trata antes la variable `grupo` y reemplaza reemplazar los `"Inf"` y `"NC"` por `"NA"`, para que luego al convertirlos pueda pasarlos a numéricos sin problema
+
+
+
+```{r}
+#| code-fold: true
+# Vamos a reemplazar los `"Inf"` y `"NC"` por `"NA"`, para que luego al
+# convertirlos puedas pasarlos a `NA` numéricos
+library(stringr)
+tidy_covid$grupo <- str_replace_all(tidy_covid$grupo, "Inf|NC", "NA")
+tidy_covid2 <-
+  tidy_covid |>
+  separate(col = "grupo", into = c("edad_inf", "edad_sup", "sexo"), convert = TRUE)
+```
+
+#### Pregunta 4
+
+> Incorpora una nueva variable `mes_year` a la tabla que codifique conjuntamente el mes y el año (por ejemplo, cualquier día de enero de 2020 será algo similar a "1-2020" y cualquier día de febrero del 2021 será "2-2021").
+
+```{r}
+#| code-fold: true
+library(glue)
+library(lubridate)
+tidy_covid2$mes_year <-
+  glue("{month(tidy_covid2$fecha)}-{year(tidy_covid2$fecha)}")
+```
+
+#### Pregunta 5
+
+> Haciendo uso de esa variable de grupo `mes_year` y del vector de provincias permitidas que aparece debajo (codificadas por su código ISO) obtén un resumen que nos devuelva en un tibble, para cada provincia permitida y cada mes-año, la media de casos (sin importar edad ni sexo)
+
+
+Solo necesitamos **recorrer cada provincia permitida** y **cada valor `mes_year` distinto**, así que creamos ambos vectores. También creamos un dataset vacío `resumen_mes_provincia` donde, en cada iteración, pegaremos una fila con su resumen. Una vez creados esos objetos, el **bucle simplemente deberá recorrer cada valor de provincia y de mes-año**: para el mes-año i y la provincia j, filtramos solo los casos para esos valores concretos (de todo el vector de casos nos quedamos con aquellos que cumplan dicha condición, eliminando también provincias ausentes). Tras filtrar guardamos la media ese filtro de casos
+
+
+```{r}
+#| code-fold: true
+# madrid, barcelona, sevilla
+prov_permitidas <- c("M", "B", "SE")
+
+filtro_covid <-
+  tidy_covid2[!is.na(tidy_covid2$provincia_iso) &
+                tidy_covid2$provincia_iso %in% prov_permitidas, ]
+resumen_mes_provincia <-
+  tibble("M" = mean(filtro_covid$casos[filtro_covid$provincia_iso == "M"],
+                    na.rm = TRUE),
+         "B" = mean(filtro_covid$casos[filtro_covid$provincia_iso == "B"],
+                    na.rm = TRUE),
+         "SE" = mean(filtro_covid$casos[filtro_covid$provincia_iso == "SE"],
+                    na.rm = TRUE))
+
+```
+
+
+### 🐣 Caso práctico III: starwars (dplyr)
+
+Vamos a usar al dataset `starwars` del paquete `{dplyr}`
+
+```{r}
+library(dplyr)
+starwars
+```
+
+#### Pregunta 1
+
+> Selecciona del conjunto de `starwars` (en el paquete `{dplyr}`) solo los personajes que sean androides o cuyo valor en `species` sea desconocido
+
+```{r}
+#| code-fold: true
+#| eval: false
+starwars |>
+  filter(species == "Droid" | is.na(species))
+```
+
+#### Pregunta 2
+
+> Selecciona del conjunto de starwars solo los personajes cuyo peso esté entre 65 y 90 kg.
+
+```{r}
+#| code-fold: true
+#| eval: false
+starwars |> filter(between(mass, 65, 90))
+```
+
+#### Pregunta 3
+
+>  Tras limpiar de ausentes en todas las variables, selecciona del conjunto de starwars solo los personajes que sean humanos y que vengan de Tatooine
+
+```{r}
+#| code-fold: true
+#| eval: false
+starwars |>
+  drop_na() |> 
+  filter(species == "Human" & homeworld == "Tatooine")
+```
+
+
+#### Pregunta 4
+
+>  Selecciona solo los personajes que sean humanos y de ojos marrones, para después ordernarlos en altura descendente y peso ascendente.
+
+```{r}
+#| code-fold: true
+#| eval: false
+starwars |>
+  filter(eye_color == "brown" & species == "Human") |> 
+  arrange(height, desc(mass))
+```
+
+
+#### Pregunta 5
+
+>  Extrae aleatoriamente 10 personajes pero de forma que la probabilidad de que salga cada uno sea proporcional a su peso (más pesados, más probable), teniendo en cuenta que no podemos tener probabilidades ausentes.
+
+```{r}
+#| code-fold: true
+#| eval: false
+starwars |>
+  drop_na(mass) |> 
+  slice_sample(n = 10, weight_by = mass)
+```
+
+
+#### Pregunta 6
+
+>  De los personajes que son humanos y miden más de 160 cm, elimina duplicados en color de ojos, elimina ausentes en peso, selecciona los 3 más altos, y orden de mayor a menor peso. Devuelve la tabla.
+
+```{r}
+#| code-fold: true
+#| eval: false
+starwars |>
+  filter(species == "Human" & height > 160) |> 
+  distinct(eye_color, .keep_all = TRUE) |> 
+  drop_na(mass) |> 
+  slice_max(height, n = 3) |> 
+  arrange(desc(mass))
+```
+
+
+#### Pregunta 7
+
+>  Filtra el conjunto de personajes y quédate solo con aquellos que en la variable `height` no tengan un dato ausente. Con los datos obtenidos del filtro anterior, selecciona solo las variables name, height, así como todas aquellas variables que CONTENGAN la palabra color en su nombre.
+
+
+```{r}
+#| code-fold: true
+#| eval: false
+
+starwars_2 <-
+  starwars |> 
+  drop_na(height) |> 
+  select(name, height, contains("color"))
+```
+
+#### Pregunta 8
+
+>  Con los datos obtenidos del ejercicio anterior, traduce el nombre de las columnas a castellano.
+
+```{r}
+#| code-fold: true
+#| eval: false
+
+starwars_2 |> 
+  rename(nombre = name, altura = height, color_pelo = hair_color,
+         color_piel = skin_color, color_ojos = eye_color)
+```
+
+
+#### Pregunta 9
+
+>  Selecciona solo las variables nombre, altura y así como todas aquellas variables relacionadas con el color, a la vez que te quedas solo con aquellos que no tengan ausente en la altura.
+
+```{r}
+#| code-fold: true
+#| eval: false
+starwars |> 
+  select(name, height, contains("color")) |> 
+  drop_na(height)
+```
+
+
+
+#### Pregunta 10
+
+>  Del dataset original, selecciona solo las variables numéricas y de tipo texto. Tras ello define una nueva variable llamada `under_18` que nos recategorice la variable de edad: `TRUE` si es menor de edad y `FALSE` en caso contrario
+
+```{r}
+#| code-fold: true
+#| eval: false
+starwars |> 
+  select(where(is.numeric) | where(is.character)) |> 
+  mutate(under_18 = birth_year < 18)
+```
+
+#### Pregunta 11
+
+>  Del dataset original, incluye una columna que calcule el IMC. Tras ello, crea una nueva variable que valga `NA` si no es humano, `delgadez` por debajo de 18, `normal` entre 18 y 30, `sobrepeso` por encima de 30.
+
+```{r}
+#| code-fold: true
+#| eval: false
+starwars |> 
+  mutate(IMC = mass / ((height/100)^2),
+         IMC_recat = case_when(species != "Human" ~ NA,
+                               IMC < 18 ~ "delgadez",
+                               IMC < 30 ~ "normal",
+                               TRUE ~ "sobrepeso"),
+         .after = name)
+```
+
+
+#### Pregunta 12
+
+>  Calcula cuántos personajes hay de cada especie, ordenados de más a menor frecuencia.
+
+```{r}
+#| code-fold: true
+#| eval: false
+starwars |> count(species, sort = TRUE)
+```
+
+#### Pregunta 13
+
+>  Tras eliminar ausentes en las variables de peso y estatura, añade una nueva variable que nos calcule el IMC de cada personaje, y determina el IMC medio de nuestros personajes desagregada por sexo
+
+```{r}
+#| code-fold: true
+#| eval: false
+starwars |>
+  drop_na(mass, height) |> 
+  mutate(IMC = mass / ((height/100)^2)) |> 
+  summarise(IMC_medio = mean(IMC), .by = sex)
+```
+
+#### Pregunta 14
+
+> Obtén el personaje más joven por cada sexo.
+
+```{r}
+#| code-fold: true
+#| eval: false
+starwars |>
+  slice_min(birth_year, by = sex)
+```
+
+#### Pregunta 15
+
+>  Obtén la edad del personaje más joven y más viejo de cada sexo.
+
+```{r}
+#| code-fold: true
+#| eval: false
+starwars |>
+  drop_na(birth_year) |>
+  summarise(min(birth_year), max(birth_year), .by = sex)
+```
+
+#### Pregunta 16
+
+>  Determina la cantidad de personajes en cada década (echa un vistazo a `round()`, primero sin desagregar y luego desagregado por sexo.
+
+```{r}
+#| code-fold: true
+#| eval: false
+starwars |>
+  count(birth_decade = round(birth_year, -1))
+```
+:::
+
+:::
+
+
+### 🐣 Caso práctico IV: aviones de NYC (join)
+
+Para los ejercicios usaremos las tablas disponibles en el paquete `{nycflights13}` (echa un vistazo antes)
+
+```{r}
+library(nycflights13)
+```
+
+* [**airlines**]{.hl-yellow}: nombre de aerolíneas (con su abreviatura).
+* [**airports**]{.hl-yellow}: datos de aeropuertos (nombres, longitud, latitud, altitud, etc).
+* [**flights**]{.hl-yellow}: datos de vuelos.
+* [**planes**]{.hl-yellow}: datos de los aviones.
+* [**weather**]{.hl-yellow}: datos meteorológicos horarios de las estaciones LGA, JFK y EWR.
+
+#### Pregunta 1
+
+> Del paquete `{nycflights13}` cruza la tabla `flights` con `airlines`. Queremos mantener todos los registros de vuelos, añadiendo la información de las aerolíneas a dicha tabla.
+
+```{r}
+#| code-fold: true
+flights_airlines <-
+  flights |> 
+  left_join(airlines, by = "carrier")
+```
+
+#### Pregunta 2
+
+> A la tabla obtenida del cruce del apartado anterior, cruza después con los datos de los aviones en `planes`, pero incluyendo solo aquellos vuelos de los que tengamos información de sus aviones (y viceversa). 
+
+
+```{r}
+#| code-fold: true
+flights_airlines_planes <- 
+  flights_airlines |> 
+  inner_join(planes, by = "tailnum")
+```
+
+
+#### Pregunta 3
+
+>  Repite el ejercicio anterior pero conservando ambas variables `year` (en una es el año del vuelo, en la otra es el año de construcción del avión), y distinguiéndolas entre sí
+
+
+
+```{r}
+#| code-fold: true
+flights_airlines_planes <- 
+  flights_airlines |> 
+  inner_join(planes, by = "tailnum",
+             suffix = c("_flight", "_build_aircraft"))
+```
+
+#### Pregunta 4
+
+>  Al cruce obtenido del ejercicio anterior incluye la longitud y latitud de los aeropuertos en `airports`, distinguiendo entre la latitud/longitud del aeropuerto en destino y en origen.
+
+```{r}
+#| code-fold: true
+flights_airlines_planes %>%
+  left_join(airports %>% select(faa, lat, lon),
+            by = c("origin" = "faa")) |> 
+  rename(lat_origin = lat, lon_origin = lon) |> 
+  left_join(airports %>% select(faa, lat, lon),
+            by = c("dest" = "faa")) |> 
+  rename(lat_dest = lat, lon_dest = lon)
+```
+
+#### Pregunta 5
+
+>  Filtra de `airports` solo aquellos aeropuertos de los que salgan vuelos. Repite el proceso filtrado solo aquellos a los que lleguen vuelos
+
+```{r}
+#| eval: false
+#| code-fold: true
+airports |> 
+  semi_join(flights, by = c("faa" = "origin"))
+airports |> 
+  semi_join(flights, by = c("faa" = "dest"))
+```
+
+#### Pregunta 6
+
+> ¿De cuántos vuelos no disponemos información del avión? Elimina antes los vuelos que no tengan identificar (diferente a NA) del avión
+
+
+```{r}
+#| eval: false
+#| code-fold: true
+flights |> 
+  drop_na(tailnum) |>
+  anti_join(planes, by = "tailnum") |>
+  count(tailnum, sort = TRUE) # de mayor a menor ya de paso
+```
+
+
+
+### Caso práctico V: renta de municipios
+
+#### Pregunta 1
+
+> En el archivo `municipios.csv` tenemos guardada la información de los municipios de España a fecha de 2019. La variable `LAU_code` representa el código como unidad administrativa local según la estandarización de la UE ([ver más](https://ec.europa.eu/eurostat/web/nuts/local-administrative-units)). La variable `codigo_ine` está construida uniendo el código de la provincia y el de la comunidad autónoma.
+
+
+> Por otro lado el archivo `renta_mun.csv` contiene datos de la renta per capita  de cada unidad administrativa (municipios, distritos, provincias, comunidades autonónomas, etc) para diferentes años.
+
+> Carga ambos de manera adecuada
+
+```{r}
+#| code-fold: true
+library(readr)
+mun_data <- read_csv(file = "./datos/municipios.csv")
+
+renta_mun <- read_csv2(file = "./datos/renta_mun.csv")
+```
+
+
+#### Pregunta 2
+
+> Investiga el paquete `{janitor}` y haz uso de la función `clean_names()` para normalizar nombres de variables
+
+```{r}
+#| code-fold: true
+mun_data <-
+  mun_data |> 
+  janitor::clean_names()
+renta_mun <-
+  renta_mun |> 
+  janitor::clean_names()
+```
+
+#### Pregunta 3
+
+> ¿Son tidydata? En caso de que no convierte el que toque de manera adecuada  (sin ausentes y cada dato del tipo correcto)
+
+```{r}
+#| code-fold: true
+renta_mun_tidy <-
+  renta_mun |> 
+  pivot_longer(cols = contains("x"), names_to = "year",
+               values_to = "renta", names_prefix = "x",
+               names_transform = list(year = as.numeric),
+               values_drop_na = TRUE)
+```
+
+#### Pregunta 4
+
+> Si te fijas en la tabla anterior, tenemos datos de diferentes unidades administrativas que no siempre son municipios. Sabiendo que todos los municipios tienen un código de 5 caracteres (que representan todos ellos números), filtra sólo aquellos registros que correspondan a unidades municipales.
+
+```{r}
+#| code-fold: true
+renta_mun_tidy <-
+  renta_mun_tidy |>
+  filter(str_detect(codigo_ine, pattern = "[0-9]{5}") & 
+           str_length(codigo_ine) == 5)
+```
+
+#### Pregunta 5
+
+> A continuación separa adecuadamente la variable de unidad administrativa en dos columnas: una con el código (que ya tiene, por lo que debe eliminar uno de los dos) y el nombre. Elimina los espacios sobrantes (echa un vistazo a las opciones del paquete {stringr}).
+
+```{r}
+#| code-fold: true
+renta_mun_tidy <-
+  renta_mun_tidy |>
+  separate(col = "unidad", into = c("cod_rm", "name"), sep = 5) |> 
+  select(-cod_rm) |> 
+  mutate(name = str_trim(name)) 
+```
+
+
+#### Pregunta 6
+
+> ¿En qué año fue mayor la renta media? ¿Y más baja? ¿Cuál fue la renta mediana de los municipios de España en 2019?
+
+```{r}
+#| eval: false
+#| code-fold: true
+summary_renta <-
+  renta_mun_tidy |> 
+  summarise("mean_renta" = mean(renta, na.rm = TRUE),
+            .by = year)
+summary_renta |>
+  slice_min(mean_renta, n = 1)
+
+
+summary_renta |>
+  slice_max(mean_renta, n = 1)
+
+renta_mun_tidy |> 
+  filter(year == 2019) |> 
+  summarise("median_renta" = median(renta, na.rm = TRUE))
+```
+
+#### Pregunta 7
+
+> Haz lo que consideres para obtener el NOMBRE de la provincia con la renta media más alta en 2019 y la más baja
+
+```{r}
+#| code-fold: true
+summary_by_prov <-
+  renta_mun_tidy |> 
+  filter(year == 2019) |> 
+  left_join(mun_data, by = "codigo_ine", suffix = c("", "_rm")) |> 
+  select(-contains("rm")) |> 
+  summarise("mean_by_prov" = mean(renta, na.rm = TRUE),
+            .by = c("cpro", "ine_prov_name"))
+
+summary_by_prov |> 
+  slice_max(mean_by_prov, n = 1)
+
+
+```
+
+
+#### Pregunta 8
+
+> Obten de cada ccaa el nombre del municipio con mayor renta en 2019.
+
+```{r}
+#| code-fold: true
+renta_mun_tidy |> 
+  filter(year == 2019) |> 
+  left_join(mun_data, by = "codigo_ine", suffix = c("", "_rm")) |> 
+  select(-contains("rm")) |> 
+  slice_max(renta, by = "codauto")
+```
