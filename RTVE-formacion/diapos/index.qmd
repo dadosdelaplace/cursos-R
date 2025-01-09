@@ -88,7 +88,8 @@ Actualmente, [**investigador y docente en la Facultad de Estadística de la UCM*
 ::: {style="font-size:20px"}
 |  CLASE | SEMANA | FECHAS | TOPIC | EJ. | WORKBOOK | ENTREGA | 
 |:------:|:--------:|:--------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
-| [1](#clase-1) | S1 | 8 ene | Repaso: re-toma de contacto | [💻](#tu-turno-1-1) [💻](#tu-turno-1-2) [💻](#tu-turno-1-3) | [🐣](#caso-practico-1-1) [🐣](#caso-practico-1-2) [🐣](#caso-practico-1-3) [🐣](#caso-practico-1-4) [🐣](#caso-practico-1-5) |  | 
+| [1](#clase-1) | S1 | 8 ene | Repaso: re-toma de contacto | [💻](#tu-turno-1-1) [💻](#tu-turno-1-2) [💻](#tu-turno-1-3) | [🐣](#caso-practico-1-1) [🐣](#caso-practico-1-2) [🐣](#caso-practico-1-3) [🐣](#caso-practico-1-4)  |  | 
+| [2](#clase-2) | S2 | 13 ene | ... | ... | [🐣](#caso-practico-2-1) |  | 
 :::
 :::
 
@@ -96,13 +97,13 @@ Actualmente, [**investigador y docente en la Facultad de Estadística de la UCM*
 
 ## Materiales
 
-* [**Diapositivas**]{.hl-yellow}: diapositivas en `Quarto` disponibles y actualizadas en **<https://javieralvarezliebana.es/docencia/R-datascience>**. En el menú de las diapositivas (abajo a la izquierda) tienes una [**opción para descargarlas en pdf**]{.hl-yellow} en `Tools`
+* [**Diapositivas**]{.hl-yellow}: diapositivas en `Quarto` disponibles y actualizadas en **<https://javieralvarezliebana.es/cursos-R/RTVE-formacion/diapos/#/title-slide>**. En el menú de las diapositivas (abajo a la izquierda) tienes una [**opción para descargarlas en pdf**]{.hl-yellow} en `Tools`
   
 &nbsp;
 
-* [**Material**]{.hl-yellow}: [**cuadernos de trabajo**](https://javieralvarezliebana.es/docencia/R-datascience/material/) y materiales extras y **resúmenes de paquetes**
+* [**Material**]{.hl-yellow}: [**cuadernos de trabajo**](https://javieralvarezliebana.quarto.pub/workbook-rtve) y materiales extras y **resúmenes de paquetes**
 
-* [🗃 **Datos**]{.hl-yellow}: datasets que usaremos a lo largo de la asignatura, disponibles en Github **<https://javieralvarezliebana.es/docencia/R-datascience/material>** y drive <https://drive.google.com/drive/folders/1iG_wzHOavm8PB6pvrXk7jnGJ5lJCpUFK?usp=sharing>
+* [🗃 **Datos**]{.hl-yellow}: datasets que usaremos a lo largo de la asignatura, disponibles en Github **<https://github.com/dadosdelaplace/cursos-R/tree/main/RTVE-formacion/diapos/datos>**
 
 * [📚 **Recursos de apoyo**]{.hl-yellow}: en inglés <https://r4ds.had.co.nz/> y en castellano <https://cdr-book.github.io/>, y <https://ivelasq.quarto.pub/intro-to-quarto/> para Quarto.
 
@@ -2685,8 +2686,13 @@ library(nycflights13)
 Intenta responder a las preguntas planteadas en el [**workbook**](https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-iv-aviones-de-nyc-join)
 
 
----
+# Clase 2: [welcome to R again]{.flow} {#clase-2}
 
+[**...**]{style="color:#444442;"}
+
+* [Importar y exportar](#import-export)
+
+---
 
 ## Importar/exportar {#import-export}
 
@@ -3091,7 +3097,7 @@ wiki_jump |> read_html() |>
 ---
 
 
-## 🐣 Caso práctico V: renta municipios {#caso-practico-1-5}
+## 🐣 Caso práctico I: renta municipios {#caso-practico-2-1}
 
 En el archivo `municipios.csv` tenemos guardada la información de los municipios de España a fecha de 2019. La variable `LAU_code` representa el código como unidad administrativa local según la estandarización de la UE ([ver más](https://ec.europa.eu/eurostat/web/nuts/local-administrative-units)).La variable `codigo_ine` está construida uniendo el código de la provincia y el de la comunidad autónoma.
 
@@ -3102,7 +3108,7 @@ Por otro lado el archivo `renta_mun` contiene datos de la renta per capita  de c
 
 &nbsp;
 
-Intenta responder a las preguntas planteadas en el [**workbook**](https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-v-renta-de-municipios)
+Intenta responder a las preguntas planteadas en el [**workbook**](https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-i-renta-de-municipios)
 
 
 

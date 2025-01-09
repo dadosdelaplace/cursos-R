@@ -472,7 +472,19 @@ Curso impartido en RTVE • Javier Álvarez Liébana
 <td style="text-align: center;">8 ene</td>
 <td style="text-align: center;">Repaso: re-toma de contacto</td>
 <td style="text-align: center;"><a href="#/tu-turno-1-1">💻</a> <a href="#/tu-turno-1-2">💻</a> <a href="#/tu-turno-1-3">💻</a></td>
-<td style="text-align: center;"><a href="#/caso-practico-1-1">🐣</a> <a href="#/caso-practico-1-2">🐣</a> <a href="#/caso-practico-1-3">🐣</a> <a href="#/caso-practico-1-4">🐣</a> <a href="#/caso-practico-1-5">🐣</a></td>
+<td style="text-align: center;"><a href="#/caso-practico-1-1">🐣</a> <a href="#/caso-practico-1-2">🐣</a> <a href="#/caso-practico-1-3">🐣</a> <a href="#/caso-practico-1-4">🐣</a></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><a href="#/clase-2">2</a></td>
+<td style="text-align: center;">S2</td>
+<td style="text-align: center;">13 ene</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;"><a href="#/caso-practico-2-1">🐣</a></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -486,12 +498,12 @@ Curso impartido en RTVE • Javier Álvarez Liébana
 <section id="materiales" class="slide level2">
 <h2>Materiales</h2>
 <ul>
-<li><span class="hl-yellow"><strong>Diapositivas</strong></span>: diapositivas en <code>Quarto</code> disponibles y actualizadas en <strong><a href="https://javieralvarezliebana.es/docencia/R-datascience" class="uri">https://javieralvarezliebana.es/docencia/R-datascience</a></strong>. En el menú de las diapositivas (abajo a la izquierda) tienes una <span class="hl-yellow"><strong>opción para descargarlas en pdf</strong></span> en <code>Tools</code></li>
+<li><span class="hl-yellow"><strong>Diapositivas</strong></span>: diapositivas en <code>Quarto</code> disponibles y actualizadas en <strong><a href="https://javieralvarezliebana.es/cursos-R/RTVE-formacion/diapos/#/title-slide" class="uri">https://javieralvarezliebana.es/cursos-R/RTVE-formacion/diapos/#/title-slide</a></strong>. En el menú de las diapositivas (abajo a la izquierda) tienes una <span class="hl-yellow"><strong>opción para descargarlas en pdf</strong></span> en <code>Tools</code></li>
 </ul>
 <p>&nbsp;</p>
 <ul>
-<li><p><span class="hl-yellow"><strong>Material</strong></span>: <a href="https://javieralvarezliebana.es/docencia/R-datascience/material/"><strong>cuadernos de trabajo</strong></a> y materiales extras y <strong>resúmenes de paquetes</strong></p></li>
-<li><p><span class="hl-yellow">🗃 <strong>Datos</strong></span>: datasets que usaremos a lo largo de la asignatura, disponibles en Github <strong><a href="https://javieralvarezliebana.es/docencia/R-datascience/material" class="uri">https://javieralvarezliebana.es/docencia/R-datascience/material</a></strong> y drive <a href="https://drive.google.com/drive/folders/1iG_wzHOavm8PB6pvrXk7jnGJ5lJCpUFK?usp=sharing" class="uri">https://drive.google.com/drive/folders/1iG_wzHOavm8PB6pvrXk7jnGJ5lJCpUFK?usp=sharing</a></p></li>
+<li><p><span class="hl-yellow"><strong>Material</strong></span>: <a href="https://javieralvarezliebana.quarto.pub/workbook-rtve"><strong>cuadernos de trabajo</strong></a> y materiales extras y <strong>resúmenes de paquetes</strong></p></li>
+<li><p><span class="hl-yellow">🗃 <strong>Datos</strong></span>: datasets que usaremos a lo largo de la asignatura, disponibles en Github <strong><a href="https://github.com/dadosdelaplace/cursos-R/tree/main/RTVE-formacion/diapos/datos" class="uri">https://github.com/dadosdelaplace/cursos-R/tree/main/RTVE-formacion/diapos/datos</a></strong></p></li>
 <li><p><span class="hl-yellow">📚 <strong>Recursos de apoyo</strong></span>: en inglés <a href="https://r4ds.had.co.nz/" class="uri">https://r4ds.had.co.nz/</a> y en castellano <a href="https://cdr-book.github.io/" class="uri">https://cdr-book.github.io/</a>, y <a href="https://ivelasq.quarto.pub/intro-to-quarto/" class="uri">https://ivelasq.quarto.pub/intro-to-quarto/</a> para Quarto.</p></li>
 </ul>
 </section>
@@ -2541,16 +2553,16 @@ Curso impartido en RTVE • Javier Álvarez Liébana
 <pre><code># A tibble: 3,242 × 17
    num_expediente fecha      hora    localizacion numero distrito tipo_accidente
    &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;         
- 1 2020S013619    01/10/2020 22:45:… PLAZA. SAGR… 5      CHAMART… Colisión fron…
- 2 2020S003610    16/02/2020 6:50:00 AUTOV. M-30… +0090… RETIRO   Choque contra…
- 3 2020S007209    22/05/2020 23:25:… CALL. ALCAL… 49     CENTRO   Alcance       
- 4 2020S001358    18/01/2020 12:10:… PASEO. FLOR… 34     MONCLOA… Alcance       
- 5 2020S008309    15/06/2020 21:06:… CTRA. ZOO, 3 3      MONCLOA… Caída         
- 6 2020S010543    28/07/2020 19:40:… AVDA. JOAQU… 3      PUENTE … Alcance       
- 7 2020S018243    12/12/2020 14:30:… AUTOV. A-6,… +0150… MONCLOA… Alcance       
- 8 2020S011552    24/08/2020 3:00:00 AUTOV. M-30… +0320… FUENCAR… Choque contra…
- 9 2020S001847    25/01/2020 19:15:… GTA. EMILIO… 0      SALAMAN… Alcance       
-10 2020S000871    13/01/2020 14:05:… CALL. PEDRO… 39     FUENCAR… Alcance       
+ 1 2020S004586    28/02/2020 18:00:… AVDA. INSTI… 14     CIUDAD … Caída         
+ 2 2020S007304    26/05/2020 21:30:… CALL. CARTA… 40     SALAMAN… Colisión fron…
+ 3 2020S017658    04/12/2020 20:00:… AVDA. ALBUF… 281    PUENTE … Colisión late…
+ 4 2020S007681    02/06/2020 21:20:… CTRA. RODAJ… 2      MONCLOA… Caída         
+ 5 2020S018071    09/12/2020 21:20:… CALL. CLARA… 3      CHAMART… Colisión fron…
+ 6 2020S003225    07/02/2020 20:30:… CALL. OCAÑA… 106    LATINA   Alcance       
+ 7 2020S003019    09/02/2020 3:40:00 CALL. SAN B… 62     CENTRO   Atropello a p…
+ 8 2020S002018    27/01/2020 19:16:… PLAZA. COLO… 1      CENTRO   Colisión late…
+ 9 2020S016938    24/11/2020 23:14:… CALL. LOPEZ… 1      SALAMAN… Choque contra…
+10 2020S002222    29/01/2020 19:25:… AVDA. GALAX… 1      MONCLOA… Colisión fron…
 # ℹ 3,232 more rows
 # ℹ 10 more variables: estado_meteorológico &lt;chr&gt;, tipo_vehiculo &lt;chr&gt;,
 #   tipo_persona &lt;chr&gt;, rango_edad &lt;chr&gt;, sexo &lt;chr&gt;, lesividad &lt;chr&gt;,
@@ -2584,16 +2596,16 @@ Curso impartido en RTVE • Javier Álvarez Liébana
 <pre><code># A tibble: 3,242 × 17
    num_expediente fecha      hora    localizacion numero distrito tipo_accidente
    &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;         
- 1 2020S018159    11/12/2020 18:30:… CALL. MARQU… 12     TETUÁN   Colisión fron…
- 2 2020S008270    14/06/2020 22:15:… PASEO. PRAD… 18     CENTRO   Alcance       
- 3 2020S001475    20/01/2020 23:50:… CALL. JORGE… 133    SALAMAN… Otro          
- 4 2020S019295    27/12/2020 23:00:… CALL. BENJA… 12     PUENTE … Choque contra…
- 5 2020S008217    14/06/2020 0:05:00 CALL. RAIMU… 2      CHAMBERÍ Caída         
- 6 2020S004554    28/02/2020 14:50:… CALL. PUERT… 1      VILLA D… Colisión late…
- 7 2020S016815    21/11/2020 11:30:… CALL. SINES… 10     FUENCAR… Colisión fron…
- 8 2020S015280    29/10/2020 15:30:… CALL. PRINC… 135    CHAMART… Alcance       
- 9 2020S004494    27/02/2020 20:05:… PASEO. PRAD… 34     CENTRO   Alcance       
-10 2020S008346    15/06/2020 16:00:… CALL. LOPEZ… 176    CHAMART… Choque contra…
+ 1 2020S014625    19/10/2020 6:45:00 PLAZA. ESPA… 1      CENTRO   Alcance       
+ 2 2020S014937    23/10/2020 18:30:… PASEO. CAST… 63     CHAMBERÍ Alcance       
+ 3 2020S011488    21/08/2020 14:33:… CALL. VIRGE… 19     CIUDAD … Colisión fron…
+ 4 2020S007005    19/05/2020 23:50:… CALL. RAMON… 161    FUENCAR… Choque contra…
+ 5 2020S009107    30/06/2020 18:20:… M-30 CALZAD… +0090… RETIRO   Colisión múlt…
+ 6 2020S016630    20/11/2020 16:00:… CALL. RAMIR… 11     MONCLOA… Choque contra…
+ 7 2020S018889    19/12/2020 21:15:… AUTOV. A-3 … +0050… MORATAL… Choque contra…
+ 8 2020S002466    02/02/2020 18:00:… CALL. VALLE… 1      FUENCAR… Choque contra…
+ 9 2020S007600    30/05/2020 11:30:… AVDA. GRAN … 4      VICÁLVA… Alcance       
+10 2020S001202    18/01/2020 2:55:00 CALL. FRANC… 50     SALAMAN… Colisión late…
 # ℹ 3,232 more rows
 # ℹ 10 more variables: estado_meteorológico &lt;chr&gt;, tipo_vehiculo &lt;chr&gt;,
 #   tipo_persona &lt;chr&gt;, rango_edad &lt;chr&gt;, sexo &lt;chr&gt;, lesividad &lt;chr&gt;,
@@ -3718,6 +3730,14 @@ Desconocido      Hombre       Mujer
 <li><span class="hl-yellow"><strong>weather</strong></span>: datos meteorológicos horarios de las estaciones LGA, JFK y EWR.</li>
 </ul>
 <p>Intenta responder a las preguntas planteadas en el <a href="https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-iv-aviones-de-nyc-join"><strong>workbook</strong></a></p>
+</section></section>
+<section>
+<section id="clase-2" class="title-slide slide level1 center">
+<h1>Clase 2: <span class="flow">welcome to R again</span></h1>
+<p><span style="color:#444442;"><strong>…</strong></span></p>
+<ul>
+<li><a href="#/import-export">Importar y exportar</a></li>
+</ul>
 </section>
 <section id="import-export" class="slide level2">
 <h2>Importar/exportar</h2>
@@ -4315,12 +4335,12 @@ Desconocido      Hombre       Mujer
 </div>
 </div>
 </section>
-<section id="caso-practico-1-5" class="slide level2">
-<h2>🐣 Caso práctico V: renta municipios</h2>
+<section id="caso-practico-2-1" class="slide level2">
+<h2>🐣 Caso práctico I: renta municipios</h2>
 <p>En el archivo <code>municipios.csv</code> tenemos guardada la información de los municipios de España a fecha de 2019. La variable <code>LAU_code</code> representa el código como unidad administrativa local según la estandarización de la UE (<a href="https://ec.europa.eu/eurostat/web/nuts/local-administrative-units">ver más</a>).La variable <code>codigo_ine</code> está construida uniendo el código de la provincia y el de la comunidad autónoma.</p>
 <p>Por otro lado el archivo <code>renta_mun</code> contiene datos de la renta per capita de cada unidad administrativa (municipios, distritos, provincias, comunidades autonónomas, etc) para diferentes años.</p>
 <p>&nbsp;</p>
-<p>Intenta responder a las preguntas planteadas en el <a href="https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-v-renta-de-municipios"><strong>workbook</strong></a></p>
+<p>Intenta responder a las preguntas planteadas en el <a href="https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-i-renta-de-municipios"><strong>workbook</strong></a></p>
 <div class="footer footer-default">
 <p><a href="..."><strong>Javier Álvarez Liébana</strong></a> • Curso de R impartido en RTVE</p>
 </div>

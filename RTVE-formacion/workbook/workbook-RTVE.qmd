@@ -580,8 +580,9 @@ flights |>
 ```
 
 
+## Clase 2
 
-### Caso práctico V: renta de municipios
+### Caso práctico I: renta de municipios
 
 #### Pregunta 1
 
