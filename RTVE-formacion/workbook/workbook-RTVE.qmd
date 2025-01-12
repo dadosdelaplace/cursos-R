@@ -582,7 +582,7 @@ flights |>
 
 ## Clase 2
 
-### Caso práctico I: renta de municipios
+### 🐣 Caso práctico I: renta de municipios
 
 #### Pregunta 1
 
@@ -712,3 +712,422 @@ renta_mun_tidy |>
   select(-contains("rm")) |> 
   slice_max(renta, by = "codauto")
 ```
+
+### 🐣 Caso práctico II: simulación
+
+#### Pregunta 1
+
+> Define una variable llamada `precio` que empiece en 100. Diseña un bucle de 20 iteraciones donde, en cada iteración, el precio se reduzca a la mitad de su valor. Piensa que tipo de estructura de bucle deberías usar. El valor final de precio debería ser 0.00009536743 (aprox).
+
+```{r}
+#| code-fold: true
+#| eval: false
+# Usamos un for ya que sabemos el número de iteraciones 
+# de manera prefijada (y no depende de nada)
+
+# definimos inicialmente precio en 100
+precio <- 100 
+
+# para el bucle usamos por ejemplo i como índice, que va de 1 a 20
+for (i in 1:20) {
+  
+  # el código fíjate que es el mismo y no depende de i
+  precio <- precio/2
+  
+}
+precio
+```
+
+#### Pregunta 2
+
+> Diseña una estructura de bucle de manera que encuentres la iteración en la que `precio` es menor que 0.001 por primera vez. Una vez encontrado guarda el número de iteración y para el bucle.
+
+```{r}
+#| code-fold: true
+# dos formas de hacerlo: for y while
+
+# con for
+precio <- 100 
+
+# ya sabemos que en 20 es menor que 0.001 así que podemos poner
+# dicha cantidad como tope sabiendo que no llegará
+for (i in 1:20) {
+  
+  # si todavía no es menor, seguimos dividiendo
+  if (precio >= 0.001) { precio <- precio/2 }
+  else {
+    
+    # si ya es menor, guardamos la iteración (piensa por qué i - 1)
+    iter <- i - 1 
+    
+    # y paramos
+    break
+  }
+}
+
+# con while
+precio <- 100 
+
+iter <- 0 # debemos inicializar las iteraciones
+
+# no sabemos cuantas iteraciones, solo que debe parar cuando
+# precio esté por debajo de dicha cantidad
+while (precio >= 0.001) {
+  
+  precio <- precio/2
+    
+  # estructura clásica de while: si se corre iteración
+  # actualizamos un valor (en este caso que cuente una iteración)
+  iter <- iter + 1
+}
+```
+
+
+#### Pregunta 3
+
+> En R la función `sample(x = ..., size = ...)` va sernos muy útil: de una colección de elementos `x`, selecciona un número `size` al azar de ellos. Por ejemplo, si queremos simular 3 veces el lanzamiento de un dado tenemos 6 elementos posibles (`x = 1:6`) y lo seleccionamos 3 veces (`size = 3`)
+
+```{r}
+sample(x = 1:6, size = 3)
+```
+
+> Al ser aleatorio, cada vez que lo ejecutas saldrá algo distinto
+
+```{r}
+sample(x = 1:6, size = 3)
+```
+
+
+> ¿Y si queremos tirar 10 veces? Al tener solo 6 elementos posibles y elegir 10, no puede, así que le tenemos que indicar que queremos un sample (muestreo) con reemplazamiento (como sucede en el dado, cada cara puede repetirse al volver a tirarlo)
+
+```{r}
+sample(x = 1:6, size = 10, replace = TRUE)
+
+```
+
+> Con lo anterior, imagina que estás en un concurso de televisión donde te dan a elegir 3 puertas: en una hay un premio millonario y en las otras 2 una galleta oreo. Diseña el estudio de simulación con bucles for para aproximar la probabilidad de que te toque el premio (obviamente tiene que darte aprox 0.3333333). Realiza el experimento para 1000 intentos. ¿Qué observas?
+
+```{r}
+#| code-fold: true
+#| eval: false
+# Definimos las puertas posibles
+puertas <- c(1, 2, 3)
+
+# Definimos los intentos
+intentos <- 1000
+
+# Definimos las veces que hemos ganado (al inicio empieza en 0 claro)
+exitos <- 0
+
+# Simulación de una eleccion de puerta y un premio
+for (i in 1:intentos) {
+  
+  # premio: de 3 puertas, solo está en una
+  premio <- sample(x = puertas, size = 1)
+    
+  # puerta que seleccionas como concursante: de 3 puertas, te quedas con una
+  eleccion <- sample(x = puertas, size = 1)
+    
+  # si la puerta seleccionada coincide con la que tiene el premio
+  # sumas un éxito, sino te quedas como estás
+  exitos<- dplyr::if_else(eleccion == premio, exitos + 1, exitos)
+    
+}
+# Tras jugar, lo dividimos entre el número de veces que has jugado
+exitos <- exitos / intentos
+exitos
+```
+
+#### Pregunta 4
+
+> Realiza el experimento para 10, 50 intentos, 100 intentos, 500 intentos, 1000 intentos, 10 000 intentos y 25 000 intentos (pista: necesitas un bucle dentro de otro). ¿Qué observas?
+
+```{r}
+#| code-fold: true
+#| eval: false
+# Definimos las puertas posibles
+puertas <- c(1, 2, 3)
+
+# Definimos los intentos
+intentos <- c(10, 50, 100, 500, 1000, 10000, 25000)
+
+# Definimos las veces que hemos ganado (al inicio empieza en 0 claro)
+exitos <- rep(0, length(intentos))
+
+# Simulación de una eleccion de puerta y un premio
+for (j in 1:length(intentos)) {
+  for (i in 1:intentos[j]) {
+    
+    # premio: de 3 puertas, solo está en una
+    premio <- sample(x = puertas, size = 1)
+      
+    # puerta que seleccionas como concursante: de 3 puertas, te quedas con una
+    eleccion <- sample(x = puertas, size = 1)
+      
+    # si la puerta seleccionada coincide con la que tiene el premio
+    # sumas un éxito, sino te quedas como estás
+    exitos[j] <- dplyr::if_else(eleccion == premio, exitos[j] + 1, exitos[j])
+      
+  }
+  # Tras jugar, lo dividimos entre el número de veces que has jugado
+  exitos[j] <- exitos[j] / intentos[j]
+}
+exitos
+```
+
+#### Pregunta 5
+
+> ¿Y si en cada ronda el presentador (tras tu elegir una puerta) te abriese una de las puertas no premiadas y que no has elegido: cambiarías de puerta o te mantendrías? Simula ambos casos y descubre cuál es la estrategia correcta (este problema se conoce como problema de Monty Hall y aparece incluso en películas como 21 Black Jack)
+
+```{r}
+#| code-fold: true
+#| eval: false
+# Definimos las puertas posibles
+puertas <- c(1, 2, 3)
+
+# Definimos los intentos
+intentos <- c(10, 50, 100, 500, 1000, 10000, 25000)
+
+# Definimos las veces que hemos ganado (al inicio empieza en 0 claro)
+# ahora dos estrategias: mantener o cambiar
+exitos_mantengo <- exitos_cambio <- rep(0, length(intentos))
+
+# Simulación de una eleccion de puerta y un premio
+for (j in 1:length(intentos)) {
+  for (i in 1:intentos[j]) {
+    
+    # premio: de 3 puertas, solo está en una
+    premio <- sample(x = puertas, size = 1)
+      
+    # puerta que seleccionas inicialmente
+    eleccion_inicial <- sample(x = puertas, size = 1)
+    
+    # puerta que te podría abrir el presentador
+    puertas_posibles <- puertas[!(puertas %in% c(eleccion_inicial, premio))]
+    
+    # si solo te podría abrir una (porque tu elección y el premio son distintas)
+    # te abre esa directamente. si te puede abrir dos (porque tu elección
+    # y el premio son la misma) decide una de las dos aleatorias
+    if (length(puertas_posibles) == 1) {
+      puerta_abierta <- puertas_posibles
+      
+    } else {
+      puerta_abierta <- sample(x = puertas_posibles, size = 1)
+    }
+    
+      
+    # si mantienes: solo comprobar que eleccion_inicial == premio
+    exitos_mantengo[j] <- 
+      dplyr::if_else(eleccion_inicial == premio, exitos_mantengo[j] + 1, exitos_mantengo[j])
+    
+    # si cambias: tu elegiste una, el presentador te abrio otra, solo 
+    # puedes cambiar a la que no conoces
+    eleccion_cambio <- puertas[!(puertas %in% c(eleccion_inicial, puerta_abierta))]
+    exitos_cambio[j] <-
+      dplyr::if_else(eleccion_cambio == premio, exitos_cambio[j] + 1, exitos_cambio[j])
+      
+  }
+  # Tras jugar, lo dividimos entre el número de veces que has jugado
+  exitos_cambio[j] <- exitos_cambio[j] / intentos[j]
+  exitos_mantengo[j] <- exitos_mantengo[j] / intentos[j]
+}
+exitos_cambio
+exitos_mantengo
+```
+
+#### Pregunta 6
+
+> Diseña una función propia con 3 argumentos: `puertas`, `puerta_elegida` y `cambio`. La primera podrá tomar los valores `c(1, 2, 3, ..., n)` (simulando un concurso de n puertas, n al menos 3); la segunda un solo número de puerta elegida entre las posibles; la tercera `TRUE/FALSE`. La función debe replicar una simulación de la pregunta 5 y devolver `TRUE` (el concursante ganó el premio) o `FALSE`. Comprueba dentro de la función que los argumentos son correctos; en caso contrario devuelve un mensaje de error. Tras diseñar la función aplícala y revisa que funciona cuando toca y que devuelve error cuando toca.
+
+```{r}
+#| code-fold: true
+#| eval: false
+# defino la función con unos argumentos por defecto (los que tomará
+# si al llamarle no se le asigna nada)
+concurso <- 
+  function(puertas = 1:3, puerta_elegida = 1, cambio = TRUE) {
+  
+    # primer check: ¿puertas_posibles es un vector numérico de al menos 3 puertas?
+    if (length(puertas) < 3 | !is.numeric(puertas)) {
+      stop("puertas debe ser un vector numérico de al menos longitud 3")
+    }
+    
+    # segundo check: si puerta elegida está dentro de las posibles
+    if (!(puerta_elegida %in% puertas)) {
+      stop("puerta_elegida debe ser una opción dentro de puertas")
+    }
+    
+    # tercer check: si cambio es una variable lógica sin ausentes
+    if (is.na(cambio) | !is.logical(cambio)) {
+      stop("cambio debe ser una variable binaria sin ausentes")
+    }
+    
+    # premio: de 3 puertas, solo está en una
+    premio <- sample(x = puertas, size = 1)
+      
+    # puerta que seleccionas inicialmente
+    eleccion_inicial <- puerta_elegida
+    
+    # puerta que te podría abrir el presentador
+    puertas_posibles <- puertas[!(puertas %in% c(eleccion_inicial, premio))]
+    
+    if (length(puertas_posibles) == 1) {
+      puerta_abierta <- puertas_posibles
+    } else {
+      puerta_abierta <- sample(x = puertas_posibles, size = 1)
+    }
+    
+    eleccion_cambio <- puertas[!(puertas %in% c(eleccion_inicial, puerta_abierta))]
+    
+    if (length(eleccion_cambio) > 1) {
+      eleccion_cambio <- sample(x = eleccion_cambio, size = 1)
+    }
+    exito <- dplyr::if_else(cambio, eleccion_cambio == premio, eleccion_inicial == premio)
+  
+    return(exito)
+  }
+
+# ejemplos que deberían funcionar
+concurso()
+concurso(cambio = FALSE)
+concurso(puertas = 1:7)
+concurso(puertas = 1:7, puerta_elegida = 4, cambio = FALSE)
+
+# ejemplos que no
+concurso(puertas = 1:2)
+concurso(puertas = c("a", "b", "c"))
+concurso(puertas = 1:5, puerta_elegida = 7)
+concurso(puertas = 1:5, puerta_elegida = 3, cambio = "si")
+```
+
+### 🐣 Caso práctico III: brexit
+
+![](https://media.tenor.com/dn2Mqp-ZPL4AAAAM/boris-boris-johnson.gif)
+
+Veamos un estudio de caso real basado en los artículos [«The Brexit Vote: A Divided Nation, a Divided Continent» (S. B. Hobolt, 2016)](https://www.tandfonline.com/doi/full/10.1080/13501763.2016.1225785) y  [«Who Voted for Brexit? A Comprehensive District-Level Analysis» (S. O. Becker et al., 2017)](https://academic.oup.com/economicpolicy/article/32/92/601/4459491). Los datos se extraerán del repositorio de Github de [Elena Llaudet](https://raw.githubusercontent.com/ellaudet/DSS/refs/heads/master/BES.csv)
+
+
+#### Pregunta 1
+
+> Carga del repositorio el `.csv`
+
+```{r}
+#| code-fold: true
+library(readr)
+brexit_data <- read_csv(file = "https://raw.githubusercontent.com/ellaudet/DSS/refs/heads/master/BES.csv")
+```
+
+
+#### Pregunta 2
+
+> Escribe el código que consideres para responder a las siguientes preguntas
+
+* ¿Cuál es el tamaño muestral de la encuesta?
+* ¿Cuántas variables se han recopilado?
+* ¿Cuántos ausentes tiene cada variable?
+
+```{r}
+#| code-fold: true
+#| eval: false
+# tamaño muestral
+brexit_data |> 
+  nrow()
+
+# variables
+brexit_data |> 
+  ncol()
+
+# ausentes
+brexit_data |> 
+  summarise(across(everything(), function(x) { sum(is.na(x)) }))
+```
+
+
+#### Pregunta 3
+
+> Si te fijas hay 2851 ausentes en `leave` (variable binaria). Comprueba que todos ellos se deben a registros en los que la variable `vote` (variable cualitativa) toma valores `don't known` o `won't vote`. Hazlo tanto en modo tidyverse (`count`) como en `R base`
+
+```{r}
+#| code-fold: true
+#| eval: false
+brexit_data |>
+  count(leave, vote)
+
+table(brexit_data$leave, brexit_data$vote)
+```
+
+
+#### Pregunta 4
+
+> Debajo tienes el código de como se construiría una tabla de frecuencias bidimensional en `R base`
+
+```{r}
+table(brexit_data$vote, brexit_data$education)
+```
+
+> Diseña lo mismo pero haciendo uso de tidyverse (pista: necesitas pivotar)
+
+```{r}
+#| code-fold: true
+#| eval: false
+brexit_data |> 
+  count(vote, education) |> 
+  pivot_wider(names_from = "education", values_from = "n")
+```
+
+**Moraleja**: aunque casi siempre será más legible y eficiente (y coherente) el código en tidyverse, a veces nos tocará echar mano de `R base`. Por eso es importante distinguir ambas formas de trabajar.
+
+Te dejo por cierto debajo cómo se calcularían las frecuencias relativas (`margin = 1` normaliza por filas y `margin = 2` por columnas)
+
+
+```{r}
+freq_abs <- table(brexit_data$vote, brexit_data$education)
+prop.table(freq_abs)
+prop.table(freq_abs, margin = 1)
+prop.table(freq_abs, margin = 2)
+```
+
+
+#### Pregunta 5
+
+> Usando las tablas relativas anteriores responder a
+
+* ¿Cuántas personas de los que votaron `leave` tiene un alto nivel educativo?
+
+* De la gente con un bajo nivel educativo, ¿qué % voto `leave`?
+
+* ¿Cuál fue el nivel educativo es el menos propenso a votar?
+
+
+
+
+#### Pregunta 6
+
+> ¿Qué porcentaje estimó la encuesta que votó por permanecer en la Unión Europea (el resultado real después del referéndum fue del 51.89%)?
+
+```{r}
+#| eval: false
+#| code-fold: true
+prop.table(table(brexit_data$vote))
+# 46.45 % sobre el total de encuestas
+
+prop.table(table(brexit_data$vote[brexit_data$vote != "won't vote"]))
+# 47.27 si obviamos los que decían no ir a votar
+```
+ 
+
+#### Pregunta 7
+
+> Calcula la media de edad para cada opción de la variable `vote`.
+
+```{r}
+#| eval: false
+#| code-fold: true
+brexit_data |> 
+  summarise("avg_age" = mean(age), .by = vote)
+```
+
+
+
+
+

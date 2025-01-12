@@ -115,7 +115,6 @@ Actualmente, [**investigador y docente en la Facultad de Estadística de la UCM*
 * [Reminders](#reminders)
 * [Tidy data](#tidy-data)
 * [Preprocesamiento: dplyr](#tidy-data)
-* [Importar y exportar](#import-export)
 
 
 ---
@@ -2691,6 +2690,8 @@ Intenta responder a las preguntas planteadas en el [**workbook**](https://javier
 [**...**]{style="color:#444442;"}
 
 * [Importar y exportar](#import-export)
+* [R base: if-elses, bucles y funciones](#if-else-bucles)
+* [Inicio al análisis estadístico](#stats)
 
 ---
 
@@ -3110,7 +3111,1775 @@ Por otro lado el archivo `renta_mun` contiene datos de la renta per capita  de c
 
 Intenta responder a las preguntas planteadas en el [**workbook**](https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-i-renta-de-municipios)
 
+---
+
+
+## Bucles {#if-else-bucles}
+
+Aunque en la mayoría de ocasiones se pueden reemplazar por otras estructuras más eficientes y legibles, es importante conocer una de las expresiones de control más famosas: los [**bucles**]{.hl-yellow}.
+
+* `for { }`: permite [**repetir el mismo código**]{.hl-yellow} en un [**número prefijado y conocido**]{.hl-purple} de veces.
+
+* `while { }`: permite [**repetir el mismo código**]{.hl-yellow} pero en un [**número indeterminado de veces**]{.hl-purple} (hasta que una **condición** deje de cumplirse).
+
+---
+
+## Bucles for {auto-animate="true"}
+
+Un bucle [**for**]{.hl-yellow} es una estructura que permite [**repetir**]{.hl-yellow} un conjunto de órdenes un número [**finito, prefijado y conocido de veces**]{.hl-purple} dado un conjunto de índices.
+
+
+Vamos a definir un vector `x <- c(0, -7, 1, 4)` y otra variable vacía `y`. Tras ello definiremos un bucle for con `for () { }`: dentro de los paréntesis indicaremos un índice y unos valores a recorrer, dentro de las llaves el código a ejecutar en cada iteración (en este caso, rellenar `y` como `x + 1`)
+
+```{r}
+x <- c(0, -7, 1, 4)
+y <- c()
+```
+
+---
+
+## Bucles for {auto-animate="true"}
+
+Un bucle [**for**]{.hl-yellow} es una estructura que permite [**repetir**]{.hl-yellow} un conjunto de órdenes un número [**finito, prefijado y conocido de veces**]{.hl-purple} dado un conjunto de índices.
+
+
+Vamos a definir un vector `x <- c(0, -7, 1, 4)` y otra variable vacía `y`. Tras ello definiremos un bucle for con `for () { }`: dentro de los paréntesis indicaremos un índice y unos valores a recorrer, dentro de las llaves el código a ejecutar en cada iteración (en este caso, rellenar `y` como `x + 1`)
+
+```{r}
+x <- c(0, -7, 1, 4)
+y <- c()
+
+for (i in 1:4) {
+  
+}
+```
+
+---
+
+## Bucles for {auto-animate="true"}
+
+Un bucle [**for**]{.hl-yellow} es una estructura que permite [**repetir**]{.hl-yellow} un conjunto de órdenes un número [**finito, prefijado y conocido de veces**]{.hl-purple} dado un conjunto de índices.
+
+
+Vamos a definir un vector `x <- c(0, -7, 1, 4)` y otra variable vacía `y`. Tras ello definiremos un bucle for con `for () { }`: dentro de los paréntesis indicaremos un índice y unos valores a recorrer, dentro de las llaves el código a ejecutar en cada iteración (en este caso, rellenar `y` como `x + 1`)
+
+```{r}
+x <- c(0, -7, 1, 4)
+y <- c()
+
+for (i in 1:4) {
+  y[i] <- x[i] + 1
+}
+```
+
+---
+
+## Bucles for
+
+Fíjate que debido a que `R` funciona de manera [**vectorial por defecto**]{.hl-yellow}, el bucle es lo mismo que hacer `x + 1` directamente.
+
+```{r}
+x <- c(0, -7, 1, 4)
+y <- c()
+
+for (i in 1:4) {
+  y[i] <- x[i] + 1
+}
+y
+
+y2 <- x + 1
+y2
+```
+
+---
+
+## Bucles for
+
+Otra opción habitual es indicar los índices de manera «automática»: desde el primero `1` hasta el último (que corresponde con la longitud de x `length(x)`)
+
+```{r}
+x <- c(0, -7, 1, 4)
+y <- c()
+
+for (i in 1:length(x)) {
+  y[i] <- x[i] + 1
+}
+y
+
+```
+
+
+---
+
+## Bucles for
+
+Así la [**estructura general de un bucle for**]{.hl-yellow} será siempre la siguiente
+
+```{r}
+#| eval: false
+for (índice in conjunto) { 
+  código (dependiente de i)
+}
+```
+
+[**SIEMPRE**]{.hl-green} sabemos cuántas iteraciones tenemos (tantas como elementos haya en el conjunto a indexar)
+
+---
+
+## Evitando bucles
+
+
+Como ya hemos aprendido con el paquete`{microbenchmark}` podemos chequear como [**los bucles suelen ser muy ineficientes**]{.hl-yellow} (de ahí que debamos evitarlos en la mayoría de ocasiones
+
+```{r}
+library(microbenchmark)
+x <- 1:1000
+microbenchmark(y <- x^2, 
+               for (i in 1:100) { y[i] <- x[i]^2 },
+               times = 500)
+```
+
+---
+ 
+## Bucles for
+
+
+Podemos ver otro ejemplo de bucle  [**combinando números y textos**]{.hl-yellow}: definimos un vector de edades y de nombres, e imprimimos el nombre y edad i-ésima.
+
+```{r}
+nombres <- c("Javi", "Sandra", "Carlos", "Marcos", "Marta")
+edades <- c(33, 27, 18, 43, 29)
+library(glue)
+for (i in 1:5) { 
+  
+  print(glue("{nombres[i]} tiene {edades[i]} años")) 
+  
+}
+```
+
+
+---
+
+## Bucles for
+
+Aunque normalmente se suelen indexar con vectors numéricos, los bucles pueden ser [**indexados sobre cualquier estructura vectorial**]{.hl-yellow}, da igual de que tipo sea el conjunto
+
+```{r}
+library(stringr)
+week_days <- c("monday", "tuesday", "wednesday", "thursday",
+               "friday", "saturday", "sunday")
+
+for (days in week_days) {
+  
+  print(str_to_upper(days))
+}
+```
+
+---
+
+## Bucles y condicionales
+
+Vamos a **combinar las estructuras condicionales y los bucles**: usando el conjunto `swiss` del paquete `{datasets}`, vamos a asignar `NA`  si los valores de fertilidad son mayores de 80.
+
+```{r}
+for (i in 1:nrow(swiss)) {
+  
+  if (swiss$Fertility[i] > 80) { 
+    
+    swiss$Fertility[i] <- NA
+    
+  }
+}
+```
+
+. . .
+
+Esto es exactamente igual a un `if_else()` vectorizado
+
+```{r}
+data("swiss")
+swiss$Fertility <- if_else(swiss$Fertility > 80, NA, swiss$Fertility)
+```
+
+
+---
+
+## Bucles while
+
+Otra forma de crear un bucle es con la estructura `while { }`, que nos ejecutará un bucle [**un número desconocido de veces**]{.hl-yellow}, hasta que una condición [**deje de cumplirse**]{.hl-yellow} (de hecho puede que nunca termine). Por ejemplo, vamos a inializar una variable `ciclos <- 1`, que incrementaremos en cada paso, y no saldremos del bucle hasta que `ciclos > 4`.
+
+```{r}
+ciclos <- 1
+while(ciclos <= 4) {
+  
+  print(glue("No todavía, vamos por el ciclo {ciclos}")) 
+  ciclos <- ciclos + 1
+  
+}
+```
+
+---
+
+## Bucles while
+
+Un bucle `while` será siempre como sigue
+
+```{r}
+#| eval: false
+while(condición) {
+  
+  código a hacer mientras la condición sea TRUE
+  # normalmente aquí se actualiza alguna variable
+  
+}
+```
+
+---
+  
+## Bucles while
+
+¿Qué sucede cuando la [**condición nunca es FALSE**]{.hl-yellow}? Pruébalo tu mismo
+
+```{r}
+#| eval: false
+while (1 > 0) {
+  
+  print("Presiona ESC para salir del bucle")
+  
+}
+```
+
+&nbsp;
+
+::: callout-warning
+## Cuidado
+
+Un bucle `while { }` puede ser bastante «peligroso» sino controlamos bien cómo pararlo.
+
+:::
+
+---
+
+## Bucles while
+
+Contamos con dos palabras reservadas para [**abortar un bucle o forzar su avance**]{.hl-yellow}:
+
+* `break`: permite [**abortar un bucle**]{.hl-yellow} incluso si no se ha llegado a su final
+
+```{r}
+for(i in 1:10) {
+  if (i == 3) {
+    
+    break # si i = 3, abortamos bucle
+    
+  }
+  print(i)
+}
+```
+
+---
+
+## Bucles while
+
+Contamos con dos palabras reservadas para [**abortar un bucle o forzar su avance**]{.hl-yellow}:
+
+* `next`: [**fuerza un bucle a avanzar a la siguiente iteración**]{.hl-yellow} 
+
+```{r}
+for(i in 1:5) {
+  if (i == 3) {
+    
+    next # si i = 3, la obvia y continua al siguiente
+    
+  }
+  print(i)
+}
+```
+
+
+---
+
+
+## 💻 Tu turno {#tu-turno-2-1}
+
+[**Intenta realizar los siguientes ejercicios sin mirar las soluciones**]{style="color:#444442;"}
+
+
+::: panel-tabset
+
+### [**Ejercicio 1**]{.hl-yellow}
+
+📝 Modifica el código inferior para que se imprima un mensaje por pantalla si y solo si todos los datos de `airquality` son con mes distinto a enero
+
+```{r}
+#| eval: false
+library(datasets)
+months <- airquality$Month
+
+if (months == 2) {
+  print("No hay datos de enero")
+}
+```
+
+```{r}
+#| code-fold: true
+#| eval: false
+library(datasets)
+months <- airquality$Month
+
+if (all(months != 1)) {
+  print("No hay datos de enero")
+}
+```
+
+
+### [**Ejercicio 2**]{.hl-yellow}
+
+📝 Modifica el código inferior para guardar en una variable llamada `temp_alta` un `TRUE` si alguno de los registros tiene una temperatura superior a 90 grados Farenheit y `FALSE` en cualquier otro caso
+ 
+```{r}
+#| eval: false
+temp <- airquality$Temp
+
+if (temp == 100) {
+  print("Algunos de los registros tienen temperaturas superiores a 90 grados Farenheit")
+}
+```
+
+ 
+```{r}
+#| eval: false
+#| code-fold: true
+# Option 1
+temp <- airquality$Temp
+temp_alta <- FALSE
+if (any(temp > 90)) {
+   temp_alta <- TRUE
+}
+
+# Option 2
+temp_alta <- any(airquality$Temp > 90)
+```
+
+### [**Ejercicio 3**]{.hl-yellow}
+
+📝 Modifica el código inferior para diseñar un bucle `for` de 5 iteraciones que solo recorra los primeros 5 impares (y en cada paso del bucle los imprima)
+
+```{r}
+#| eval: false
+for (i in 1:5) {
+  
+  print(i)
+}
+```
+
+```{r}
+#| eval: false
+#| code-fold: true
+for (i in c(1, 3, 5, 7, 9)) {
+  
+  print(i)
+}
+```
+
+### [**Ejercicio 4**]{.hl-yellow}
+
+📝 Modifica el código inferior para diseñar un bucle `while` que empiece con un contador `count <- 1` y pare cuando llegue a 6
+
+```{r}
+#| eval: false
+count <- 1
+while (count == 2) {
+  
+  print(count)
+}
+```
+
+```{r}
+#| eval: false
+#| code-fold: true
+count <- 1
+while (count < 6) {
+  
+  print(count)
+  count <- count + 1
+  
+}
+```
+
+
+:::
+
+---
+
+
+---
+
+## Creando funciones {auto-animate="true"}
+
+No solo podemos usar **funciones predeterminadas** que vienen ya cargadas en paquetes, además podemos [**crear nuestras propias funciones**]{.hl-yellow} para **automatizar tareas**. ¿Cómo [**crear nuestra propia función**]{.hl-purple}? Veamos su **esquema básico**:
+
+* [**Nombre**]{.hl-yellow}: por ejemplo `name_fun` (sin espacios ni caracteres extraños). Al nombre le [**asignamos la palabra reservada**]{.hl-yellow} `function()`.
+
+* Definir [**argumentos de entrada**]{.hl-yellow} (dentro de `function()`).
+
+* [**Cuerpo**]{.hl-yellow} de la función dentro de `{ }`.
+
+* Finalizamos la función con los [**argumentos de salida**]{.hl-yellow} con `return()`.
 
 
 
+```{r}
+#| eval: false
+name_fun <- function() {
+  
+}
+```
 
+---
+
+## Creando funciones {auto-animate="true"}
+
+No solo podemos usar **funciones predeterminadas** que vienen ya cargadas en paquetes, además podemos [**crear nuestras propias funciones**]{.hl-yellow} para **automatizar tareas**. ¿Cómo [**crear nuestra propia función**]{.hl-purple}? Veamos su **esquema básico**:
+
+* [**Nombre**]{.hl-yellow}: por ejemplo `name_fun` (sin espacios ni caracteres extraños). Al nombre le [**asignamos la palabra reservada**]{.hl-yellow} `function()`.
+
+* Definir [**argumentos de entrada**]{.hl-yellow} (dentro de `function()`).
+
+* [**Cuerpo**]{.hl-yellow} de la función dentro de `{ }`.
+
+* Finalizamos la función con los [**argumentos de salida**]{.hl-yellow} con `return()`.
+
+```{r}
+#| eval: false
+name_fun <- function(arg1, arg2, ...) {
+  
+}
+```
+
+---
+
+## Creando funciones {auto-animate="true"}
+
+No solo podemos usar **funciones predeterminadas** que vienen ya cargadas en paquetes, además podemos [**crear nuestras propias funciones**]{.hl-yellow} para **automatizar tareas**. ¿Cómo [**crear nuestra propia función**]{.hl-purple}? Veamos su **esquema básico**:
+
+* [**Nombre**]{.hl-yellow}: por ejemplo `name_fun` (sin espacios ni caracteres extraños). Al nombre le [**asignamos la palabra reservada**]{.hl-yellow} `function()`.
+
+* Definir [**argumentos de entrada**]{.hl-yellow} (dentro de `function()`).
+
+* [**Cuerpo**]{.hl-yellow} de la función dentro de `{ }`.
+
+* Finalizamos la función con los [**argumentos de salida**]{.hl-yellow} con `return()`.
+
+```{r}
+#| eval: false
+name_fun <- function(arg1, arg2, ...) {
+  
+  código a ejecutar
+  
+}
+```
+
+---
+
+
+## Creando funciones {auto-animate="true"}
+
+No solo podemos usar **funciones predeterminadas** que vienen ya cargadas en paquetes, además podemos [**crear nuestras propias funciones**]{.hl-yellow} para **automatizar tareas**. ¿Cómo [**crear nuestra propia función**]{.hl-purple}? Veamos su **esquema básico**:
+
+* [**Nombre**]{.hl-yellow}: por ejemplo `name_fun` (sin espacios ni caracteres extraños). Al nombre le [**asignamos la palabra reservada**]{.hl-yellow} `function()`.
+
+* Definir [**argumentos de entrada**]{.hl-yellow} (dentro de `function()`).
+
+* [**Cuerpo**]{.hl-yellow} de la función dentro de `{ }`.
+
+* Finalizamos la función con los [**argumentos de salida**]{.hl-yellow} con `return()`.
+
+```{r}
+#| eval: false
+name_fun <- function(arg1, arg2, ...) {
+  
+  código a ejecutar
+  
+  return(var_salida)
+  
+}
+```
+
+
+---
+
+## Creando funciones
+
+* `arg1, arg2, ...`: serán los [**argumentos de entrada**]{.hl-yellow}, los argumentos que toma la función para ejecutar el código que tiene dentro
+
+* `código`: líneas de código que queramos que [**ejecute la función**]{.hl-yellow}. 
+
+* `return(var_salida)`: se introducirán los [**argumentos de salida**]{.hl-yellow}.
+
+
+```{r}
+#| eval: false
+name_fun <- function(arg1, arg2, ...) {
+  
+  # Código que queramos ejecutar
+  código
+  
+  # Salida
+  return(var_salida)
+  
+}
+```
+
+::: callout-important
+## Importante
+
+Todas las variables que definamos dentro de la función son [**variables LOCALES: solo existirán dentro de la función**]{.hl-yellow} salvo que especifiquemos lo contrario.
+
+:::
+
+---
+
+## Creando funciones {auto-animate="true"}
+
+Veamos un ejemplo muy simple de función para [**calcular el área de un rectángulo**]{.hl-yellow}.
+
+Dado que el área de un rectángulo se calcula como el **producto de sus lados**, necesitaremos precisamente eso, sus lados: esos serán los [**argumentos de entrada**]{.hl-yellow} y el [**valor a devolver**]{.hl-purple} será justo su **área** ($lado_1 * lado_2$).
+
+```{r}
+# Definición del nombre de función y argumentos de entrada
+calcular_area <- function(lado_1, lado_2) {
+  
+}
+```
+
+---
+
+
+## Creando funciones {auto-animate="true"}
+
+Veamos un ejemplo muy simple de función para [**calcular el área de un rectángulo**]{.hl-yellow}.
+
+Dado que el área de un rectángulo se calcula como el **producto de sus lados**, necesitaremos precisamente eso, sus lados: esos serán los [**argumentos de entrada**]{.hl-yellow} y el [**valor a devolver**]{.hl-purple} será justo su **área** ($lado_1 * lado_2$).
+
+```{r}
+# Definición del nombre de función y argumentos de entrada
+calcular_area <- function(lado_1, lado_2) {
+  
+  area <- lado_1 * lado_2
+  
+}
+```
+
+---
+
+
+## Creando funciones {auto-animate="true"}
+
+Veamos un ejemplo muy simple de función para [**calcular el área de un rectángulo**]{.hl-yellow}.
+
+Dado que el área de un rectángulo se calcula como el **producto de sus lados**, necesitaremos precisamente eso, sus lados: esos serán los [**argumentos de entrada**]{.hl-yellow} y el [**valor a devolver**]{.hl-purple} será justo su **área** ($lado_1 * lado_2$).
+
+```{r}
+# Definición del nombre de función y argumentos de entrada
+calcular_area <- function(lado_1, lado_2) {
+  
+  area <- lado_1 * lado_2
+  return(area)
+  
+}
+```
+
+---
+
+## Uso de funciones
+
+También podemos hacer una definición directa de las variables **sin almacenar por el camino**.
+
+```{r}
+# Definición del nombre de función y argumentos de entrada
+calcular_area <- function(lado_1, lado_2) {
+  
+  return(lado_1 * lado_2)
+  
+}
+```
+
+. . .
+
+[**¿Cómo aplicar la función?**]{.hl-yellow}
+
+```{r}
+calcular_area(5, 3) # área de un rectángulo 5 x 3 
+calcular_area(1, 5) # área de un rectángulo 1 x 5
+```
+
+---
+
+## Uso de funciones
+
+::: callout-tip
+
+Aunque no sea necesario, es [**recomendable hacer explícita la llamada de los argumentos**]{.hl-green}, especificando en el código qué valor es para cada argumento para que no dependa de su orden, haciendo el código más legible
+:::
+
+
+```{r}
+calcular_area(lado_1 = 5, lado_2 = 3) # área de un rectángulo 5 x 3 
+calcular_area(lado_2 = 3, lado_1 = 5) # área de un rectángulo 5 x 3 
+```
+
+---
+
+## Argumentos por defecto
+
+Imagina ahora que nos damos cuenta que el 90% de las veces usamos dicha función para [**calcular por defecto el área de un cuadrado**]{.hl-yellow} (es decir, solo necesitamos un lado). Para ello, podemos definir [**argumentos por defecto**]{.hl-yellow} en la función: tomarán dicho valor salvo que le asignemos otro.
+
+¿Por qué no asignar `lado_2 = lado_1` **por defecto**, para ahorrar líneas de código y tiempo?
+
+. . .
+
+```{r}
+calcular_area <- function(lado_1, lado_2 = lado_1) {
+  
+  # Cuerpo de la función
+  area <- lado_1 * lado_2
+  
+  # Resultado que devolvemos
+  return(area)
+  
+}
+```
+
+---
+
+## Argumentos por defecto
+
+
+```{r}
+calcular_area <- function(lado_1, lado_2 = lado_1) {
+  
+  # Cuerpo de la función
+  area <- lado_1 * lado_2
+  
+  # Resultado que devolvemos
+  return(area)
+  
+}
+```
+
+
+Ahora [**por defecto**]{.hl-yellow} el segundo lado será igual al primero (si se lo añadimos usará ambos).
+
+
+```{r}
+calcular_area(lado_1 = 5) # cuadrado
+calcular_area(lado_1 = 5, lado_2 = 7) # rectángulo
+```
+
+---
+ 
+
+## Salida múltiple
+
+Compliquemos un poco la función y añadamos en la salida los valores de cada lado, etiquetados como `lado_1` y `lado_2`, [**empaquetando la salida en una vector**]{.hl-yellow}.
+
+```{r}
+#| code-line-numbers: "7-8"
+# Definición del nombre de función y argumentos de entrada
+calcular_area <- function(lado_1, lado_2 = lado_1) {
+  
+  # Cuerpo de la función
+  area <- lado_1 * lado_2
+  
+  # Resultado
+  return(c("area" = area, "lado_1" = lado_1, "lado_2" = lado_2))
+  
+}
+```
+
+---
+
+## Salida múltiple
+
+Podemos complicar un poco más la salida añadiendo una cuarta variable que nos diga, en función de los argumentos, [**si rectángulo o cuadrado**]{.hl-yellow}, teniendo que añadir en la salida una variable que de tipo caracter (o lógica).
+
+```{r}
+#| code-line-numbers: "7-9"
+# Definición del nombre de función y argumentos de entrada
+calcular_area <- function(lado_1, lado_2 = lado_1) {
+  
+  # Cuerpo de la función
+  area <- lado_1 * lado_2
+  
+  # Resultado
+  return(c("area" = area, "lado_1" = lado_1, "lado_2" = lado_2,
+           "tipo" = if_else(lado_1 == lado_2, "cuadrado", "rectángulo")))
+  
+}
+calcular_area(5, 3)
+```
+
+. . .
+
+[**Problema**]{.hl-red}: al intentar juntar números y texto, lo convierte todo a números. Podríamos guardarlo todo en un `tibble()` como hemos aprendido o en un objeto conocido en `R` como [**listas**]{.hl-yellow}
+
+---
+
+## Introducción a listas
+
+Veamos un pequeño resumen de los datos que ya conocemos:
+
+* [**vectores**]{.hl-yellow}: colección de elementos de igual tipo. Pueden ser números, caracteres o valores lógicos, entre otros.
+
+* [**matrices**]{.hl-yellow}: colección BIDIMENSIONAL de elementos de igual tipo e igual longitud.
+
+* [**data.frame / tibble**]{.hl-yellow}: colección BIDIMENSIONAL de elementos de igual longitud pero de cualquier tipo.
+
+. . .
+
+Las [**listas**]{.hl-yellow} serán [**colecciones de variables de diferente tipo y diferente longitud**]{.hl-purple}, con estructuras totalmente heterógeneas (incluso una lista puede tener dentro a su vez otra lista).
+
+---
+
+## Introducción a listas
+
+
+Vamos a crear [**nuestra primera lista**]{.hl-yellow} con `list()` con tres elementos: el nombre de nuestros padres/madres, nuestro lugar de nacimiento y edades de nuestros hermanos.
+
+```{r}
+var_1 <- c("Paloma", "Gregorio")
+var_2 <- "Madrid"
+var_3 <- c(25, 30, 26)
+
+lista <- list("progenitores" = var_1, "lugar_nac" = var_2, "edad_hermanos" = var_3)
+lista
+```
+
+
+
+---
+
+## Introducción a listas
+
+```{r}
+length(lista)
+```
+
+Si observas el objeto que hemos definido como lista, su [**longitud**]{.hl-yellow} del es de 3 ya que tenemos **guardados tres elementos**: un vector de caracteres (de longitud 2), un caracter (vector de longitud 1), y un vector de números (de longitud 3)
+
+. . .
+
+Tenemos guardados elementos de [**distinto tipo**]{.hl-yellow} (algo que ya podíamos hacer) pero, además, de **longitudes dispares**.
+
+```{r}
+dim(lista) # devolverá NULL al no tener dos dimensiones
+class(lista) # de tipo lista
+```
+
+---
+
+## Introducción a listas
+
+Si los juntásemos con un `tibble()`, al tener distinta longitud, obtendríamos un [**error**]{.hl-red}.
+
+```{r}
+#| error: true
+library(tibble)
+tibble("progenitores" = var_1, "lugar_nac" = va_2, "edad_hermanos" = var_3)
+```
+
+---
+
+
+## Introducción a listas
+
+* [**Acceder por índice**]{.hl-yellow}: con el operador `[[i]]` accedemos al **elemento i-ésimo** de la lista.
+
+```{r}
+lista[[1]]
+```
+
+. . .
+
+* [**Acceder por nombre**]{.hl-yellow}: con `$nombre_elemento` accedemos por su nombre.
+
+```{r}
+lista$progenitores
+```
+
+. . .
+
+En contraposición, el [**corchete simple**]{.hl-yellow} nos permite acceder a [**varios elementos**]{.hl-yellow} a la vez
+
+```{r}
+# Varios elementos
+lista[1:2]
+```
+
+---
+
+## Salida múltiple: listas
+
+```{r}
+#| code-line-numbers: "7-9"
+# Definición del nombre de función y argumentos de entrada
+calcular_area <- function(lado_1, lado_2 = lado_1) {
+  
+  # Cuerpo de la función
+  area <- lado_1 * lado_2
+  
+  # Resultado
+  return(list("area" = area, "lado_1" = lado_1, "lado_2" = lado_2,
+           "tipo" = if_else(lado_1 == lado_2, "cuadrado", "rectángulo")))
+  
+}
+calcular_area(5, 3)
+```
+
+---
+
+## Orden de los argumentos
+
+Antes nos daba igual el orden de los argumentos pero ahora el [**orden de los argumentos de entrada importa**]{.hl-yellow}, ya que en la salida incluimos `lado_1` y `lado_2`. 
+
+. . .
+
+::: callout-note
+## Recomendación
+
+Como se comentaba, altamente recomendable hacer la llamada a la función [**indicando explícitamente los argumentos**]{.hl-yellow} para mejorar **legibilidad e interpretabilidad**.
+
+```{r}
+# Equivalente a calcular_area(5, 3)
+calcular_area(lado_1 = 5, lado_2 = 3)
+```
+
+:::
+
+---
+
+## Funciones: generando conocimiento
+
+Parece una tontería lo que hemos hecho pero hemos cruzado una frontera importante: hemos pasado de [**consumir conocimiento**]{.hl-yellow} (código de otros paquetes, elaborado por otros/as), a [**generar conocimiento**]{.hl-purple}, creando nuestras propias funciones.
+
+. . .
+
+Las funciones van a ser claves en tu día a día ya que te permitirá automatizar código que vas a repetir una y otra vez: empaquetando ese código bajo un alias (nombre de la función) vas a [**poder usarlo una y otra vez sin necesidad de programarlo (por lo que hacer el doble de trabajo no implicará trabajar el doble)**]{.hl-yellow}
+
+---
+
+## Variables locales vs globales
+
+Un aspecto importante sobre el que reflexionar con las funciones: ¿qué sucede si [**nombramos a una variable dentro**]{.hl-yellow} de una función a la que se nos ha **olvidado asignar** un valor dentro de la misma?
+
+. . .
+
+Debemos ser cautos al usar funciones en `R`, ya que debido a la [**«regla lexicográfica»**]{.hl-yellow}, si una variable no se define dentro de la función, `R` [**buscará dicha variable en el entorno**]{.hl-purple} de variables.
+
+```{r}
+x <- 1
+funcion_ejemplo <- function() {
+    
+  print(x) # No devuelve nada, solo realiza la acción 
+}
+funcion_ejemplo()
+```
+
+---
+
+## Variables locales vs globales
+
+Si una variable  [**ya está definida fuera de la función (entorno global)**]{.hl-yellow}, y además es usada dentro de cambiando su valor, el valor [**solo cambia dentro**]{.hl-yellow} pero [**no en el entorno global**]{.hl-red}.
+
+```{r}
+x <- 1
+funcion_ejemplo <- function() {
+    
+  x <- 2
+  print(x) # lo que vale dentro
+}
+```
+
+```{r}
+# lo que vale dentro
+funcion_ejemplo() #<<
+# lo que vale fuera
+print(x) #<<
+```
+
+---
+
+## Variables locales vs globales
+
+
+Si queremos que además de cambiar localmente lo haga [**globalmente**]{.hl-yellow} deberemos usar la [**doble asignación**]{.hl-yellow} (`<<-`).
+
+```{r}
+x <- 1
+y <- 2
+funcion_ejemplo <- function() {
+  
+  # no cambia globalmente, solo localmente
+  x <- 3 
+  # cambia globalmente
+  y <<- 0 #<<
+  
+  print(x)
+  print(y)
+}
+
+funcion_ejemplo() # lo que vale dentro
+x # lo que vale fuera
+y # lo que vale fuera
+```
+
+---
+
+
+## 💻 Tu turno {#tu-turno-2-2}
+
+[**Intenta realizar los siguientes ejercicios sin mirar las soluciones**]{style="color:#444442;"}
+
+::: panel-tabset
+
+### [**Ej 1**]{.hl-yellow}
+
+📝 Modifica el código inferior para definir una función llamada `funcion_suma`, de forma que dados dos elementos, devuelve su suma.
+
+```{r}
+#| eval: false
+nombre <- function(x, y) {
+  suma <- # código a ejecutar
+  return()
+}
+# Aplicamos la función
+suma(3, 7)
+```
+
+```{r}
+#| code-fold: true
+#| eval: false
+funcion_suma <- function(x, y) {
+  suma <- x + y
+  return(suma)
+}
+funcion_suma(3, 7)
+```
+
+### [**Ej 2**]{.hl-yellow}
+
+📝 Modifica el código inferior para definir una función llamada `funcion_producto`, de forma que dados dos elementos, devuelve su producto, pero que por defecto calcule el cuadrado
+
+```{r}
+#| eval: false
+nombre <- function(x, y) {
+  producto <- # código de la multiplicación
+  return()
+}
+producto(3)
+producto(3, -7)
+```
+
+```{r}
+#| code-fold: true
+#| eval: false
+funcion_producto <- function(x, y = x) {
+  producto <- x * y
+  return(producto)
+}
+funcion_producto(3)
+funcion_producto(3, -7)
+```
+
+### [**Ej 3**]{.hl-yellow}
+
+📝 Define una función llamada `igualdad_nombres` que, dados dos nombres, nos diga si son iguales o no. Hazlo considerando importantes las mayúsculas, y sin que importen las mayúsculas. Usa el paquete `{stringr}`.
+
+```{r}
+#| code-fold: true
+#| eval: false
+# Distinguiendo mayúsculas
+igualdad_nombres <- function(persona_1, persona_2) {
+  return(persona_1 == persona_2)
+}
+igualdad_nombres("Javi", "javi")
+igualdad_nombres("Javi", "Lucía")
+
+# Sin importar mayúsculas
+igualdad_nombres <- function(persona_1, persona_2) {
+  return(str_to_upper(persona_1) == str_to_upper(persona_2))
+  # otra opción
+  # return(str_equal(persona_1, persona_2, ignore_case = TRUE))
+}
+igualdad_nombres("Javi", "javi")
+igualdad_nombres("Javi", "Lucía")
+```
+
+### [**Ej 4**]{.hl-yellow}
+
+📝 Crea una función llamada `calculo_IMC` que, dados dos argumentos (peso y estatura en metros) y un nombre, devuelva una lista con el IMC ($peso/(estatura_m^2)$) y el nombre.
+
+```{r}
+#| code-fold: true
+#| eval: false
+calculo_IMC <- function(nombre, peso, estatura) {
+  
+  return(list("nombre" = nombre, "IMC" = peso/(estatura^2)))
+}
+```
+
+:::
+
+
+## 🐣 Caso práctico II: simulación {#caso-practico-2-2}
+
+
+Intenta responder a las preguntas planteadas en el [**workbook**](https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-ii-simulaci%C3%B3n) donde tendrás que diseñar algunos estudios de simulación haciendo uso de **bucles, estructuras condicionales y funciones**
+
+---
+
+## Intro a la estadística en R {#stats}
+
+
+La estadística descriptiva es una rama de la estadística que se dedica a [**recolectar, organizar, presentar y analizar un conjunto de datos**]{.hl-yellow} para describir las características y comportamientos de dicho conjunto.
+
+&nbsp;
+
+Además de para conocer y entender los datos es la fase en la que [**detectaremos errores e incongruencias**]{.hl-yellow}, teniendo muchas veces que hacer una [**depuración de datos**]{.hl-yellow}
+
+---
+
+## Recolección
+
+La podemos hacer a través de **encuestas, experimentos, observaciones, registros**, etc. Lo más importante en esta etapa es que los datos sean representativos del fenómeno o población que se estudia. La rama de la estadística que se dedica a estudiar esta parte del análisis se conoce como [**muestreo**]{.hl-yellow}, y es fundamental para evitar sesgos en la muestra.
+
+
+![](https://sketchplanations.com/_next/image?url=https%3A%2F%2Fimages.prismic.io%2Fsketchplanations%2Ff2fdb7cb-f126-4897-ad78-4fd11c743172_SP%2B723%2B-%2BSampling%2Bbias.png%3Fauto%3Dcompress%2Cformat&w=828&q=75)
+
+---
+
+## Conceptos básicos
+
+En estadística es fundamental entender los conceptos de [**población, muestra y variable**]{.hl-yellow}, ya que son la base para cualquier análisis estadístico.
+
+. . .
+
+-   [**Población**]{.hl-yellow}
+
+La población es el **conjunto completo de elementos o individuos** sobre los cuales se desea obtener información. En la mayoría de casos el acceso a la **totalidad de la población es inviable** por motivos económicos, legales o éticos, así que en la mayoría de situaciones las conclusiones deberemos sacarlas haciendo uso de una **muestra**.
+
+. . .
+
+**Ejemplo**: la diferencia entre censo y encuesta es que el primero recopila datos de todos los individuos de una población, mientras que el segundo trata de estimarlos o inferirlos a partir de una muestra representativa de la misma.
+
+---
+
+## Conceptos básicos
+
+[**Muestra**]{.hl-yellow}: subconjunto de la población que se selecciona para su análisis con el fin de hacer inferencias o generalizaciones sobre la población completa. La muestra debe ser **representativa de la población**.
+
+-   **Muestreo aleatorio simple**: cada miembro de la población tiene la misma probabilidad de ser seleccionado.
+
+-   **Muestreo estratificado**: la población se divide en subgrupos (estratos) y se toma una muestra de cada uno.
+
+-   **Muestreo (no aleatorio) sistemático**: se selecciona cada n-ésimo miembro de la población.
+
+-   **Muestreo (no aleatorio) por cuotas**: se seleccionan aquellos individuos que cumplan ciertas condiciones.
+
+-   **Muestreo por conveniencia**: se elige a los miembros que son más fáciles de acceder, aunque este método puede introducir sesgos.
+
+---
+
+
+## Conceptos básicos
+
+[**Variable**]{.hl-yellow}: **cualquier característica o atributo** que puede tomar diferentes valores entre los individuos de la población o muestra. Las variables pueden ser de varios tipos según su naturaleza:
+
+-   [**Cualitativas (o categóricas)**]{.hl-purple}: describen cualidades o categorías. Ejemplos:
+
+    -   Nominales: no tienen un orden intrínseco (e.g., género, estado civil, religión, etc).
+    -   Ordinales: tienen un orden intrínseco (e.g., niveles de satisfacción, grado académico, sano-leve-grave, tramo etario, tramo de ingresos, etc).
+
+---
+
+## Conceptos básicos
+
+[**Variable**]{.hl-yellow}: **cualquier característica o atributo** que puede tomar diferentes valores entre los individuos de la población o muestra. Las variables pueden ser de varios tipos según su naturaleza:
+
+-   [**Cuantitativas**]{.hl-purple}: describen cantidades y pueden ser medidas numéricamente. Ejemplos:
+
+    -   Discretas finitas: toman valores finitos (e.g., número de hijos, número de visitas al médico, escala de dolor).
+    -   Discretas infinitas: toman valores infinitos (o que se podrían considerar como tal) pero podemos enumerarlas y sabemos siempre el siguiente elemento (e.g., número de pelos de nuestra cabellera, número de personas que pueden entrar en una tienda en un periodo dado).
+    -   Continuas: pueden tomar cualquier valor dentro de un rango (e.g., altura, peso, tiempo de espera).
+
+---
+
+## Conceptos básicos
+
+[**Modalidades**]{.hl-yellow}: uno de los **posibles valores** que toma una **variable dentro de una muestra**. El **conjunto de modalidades posibles** que podría haber tomado (en tu población) se suele conocer también como soporte. Algunos ejemplos en función del tipo de variables son:
+
+-  **Cualitativa nominal (color de ojos)**: negro, azul y marrón (3 modalidades en esa muestra de un espectro de colores más amplio que podríamos tener como soporte).
+
+- **Cualitativa ordinal (estado del paciente)**: sano, leve y grave (3 modalidades en esa muestra de un conjunto de opciones - por ejemplo, sano, leve, grave, UCI, fallecido - que podríamos tener).
+
+
+---
+
+## Características numéricas
+
+Nos referimos a las medidas con las que se pretende resumir y condensar la información contenida en un conjunto de datos. Las mayoría de características numéricas las mediremos en variables cuantitativas.
+
+-   [**Medidas de centralización y posición**]{.hl-yellow}
+
+Son los valores que resumen el conjunto de los datos de forma que reflejan el **centro de la distribución** de la tabla de frecuencias
+
+---
+
+## Media
+
+Es el [**valor medio o centro de gravedad**]{.hl-yellow} (el valor más cercano a todos los puntos "a la vez"). Es la suma de todos los valores dividida por el número total de valores.
+
+$$\bar x= \frac{\sum^n_{i=1} x_i}{n}$$
+
+
+::: callout-warning
+## Cuidado...
+
+La media es una medida útil y ampliamente aplicada de la tendencia central, pero debe ser utilizada **con precaución** en conjuntos de datos que contienen valores atípicos o están distribuidos de manera asimétrica.
+:::
+
+---
+
+## Mediana
+
+Es el [**valor del medio SIEMPRE Y CUANDO podamos ordenar**]{.hl-yellow} los datos. Divide la distribución de frecuencias en dos partes.
+
+Para calcularla debemos realizar los siguientes pasos:
+
+1.  Ordenar los datos en orden creciente
+
+2.  Según el número de observaciones (n):
+
+    -   Si n es impar: la mediana es el valor que ocupa la posición central
+    -   Si n es par: la mediana es el promedio de los dos valores central
+
+
+::: callout-tip
+## Consejo
+
+La mediana es especialmente útil en **distribuciones asimétricas** o cuando se quiere una medida de tendencia central que no sea afectada por valores extremadamente altos o bajos.
+:::
+
+---
+
+## Moda
+
+Es el valor que [**presenta la máxima frecuencia**]{.hl-yellow} y se puede calcular para **todas las variables (también cualitativas)**.
+
+1.  Unimodal:
+
+    -   Datos: "negro", "negro", "amarillo", "verde", "amarillo", "negro". Moda: "negro".
+
+2.  Bimodal:
+
+    -   Datos: 1, 2, 3, 3, 4, 4, 5. Modas: 3 y 4 (ambos aparecen dos veces)
+
+3.  Multimodal:
+
+    -   Datos: 2, 2, 3, 3, 4, 4, 5, 5. Modas: 2, 3, 4, y 5 (todos aparecen dos veces)
+
+4.  Sin moda (amodal):
+
+    -   Datos: 1, 2, 3, 4, 5
+    -   Moda: no hay moda (todos los valores aparecen solo una vez)
+
+---
+
+## Centralidad en R
+
+¿Cómo calcular estas medidas de centralidad en `R`? Vamos a practicar con `starwars` y su variable `mass`
+
+
+```{r}
+#| code-fold: true
+library(ggplot2)
+ggplot(starwars) +
+  geom_histogram(aes(x = mass), bins = 30) +
+  theme_minimal()
+```
+
+---
+
+## Centralidad en R
+
+
+```{r}
+starwars |> 
+  drop_na(mass) |> 
+  summarise("media" = mean(mass), "mediana" = median(mass))
+```
+
+. . .
+
+¿Por qué hay [**tanta diferencia entre media y mediana**]{.hl-yellow}?
+
+. . .
+
+Si te fijas en el histograma anterior, tenemos un dato extremadamente atípico: la [**distribución es extremadamente asimétrica**]{.hl-red}
+
+---
+
+## Centralidad en R
+
+La moda de variables continuas es mucho más difícil de cuantificar numéricamente y no suele ser útil a posteriori pero se puede estimar fácilmente como el/los **máximos de la función de densidad**.
+
+```{r}
+ggplot(starwars) +
+  geom_density(aes(x = mass)) +
+  theme_minimal()
+```
+
+---
+
+## Centralidad en R
+
+En [**variables cualitativas**]{.hl-yellow} la [**media no se puede calcular**]{.hl-red} pero sí la [**mediana (siempre que sean ordinales, es decir, factores ordenados)**]{.hl-green}, así como la moda.
+
+```{r}
+starwars |> 
+  count(eye_color, sort = TRUE)
+```
+
+
+---
+
+## Medidas de posición: cuantiles
+
+Los [**cuantiles son valores que dividen un conjunto de datos en partes iguales**]{.hl-yellow} según su distribución (de nuevo asumiento que tenemos los datos ordenados de menor a mayor). Los cuantiles son útiles para comprender la distribución y la dispersión de los datos. Existen diferentes tipos de cuantiles, cada uno con un número específico de divisiones:
+
+1.  **Cuartiles**: dividen el conjunto de datos en cuatro partes iguales.
+
+2.  **Deciles**: dividen el conjunto de datos en diez partes iguales.
+
+3.  **Percentiles**: dividen el conjunto de datos en cien partes iguales.
+
+
+
+---
+
+## Cuantiles
+
+1.  [**Cuartiles**]{.hl-yellow}: dividen el conjunto de datos en cuatro partes iguales.
+
+    -   Primer cuartil (Q1): divide el 25% inferior de los datos del 75% superior.
+    -   Mediana (Q2): divide el 50% inferior del 50% superior. Es el segundo cuartil.
+    -   Tercer cuartil (Q3): divide el 75% inferior del 25% superior.
+
+
+```{r}
+starwars |> 
+  drop_na(mass) |> 
+  reframe("cuartiles" = quantile(mass))
+```
+
+---
+
+## Cuantiles
+
+2.  [**Deciles**]{.hl-yellow}: dividen el conjunto de datos en diez partes iguales.
+
+    -   Primer decil (D1): divide el 10% inferior del 90% superior.
+    -   Segundo decil (D2): divide el 20% inferior del 80% superior.
+    -   Y así sucesivamente hasta el noveno decil (D9), que divide el 90% inferior del 10% superior.
+
+```{r}
+starwars |> 
+  drop_na(mass) |> 
+  reframe("cuartiles" =
+            quantile(mass, probs = seq(0, 1, by = 0.1)))
+```
+
+---
+
+## Cuantiles
+
+3.  [**Percentiles**]{.hl-yellow}: dividen el conjunto de datos en cien partes iguales.
+
+    -   Percentil 1 (P1): divide el 1% inferior del 99% superior.
+    -   Percentil 2 (P2): divide el 2% inferior del 98% superior.
+    -   Y así sucesivamente hasta el percentil 99 (P99), que divide el 99% inferior del 1% superior.
+
+```{r}
+starwars |> 
+  drop_na(mass) |> 
+  reframe("cuartiles" =
+            quantile(mass, probs = seq(0, 1, by = 0.01)))
+```
+
+---
+
+## Percentiles
+
+En `{dplyr}` disponemos de una función tremendamente útil para [**calcular percentiles**]{.hl-yellow} de una variable: con `percent_rank(variable)` nos construye el percentil (entre 0 y 1 y con un decimal). Por ejemplo, si devuelve $0.414$, corresponde al percentil $44.1\%$
+
+```{r}
+starwars |> 
+  drop_na(mass) |> 
+  mutate("rank" = percent_rank(mass), .before = everything())
+```
+
+
+
+---
+
+## Medidas de dispersión
+
+Medidas (solo disponibles para cuantitativas) que nos indican [**cómo de lejos o cerca están las observaciones del valor central**]{.hl-yellow} que hemos calculado
+
+* [**Recorrido o rango**]{.hl-yellow}: diferencia entre el valor máximo y el valor mínimo en un conjunto de datos.
+
+
+```{r}
+starwars |> 
+  drop_na(mass) |> 
+  summarise("rango" = max(mass) - min(mass))
+```
+
+---
+
+
+## Medidas de dispersión
+
+Medidas (solo disponibles para cuantitativas) que nos indican [**cómo de lejos o cerca están las observaciones del valor central**]{.hl-yellow} que hemos calculado
+
+* [**Rango intercuartílico (IQR)**]{.hl-yellow}: mide la **amplitud del 50% central de un conjunto de datos ordenados**. Se calcula como la diferencia entre el tercer cuartil (Q3) y el primer cuartil (Q1)
+
+$$IQR = Q_3 - Q_1$$
+
+```{r}
+starwars |> 
+  drop_na(mass) |> 
+  summarise("IQR" =
+              diff(as.numeric(quantile(mass, prob = c(0.25, 0.75)))))
+```
+
+---
+
+## Medidas de dispersión
+
+Medidas (solo disponibles para cuantitativas) que nos indican [**cómo de lejos o cerca están las observaciones del valor central**]{.hl-yellow} que hemos calculado
+
+* [**Varianza**]{.hl-yellow}: cuantifica [**cuánto varían los datos respecto a la media**]{.hl-yellow} del conjunto calculando las desviaciones al cuadrado respecto a la misma (de hecho la media es la medida de centralidad que nos da una desviación al cuadrado más pequeña en promedio)
+
+$$s^2 = \frac{\sum_{i=1}^n (x_i - \bar x)^2}{n-1}$$
+
+```{r}
+starwars |> 
+  drop_na(mass) |> 
+  summarise("var" = var(mass))
+```
+
+
+---
+
+## Medidas de dispersión
+
+Medidas (solo disponibles para cuantitativas) que nos indican [**cómo de lejos o cerca están las observaciones del valor central**]{.hl-yellow} que hemos calculado
+
+* [**Desviación típica o estándar**]{.hl-yellow}: raíz cuadrada de la varianza. La [**desviación estándar**]{.hl-yellow} se interpreta en las mismas unidades que los datos originales. 
+
+$$s = \sqrt {s^2} = \sqrt {\frac{\sum_{i=1}^n (x_i - \bar x)^2}{n-1}}$$
+
+```{r}
+starwars |> 
+  drop_na(mass) |> 
+  summarise("var" = var(mass), "sd" = sd(mass))
+```
+
+
+
+---
+
+## Medidas de dispersión
+
+* [**Coef de variación**]{.hl-yellow}: uno de los problemas al **comparar dispersiones** de dos variables diferentes es que tanto la varianza como la desviación típica [**dependen de la escala de los datos**]{.hl-red}. Para poder comparar dispersiones de variables de diferentes rangos (o incluso unidades) existe el conocido como coeficiente de variación (CV), siempre adimensional y positivo:
+
+$$CV = \frac s {|\bar x|}$$
+
+
+```{r}
+starwars |> 
+  drop_na(mass, height, birth_year) |> 
+  summarise("var_mass" = var(mass), "sd_mass" = sd(mass),
+            "var_height" = var(height), "sd_height" = sd(height),
+            "var_age" = var(birth_year), "sd_age" = sd(birth_year),
+            "CV_mass" = sd_mass / abs(mean(mass)),
+            "CV_height" = sd_height / abs(mean(height)),
+            "CV_age" = sd_age / abs(mean(birth_year)))
+```
+
+
+---
+
+## Tablas de frecuencias
+
+Las variables cualitativas o cuantis discretas las podemos  [**resumir en tablas de frecuencias**]{.hl-yellow} donde se ordenan y estructuran los valores de una variable de forma resumida
+
+-   **Frecuencia absoluta de x**: nº de veces que se repite cada modalidad de x.
+
+```{r}
+starwars |> 
+  drop_na(sex) |> 
+  count(sex, sort = TRUE)
+```
+
+. . .
+
+Si te fijas la [**frecuencia absoluta viene siempre como $n$**]{.hl-yellow} al usar `count()` pero podemos **renombrarla**
+
+```{r}
+starwars |> 
+  drop_na(sex) |> 
+  count(sex, sort = TRUE) |> 
+  rename(frec_abs = n)
+```
+
+
+---
+
+## Tablas de frecuencias
+
+
+A esa tabla de frecuencias podemos añadirle la [**frecuencia relativa**]{.hl-yellow} calculada como cada frecuencia absoluta dividida por el total (la suma de todos)
+
+
+```{r}
+starwars |> 
+  count(sex, sort = TRUE) |> 
+  mutate("frec_rel" = n/sum(n))
+```
+
+---
+
+
+## Tablas de frecuencias
+
+Este proceso podemos obtenerlo de forma [**más sencilla con `R base`**]{.hl-yellow} (recuerda: funciones aplican a vectores aislados, que debes sacar de la tabla con `$` y sin tuberías) con la función `table()`
+
+```{r}
+tabla_freq <- table(starwars$sex)
+tabla_freq
+```
+
+---
+
+## Tablas de frecuencias
+
+También podemos obtener en `R base` las [**frecuencias realtivas**]{.hl-yellow} aplicando `prop.table()` a la tabla de frecuencias anterior.
+
+```{r}
+prop.table(tabla_freq)
+```
+
+. . .
+
+[**Moraleja**]{.hl-green}: no te cases de manera acérrima con una forma de hacer las cosas, ambos mundos van a ser necesarios.
+
+---
+
+## Tablas de frecuencias
+
+Vamos a repetir el ejercicio con el dataset `accidentes_tb` sobre los accidentes de tráfico en Madrid fijándonos en la variable `estado_meteorológico`
+
+```{r}
+accidentes_tb |>
+  count(estado_meteorológico, sort = TRUE) |> 
+  mutate("frec_abs" = n/sum(n))
+```
+
+. . .
+
+¿Qué [**diferencias hay respecto a `sex`**]{.hl-yellow}?
+
+---
+
+## Tablas de frecuencias
+
+Si te fijas `estado_meteorológico` no solo es cualitativa sino [**cualitativa ORDINAL**}{.hl-yellow}: admite una jerarquía (por ejemplo: NA < Despejado < Nublado < Lluvia débil < Lluvia intensa < Nevando)
+
+```{r}
+accidentes_tb |>
+  count(estado_meteorológico, sort = TRUE)
+```
+
+. . .
+
+La forma que tenemos en `R` de indicarle que una variable de tipo texto (universo informático) es una cualitativa y de qué tipo (universo estadística) es haciendo uso de lo que se conoce como [**factores**]{.hl-yellow}
+
+
+---
+
+
+## Paréntesis: factores
+
+En `R` las [**variables cualitativas pueden ser tratadas como tales**]{.hl-yellow} convirtiendo una cadena de texto a lo que se conoce como [**factor**]{.hl-yellow}. Por ejemplo, supongamos que tenemos un vector de notas
+
+```{r}
+notas <- c("suspenso", "notable", "suspenso", "aprobado", "notable", "suspenso")
+notas
+```
+
+. . .
+
+Para [**convertir a factor nos basta con `factor()`**]{.hl-yellow}. ¿Qué notas diferente?
+
+```{r}
+notas_fct <- factor(notas)
+notas_fct
+```
+
+---
+
+
+## Paréntesis: factores
+
+```{r}
+notas_fct
+```
+
+Si te fijas ahora [**tenemos disponibles unos niveles (levels)**]{.hl-yellow}: son las posibles modalidades de nuestra variable cualitativa, el soporte, de manera que aunque borremos uno de ellos (vamos a borrar todos los aprobados), la opción sigue disponible si entrase un dato nuevo (algo así como un menú de opciones permitidas)
+
+```{r}
+notas_fct[notas_fct != "aprobado"]
+```
+
+---
+
+## Paréntesis: factores
+
+En el caso de las [**cualitativas ordinales podemos incluso establecer una jerarquía**]{.hl-yellow}, indicando explícitamente los niveles y `ordered = TRUE`
+
+```{r}
+notas_fct_ord <- factor(notas, levels = c("aprobado", "notable", "suspenso"),
+                        ordered = TRUE)
+notas_fct_ord
+```
+
+Fíjate que ahora tenemos una [**jerarquía**]{.hl-yellow} y aunque sea cualitativa podemos buscar [**elementos \<= o \>= que otros**]{.hl-yellow}
+
+```{r}
+notas_fct_ord[notas_fct_ord <= "notable"]
+```
+
+---
+
+## Paréntesis: factores
+
+La idea de los factores
+
+
+```{r}
+library(forcats)
+notas_sin_notable <- notas_fct_ord[notas_fct_ord != "notable"]
+notas_sin_notable
+
+fct_count(notas_sin_notable)
+```
+
+---
+
+## Tablas de frecuencias
+
+Volviendo a nuestro ejemplo de accidentes, ¿cómo convertir `estado_meteorológico` en una variable cualitativa ordinal? Debemos usar el concepto de factor pero, para no aislar la variable de su tabla (`tidyverse` mood), lo introduciremos en un `mutate()`, agrupando primero los distintos tipos de ausente
+
+. . .
+
+```{r}
+accidentes_tb <-
+  accidentes_tb |> 
+  mutate(estado_meteorológico = 
+           if_else(estado_meteorológico %in% c("NULL", "Se desconoce"),
+                   "Ausente", estado_meteorológico),
+         estado_meteorológico =
+           factor(estado_meteorológico,
+                  labels = c("Ausente", "Despejado", "Nublado", "Lluvia débil",
+                             "Lluvia intensa", "Nevando", "Granizando")))
+accidentes_tb |> 
+  count(estado_meteorológico)
+```
+
+
+---
+
+## Tablas de frecuencias
+
+Fíjate que ahora al hacer `count()` ya no aparece la tabla de frecuencias ordenada por orden alfabético sino [**ordenada por la jerarquía de orden**]{.hl-yellow} de la que hemos dotado a nuestra variable ordinal
+
+```{r}
+tabla_freq <-
+  accidentes_tb |> 
+  count(estado_meteorológico) |> 
+  mutate("frec_rel" = n/sum(n))
+tabla_freq
+```
+
+---
+
+## Tablas de frecuencias
+
+En los casos en los que la variable admita un orden (cuantitativas o cualitativas ordinales) podremos obtener **dos elementos más de la tabla de frecuencias**, las [**frecuencias acumuladas**]{.hl-yellow}, que podemos sacar con `cumsum()`
+
+-   **Frecuencia absoluta acumulada de x**: nº de observaciones menores o iguales que cada modalidad de x (solo apto para cuantitativas o cualitativas ordinales ya que necesitamos una estructura de orden).
+
+-   **Frecuencia relativa acumulada de x**: proporción de valores menores o iguales que cada modalidad de x (solo apto para cuantitativas o cualitativas ordinales ya que necesitamos una estructura de orden).
+
+
+```{r}
+tabla_freq <- 
+  tabla_freq |>
+  mutate("frec_abs_acum" = cumsum(n),
+         "frec_rel_acum" = cumsum(frec_rel))
+tabla_freq
+
+# o bien
+cumsum(table(accidentes_tb$estado_meteorológico))
+cumsum(prop.table(table(accidentes_tb$estado_meteorológico)))
+```
+
+---
+
+## 💻 Tu turno {#tu-turno-2-3}
+
+[**Intenta realizar los siguientes ejercicios sin mirar las soluciones**]{style="color:#444442;"}
+
+::: panel-tabset
+### [**Ejercicio 1**]{.hl-yellow}
+
+📝 Para repasar lo aprendido vamos a poner todo en práctica con el dataset `SatisfaccionPacientes.csv`. [**¿Cómo importarlo?**]{.hl-yellow}.
+
+```{r}
+#| code-fold: true
+library(readr) # dentro de tidyverse
+# en mi caso tengo el .csv en una carpeta datos dentro del proyecto
+datos <-
+  read_csv(file = "./datos/SatisfaccionPacientes.csv") |> 
+  # la función clean_names del paquete janitor 
+  # nos normaliza nombres de variables
+  janitor::clean_names()
+```
+
+### [**Ejercicio 2**]{.hl-yellow}
+
+📝 Aplica el código que sea necesario para responder a estas preguntas. ¿Cuál es el tamaño muestral? ¿Cuántas variables tenemos? ¿Cuántas modalidades tenemos en la variable `estado_civil` (y cuantas observaciones en cada una)?
+
+```{r}
+#| code-fold: true
+#| eval: false
+# Tamaño muestral / número de observaciones
+n <- nrow(datos)
+
+# Número de variables
+p <- ncol(datos)
+
+# ¿Qué modalidades tenemos?
+datos |>  count(estado_civil)
+```
+
+
+### [**Ejercicio 3**]{.hl-yellow}
+
+📝 Determina el tipo de variable (cuantitativa vs. cualitativa).
+
+```{r}
+#| code-fold: true
+#| eval: false
+# Variables cuantitativas: tiempo, grado satisfacción, número de visitas
+# Variables cualitativas: género, estado civil, estado salud
+glimpse(datos)
+```
+
+### [**Ejercicio 4**]{.hl-yellow}
+
+📝  Obten tablas de frecuencias (absoluta y relativa) en el caso de las cualitativas NOMINALES. Con ella intenta responder a las preguntas: a) ¿cuántas mujeres hay? b) ¿qué % de individuos están casados?
+
+```{r}
+#| code-fold: true
+#| eval: false
+# no podemos calcular acumulados ya que genero es nominal
+datos |>  count(genero) |> 
+  rename(frecuencia_abs = n) |> 
+  mutate(frecuencia_rel = frecuencia_abs/sum(frecuencia_abs))
+# Hay 53 mujeres
+
+datos |> count(estado_civil) |> 
+  rename(frecuencia_abs = n) |> 
+  mutate(frecuencia_rel = frecuencia_abs/sum(frecuencia_abs))
+# Hay 26% personas casadas
+```
+
+
+### [**Ejercicio 5**]{.hl-yellow}
+
+📝 Convierte de manera adecuada la variable `genero` y `estado_civil` a cualitativa nominal
+
+```{r}
+#| code-fold: true
+datos <-
+  datos |>
+  mutate(estado_civil = factor(estado_civil),
+         genero = factor(genero))
+```
+
+### [**Ejercicio 6**]{.hl-yellow}
+
+📝 Calcula la media, mediana, rango intercuartílico y desviación típica de edad y tiempo de espera.
+
+```{r}
+#| code-fold: true
+resumen <-
+  datos |>
+  summarise(media_edad = mean(edad), sd_edad = sd(edad), mediana_edad = median(edad),
+           IQR_edad = quantile(edad, probs = 0.75) - quantile(edad, probs = 0.25),
+           # tiempo espera
+           media_tiempo_espera = mean(tiempo_espera), sd_tiempo_espera = sd(tiempo_espera),
+           mediana_tiempo_espera = median(tiempo_espera),
+           IQR_tiempo_espera = quantile(tiempo_espera, probs = 0.75) - quantile(tiempo_espera, probs = 0.25))
+```
+
+### [**Ejercicio 7**]{.hl-yellow}
+
+📝 Repite el anterior ejercicio pero obteniendo las métricas desagregadas por sexo.
+
+```{r}
+#| code-fold: true
+resumen <-
+  datos |>
+  summarise(media_edad = mean(edad), sd_edad = sd(edad), mediana_edad = median(edad),
+           IQR_edad = quantile(edad, probs = 0.75) - quantile(edad, probs = 0.25),
+           # tiempo espera
+           media_tiempo_espera = mean(tiempo_espera), sd_tiempo_espera = sd(tiempo_espera),
+           mediana_tiempo_espera = median(tiempo_espera),
+           IQR_tiempo_espera = quantile(tiempo_espera, probs = 0.75) - quantile(tiempo_espera, probs = 0.25),
+          .by = genero)
+```
+
+
+:::
+
+---
+
+
+## 🐣 Caso práctico III: brexit {#caso-practico-2-3}
+
+![](https://media.tenor.com/dn2Mqp-ZPL4AAAAM/boris-boris-johnson.gif)
+
+Vamos a analizar un caso real basado en los artículos [«The Brexit Vote: A Divided Nation, a Divided Continent» (S. B. Hobolt, 2016)](https://www.tandfonline.com/doi/full/10.1080/13501763.2016.1225785) y  [«Who Voted for Brexit? A Comprehensive District-Level Analysis» (S. O. Becker et al., 2017)](https://academic.oup.com/economicpolicy/article/32/92/601/4459491). 
+
+Los datos se extraerán del repositorio de Github de [Elena Llaudet](https://raw.githubusercontent.com/ellaudet/DSS/refs/heads/master/BES.csv).
+
+&nbsp;
+
+Intenta responder a las preguntas planteadas en el [**workbook**](https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-iii-brexit)
+
+---
