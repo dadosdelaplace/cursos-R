@@ -4137,7 +4137,12 @@ calculo_IMC <- function(nombre, peso, estatura) {
 
 Intenta responder a las preguntas planteadas en el [**workbook**](https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-ii-simulaci%C3%B3n) donde tendrás que diseñar algunos estudios de simulación haciendo uso de **bucles, estructuras condicionales y funciones**
 
----
+# Clase 3: [intro a la estadística en R]{.flow} {#clase-3}
+
+[**...**]{style="color:#444442;"}
+
+* [Inicio al análisis estadístico](#stats)
+
 
 ## Intro a la estadística en R {#stats}
 
@@ -4749,7 +4754,7 @@ cumsum(prop.table(table(accidentes_tb$estado_meteorológico)))
 
 ---
 
-## 💻 Tu turno {#tu-turno-2-3}
+## 💻 Tu turno {#tu-turno-3-1}
 
 [**Intenta realizar los siguientes ejercicios sin mirar las soluciones**]{style="color:#444442;"}
 
@@ -4870,7 +4875,7 @@ resumen <-
 ---
 
 
-## 🐣 Caso práctico III: brexit {#caso-practico-2-3}
+## 🐣 Caso práctico I: brexit {#caso-practico-3-1}
 
 ![](https://media.tenor.com/dn2Mqp-ZPL4AAAAM/boris-boris-johnson.gif)
 
@@ -4880,6 +4885,1167 @@ Los datos se extraerán del repositorio de Github de [Elena Llaudet](https://raw
 
 &nbsp;
 
-Intenta responder a las preguntas planteadas en el [**workbook**](https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-iii-brexit)
+Intenta responder a las preguntas planteadas en el [**workbook**](https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-i-brexit)
 
 ---
+
+
+## Estadística bivariante
+
+Todo lo que hemos hecho con una variable podemos hacerlo también de manera [**bivariante**]{.hl-yellow} considerando dos variables.
+
+. . .
+
+Uno de los principales objetivos de la estadística bivariante es [**determinar si existe relación o dependencia entre dos variables**]{.hl-yellow}, es decir, cuando un cambio en el valor de una de ellas se asocia a un cambio en el de la otra (una [**dependencia estadística no implica un efecto causal**]{.hl-red}).
+
+. . .
+
+La situación contraria, es decir, la ausencia de relación, se denomina [**independencia**]{.hl-yellow}.
+
+
+---
+
+## Tipos de análisis posibles
+
+Una primera aproximación al estudio de dos variables será [**clasificar el tipo de análisis**]{.hl-yellow}
+
+- [**Cuali vs cuali**]{.hl-yellow}:
+  - **Resumen**: tablas de contigencia (frecuencia cruzada).
+  - **Inferencia**: prueba $\chi^2$ de independencia o test de Fisher.
+  - **Gráficos**: barras apiladas, gofres, gráficos de «flujo».
+
+---
+
+## Tipos de análisis posibles
+
+Una primera aproximación al estudio de dos variables será [**clasificar el tipo de análisis**]{.hl-yellow}
+
+
+- [**Cuani vs cuanti**]{.hl-yellow}:
+  - **Resumen**: covarianza y correlación.
+  - **Inferencia**: test de correlación (relación lineal) y test de Kolmogorov-Smirnov (¿ambas distribuciones son iguales?). Test de igualdad de medias o igualdad de varianzas
+  - **Gráficos**: diagrama de dispersión, correlogramas, heatmaps.
+
+---
+
+## Tipos de análisis posibles
+
+Una primera aproximación al estudio de dos variables será [**clasificar el tipo de análisis**]{.hl-yellow}
+
+
+- [**Cuanti vs cuali**]{.hl-yellow}:
+  - **Resumen**: medidas de centralización/dispersión/posición de la cuanti desagregado por los grupos de la cuali.
+  - **Inferencia**: ANOVA (una vía, dos vías, ...). Test de igualdad de medias o igualdad de varianzas (desagregada por grupos)
+  - **Gráficos**: boxplots, gráficos de violín (desagregados por grupos)
+
+
+---
+
+## Repaso: inferencia
+
+¿Pero que era eso de la [**inferencia estadística**]{.hl-yellow}? Es un conjunto de métodos y técnicas que permite [**inferir conclusiones sobre una población a partir de una muestra**]{.hl-yellow} de datos.
+
+. . .
+
+Su propósito es utilizar la información muestral para estimar características de la población, probar hipótesis y realizar predicciones, basado en el cálculo de [**estadísticos**]{.hl-yellow}
+
+-   [**Parámetro**]{.hl-yellow}: medida que describe una característica de la **población** (ejemplo: la media poblacional $\mu$ de la estatura de las mujeres en España).
+
+-   [**Estadístico**]{.hl-yellow}: medida que describe una característica de la **muestra** (ejemplo: la media muestral $\overline{x}$ de un conjunto de 100 mujeres).
+
+---
+
+## Repaso: inferencia
+
+Haciendo uso de **estadísticos que aproximen una correcta estimación de los parámetros**, los [**contraste de hipótesis**]{.hl-yellow} son procedimientos estadísticos para [**tomar decisiones sobre la validez de una afirmación acerca de una población**]{.hl-yellow} en función de los datos muestrales.
+
+. . .
+
+La idea es muy parecido a un **juicio**: con las pruebas (muestra) el jurado (estadístico) deben decidir sobre tu culpabilidad real (población), pudiendo ser declarado **culpable** o **no culpable**.
+
+. . .
+
+Este proceso implica formula
+
+-   [**Hipótesis nula** $H_0$]{.hl-yellow}: es una afirmación generalmente representa una **posición de no efecto o no diferencia** (ejemplo: entras siendo no culpable a un juicio)
+
+-   [**Hipótesis alternativa** $H_0$]{.hl-yellow}: es una afirmación que [**se acepta si se rechaza la hipótesis nula**]{.hl-yellow}. Representa un efecto o diferencia (ejemplo: culpable)
+
+---
+
+## Repaso: inferencia
+
+-   [**Hipótesis nula** $H_0$]{.hl-yellow}: es una afirmación generalmente representa una **posición de no efecto o no diferencia** (ejemplo: entras siendo no culpable a un juicio)
+
+-   [**Hipótesis alternativa** $H_1$]{.hl-yellow}: es una afirmación que [**se acepta si se rechaza la hipótesis nula**]{.hl-yellow}. Representa un efecto o diferencia (ejemplo: culpable)
+
+La idea es similar a la del juicio: solo vamos a [**rechazar $H_0$ (es decir, aceptar $H_1$) si hay MUCHAS EVIDENCIAS en la muestra**]{.hl-yellow} (solo se condena culpable a una persona si hay muchas evidencias que demuestran su culpabilidad, pero el acusado no tiene que demostrar su inocencia).
+
+. . .
+
+Llamaremos [**nivel de significancia** $\alpha$]{.hl-yellow} a la probabilidad de [**rechazar la hipótesis nula cuando es verdadera**]{.hl-red} (condenar a un inocente, conocido como **error tipo I**. Normalmente $\alpha = 0.05$ aunque se pueden usar otros valores como 0.01 o 0.10 (a decidir ANTES de realizar el contraste.)
+
+
+
+---
+
+## p valor
+
+El conocido como [**p-valor**]{.hl-yellow} es uno de los conceptos más importantes en estadística pero también peor usados. Puedes ver toda una revisión de qué significa y qué no en <https://pmc.ncbi.nlm.nih.gov/articles/PMC4877414/>
+
+. . .
+
+Podemos definir el [**p-valor**]{.hl-yellow} como un valor continuo que nos mide la [**compatibilidad de los datos observados con el modelo e hipótesis asumidas**]{.hl-yellow}: 1 indica compatibilidad perfecta y 0 incompatibilidad completa.
+
+* [**No repesenta la probabilidad de que la hipótesis nula sea cierta**]{.hl-red}: el propio p-valor se calcula ASUMIENDO que lo es.
+
+* [**No representa la probabilidad de que, por azar, se produzca nada**]{.hl-red}
+
+---
+
+## Asociación cuali vs cuali
+
+Una vez visto conceptos básicos de inferencia vamos a empezar por un [**análisis bivariante de dos variables cualitativas**]{.hl-yellow}
+
+. . .
+
+El primer paso siempre será intentar resumir la información mediante el uso de [**tablas de contigencia**]{.hl-yellow}, en este caso bidimensionales.
+
+. . .
+
+¿Cómo lo harías con **tidyverse**? ¿Y con **R base**?
+
+---
+
+## Tablas de contigencia
+
+Vamos a tomar la base de datos `SatisfaccionPacientes.csv` que captura datos de una encuesta de satisfacción de pacientes en un hospital
+
+```{r}
+library(readr)
+datos <-
+  read_csv(file = "./datos/SatisfaccionPacientes.csv") |> 
+  janitor::clean_names()
+datos
+```
+
+---
+
+## Tablas de contigencia
+
+Para calcular una [**tabla bidimensional de frecuencias**]{.hl-yellow} en tidyverse basta con **indicar dos variables en `count()`**
+
+```{r}
+datos |>
+  count(genero, estado_civil)
+```
+
+---
+
+## Tablas de contigencia
+
+Lo habitual es mostrar esta tabla como una [**tabla con m filas y n columnas**]{.hl-yellow}, siendo $m$ el número de modalidades distintas de la primera variable (en este caso $m=2$, femenino y masculino) y $n$ el número de modalidades distintas de la segunda variable (en este caso $n = 4$). 
+
+¿Cómo hacer que la variable `estado_civil` pivote para pasar de estar en vertical a estar «en horizontal»? (echa un repaso a la parte de tidy data)
+
+. . .
+
+```{r}
+datos |>
+  count(genero, estado_civil) |> 
+  pivot_wider(names_from = estado_civil, values_from = n)
+```
+
+---
+
+## Tablas de contigencia
+
+
+Esto se puede hacer **mucho más sencillo de nuevo en `R base`** con `table()`
+
+
+```{r}
+table(datos$genero, datos$estado_civil)
+```
+
+---
+
+## Tablas de contigencia
+
+
+Fíjate que ahora podemos [**normalizar las frecuencias de 3 formas**]{.hl-yellow}: respecto al total de los datos, por filas (`margin = 1`) o por columnas (`margin = 2`).
+
+```{r}
+prop.table(table(datos$genero, datos$estado_civil))
+prop.table(table(datos$genero, datos$estado_civil), margin = 1)
+prop.table(table(datos$genero, datos$estado_civil), margin = 2)
+
+```
+
+---
+
+## Tablas de contigencia
+
+Haciendo uso de las tablas anteriores intenta responder a las siguientes preguntas:
+
+a) ¿Qué cantidad de pacientes mujeres están solteras?
+
+b) ¿Qué porcentaje, de entre los pacientes hombres, están viudos?
+
+c) ¿Qué porcentaje, de entre los que están divorciados, son mujeres?
+
+d) ¿Qué porcentaje (del total de pacientes) son hombres solteros?
+
+
+```{r}
+#| code-fold: true
+# a) 22 mujeres
+# b) 8.51%
+# c) 57.89%
+# d) 20%
+```
+
+
+---
+
+## Tablas de contigencia
+
+Puedes incluso visualizar dichas cantidades con `geom_tile()` indicándole que el relleno dependa del conteo `n`
+
+```{r}
+datos |>
+  count(genero, estado_civil) |>
+  ggplot() +
+  geom_tile(aes(x = genero, y = estado_civil, fill = n)) +
+  theme_minimal()
+```
+
+---
+
+## 💻 Tu turno {#tu-turno-3-2}
+
+[**Intenta realizar los siguientes ejercicios sin mirar las soluciones**]{style="color:#444442;"}
+
+::: panel-tabset
+### [**Ejercicio 1**]{.hl-yellow}
+
+Para repasar lo aprendido vamos a poner todo en práctica con el dataset `SatisfaccionPacientes.csv`. 
+
+```{r}
+library(readr)
+datos <-
+  read_csv(file = "./datos/SatisfaccionPacientes.csv") |> 
+  janitor::clean_names()
+```
+
+
+📝 Aplica el código que sea necesario para responder a estas preguntas. ¿Cuál es el tamaño muestral? ¿Cuántas variables tenemos? ¿Cuántas modalidades tenemos en la variable `estado_civil` (y cuantas observaciones en cada una)?
+
+```{r}
+#| code-fold: true
+#| eval: false
+# Tamaño muestral / número de observaciones
+n <- nrow(datos)
+
+# Número de variables
+p <- ncol(datos)
+
+# ¿Qué modalidades tenemos?
+datos |>  count(estado_civil)
+```
+
+
+### [**Ejercicio 2**]{.hl-yellow}
+
+📝 Determina el tipo de variable (cuantitativa vs. cualitativa).
+
+```{r}
+#| code-fold: true
+#| eval: false
+# Variables cuantitativas: tiempo, grado satisfacción, número de visitas
+# Variables cualitativas: género, estado civil, estado salud
+glimpse(datos)
+```
+
+### [**Ejercicio 3**]{.hl-yellow}
+
+📝  Obten tablas de frecuencias (absoluta y relativa) en el caso de las cualitativas NOMINALES. Con ella intenta responder a las preguntas: a) ¿cuántas mujeres hay? b) ¿qué % de individuos están casados?
+
+```{r}
+#| code-fold: true
+#| eval: false
+# no podemos calcular acumulados ya que genero es nominal
+datos |>  count(genero) |> 
+  rename(frecuencia_abs = n) |> 
+  mutate(frecuencia_rel = frecuencia_abs/sum(frecuencia_abs))
+# Hay 53 mujeres
+
+datos |> count(estado_civil) |> 
+  rename(frecuencia_abs = n) |> 
+  mutate(frecuencia_rel = frecuencia_abs/sum(frecuencia_abs))
+# Hay 26% personas casadas
+```
+
+
+### [**Ejercicio 4**]{.hl-yellow}
+
+📝 Convierte de manera adecuada la variable `genero` y `estado_civil` a cualitativa nominal
+
+```{r}
+#| code-fold: true
+datos <-
+  datos |>
+  mutate(estado_civil = factor(estado_civil),
+         genero = factor(genero))
+```
+
+### [**Ejercicio 5**]{.hl-yellow}
+
+📝 Calcula la media, mediana, rango intercuartílico y desviación típica de edad y tiempo de espera.
+
+```{r}
+#| code-fold: true
+resumen <-
+  datos |>
+  summarise(media_edad = mean(edad), sd_edad = sd(edad), mediana_edad = median(edad),
+           IQR_edad = quantile(edad, probs = 0.75) - quantile(edad, probs = 0.25),
+           # tiempo espera
+           media_tiempo_espera = mean(tiempo_espera), sd_tiempo_espera = sd(tiempo_espera),
+           mediana_tiempo_espera = median(tiempo_espera),
+           IQR_tiempo_espera = quantile(tiempo_espera, probs = 0.75) - quantile(tiempo_espera, probs = 0.25))
+```
+
+### [**Ejercicio 6**]{.hl-yellow}
+
+📝 Repite el anterior ejercicio pero obteniendo las métricas desagregadas por sexo.
+
+```{r}
+#| code-fold: true
+resumen <-
+  datos |>
+  summarise(media_edad = mean(edad), sd_edad = sd(edad), mediana_edad = median(edad),
+           IQR_edad = quantile(edad, probs = 0.75) - quantile(edad, probs = 0.25),
+           # tiempo espera
+           media_tiempo_espera = mean(tiempo_espera), sd_tiempo_espera = sd(tiempo_espera),
+           mediana_tiempo_espera = median(tiempo_espera),
+           IQR_tiempo_espera = quantile(tiempo_espera, probs = 0.75) - quantile(tiempo_espera, probs = 0.25),
+          .by = genero)
+```
+
+### [**Ejercicio 7**]{.hl-yellow}
+
+📝 Realiza un gráfico de violín para la variable `tiempo_espera` para cada género
+
+```{r}
+#| code-fold: true
+#| eval: false
+ggplot(datos) +
+  geom_violin(aes(x = genero, y = tiempo_espera, fill = genero, color = genero),
+              alpha = 0.7) +
+  ggthemes::scale_color_colorblind() +
+  ggthemes::scale_fill_colorblind() +
+  theme_minimal()
+```
+
+:::
+
+---
+
+## 🐣 Caso práctico II: encuesta de satisfacción {#caso-practico-3-2}
+
+Vamos a seguir poniendo en práctica lo aprendido el dataset `SatisfaccionPacientes.csv`
+
+&nbsp;
+
+Intenta responder a las preguntas planteadas en el [**workbook**](https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-ii-encuesta-de-satisfacci%C3%B3n)
+
+
+---
+
+## Asociación cuali vs cuali
+
+Esas tablas de frecuencia serán las que usen los [**diferentes contrastes de asociación cuali vs cuali**]{.hl-yellow} para decidir si hay o no dependencia.
+
+&nbsp;
+
+El contraste más conocido es la conocida como [**prueba de $\chi^2$ (chi-cuadrado)**]{.hl-yellow}: dada una tabla de contigencia entre dos cualitativas, el contraste [**compara dicha tabla con la que deberíamos obtener bajo la hipótesis nula de independencia**]{.hl-yellow}
+
+Vamos a hacerlo con nuestras variables `genero` y `estado_civil`
+
+---
+
+## Prueba chi-cuadrado
+
+$$H_0:~\text{genero y estado civil son independientes}$$
+
+$$H_1:~\text{genero y estado civil son dependientes}$$
+
+```{r}
+table(datos$genero, datos$estado_civil)
+```
+
+. . .
+
+[**Si la hipótesis nula fuese cierta**]{.hl-yellow}, ¿qué esperaríamos?
+
+---
+
+## Prueba chi-cuadrado
+
+1. Elegimos uno de los factores y calculamos su **proporción en la tabla general** (53% vs 47% en este caso)
+
+```{r}
+prop.table(table(datos$genero))
+```
+
+. . .
+
+2. Calculamos la **tabla de contigencia**  de ambas variables obteniendo lo que denotaremos como [**frecuencias observadas $O_{ij}$**]{.hl-yellow}
+
+```{r}
+table(datos$genero, datos$estado_civil)
+```
+
+---
+
+## Prueba chi-cuadrado
+
+
+3. **Si ambas variables fuesen independientes**, en cada columna tendríamos que tener **porcentajes parecidos a cuando lo hacemos sin desagregar** (53% mujeres y 47% hombres). Es decir, del total de casados (26) deberíamos tener $8.48$ mujeres y $7.52$ hombres; del total de divorciados (19) deberíamos tener $10.07$ mujeres y $8.93$ hombres; y así sucesivamente. Estas frecuencias las denotaremos como [**frecuencias esperadas $E_{ij}$**]{.hl-yellow}
+
+$$E_{ij} = \frac{\text{suma fila i * suma fila j}}{\text{total}}$$
+
+
+---
+
+## Prueba chi-cuadrado
+
+
+4. [**Resumimos lo que se desvía una de otra**]{.hl-yellow} mediante el [**estadístico chi-cuadrado**]{.hl-yellow}:
+
+$$\begin{eqnarray}\chi^2 &=& \sum_{i,j} \frac{\left(O_{ij} - E_{ij} \right)^2}{E_{ij}} = \frac{(13.78 - 11)^2}{13.78} + \frac{(12.22 - 15)^2}{12.22} \nonumber \\
+&+& \frac{(10.07 - 11)^2}{10.07} + \ldots + \frac{(6.11 - 4)^2}{6.11} = 2.75731\end{eqnarray}$$
+
+. . .
+
+
+5. Calculamos [**cómo de extremo es el valor del estadístico si la hipótesis nula fuese cierta**]{.hl-yellow}, proporcionándonos un **p-valor**.
+
+---
+
+## Prueba chi-cuadrado
+
+Este proceso podemos hacerlo directamente aplicando `chisq.test()`, indicándole las variables (o su tabla de frecuencias)
+
+```{r}
+contraste <- chisq.test(datos$genero, datos$estado_civil)
+```
+
+* `...$statistic`: tenemos guardado el valor del estadístico
+
+```{r}
+contraste$statistic
+```
+
+* `...$observed`: tenemos guardada la tabla de frecuencias observada
+
+```{r}
+contraste$observed
+```
+
+---
+
+## Prueba chi-cuadrado
+
+
+* `...$expected`: tenemos guardada la tabla de frecuencias esperada
+
+```{r}
+contraste$expected
+```
+
+* `...$p.value`: tenemos guardado el p-valor.
+
+```{r}
+contraste$p.value
+```
+
+---
+
+## Prueba chi-cuadrado
+
+
+¿Cómo [**interpretar el contraste**]{.hl-yellow}?
+
+```{r}
+contraste
+```
+
+Como $p.value = 0.4306 > \alpha = 0.05$, no podemos rechazar la hipótesis nula: [**no hay evidencias suficientes en la muestra para concluir que haya dependencia**]{.hl-yellow}.
+
+---
+
+## Prueba de Fisher
+
+Otra alternativa es el [**test exacto de Fisher**]{.hl-yellow}, una prueba estadística utilizada para [**determinar si hay una asociación significativa entre dos variables cualitativas**]{.hl-yellow} especialmente útil cuando las frecuencias esperadas son bajas y tenemos dos grupos en cada cualitativa (la tabla de frecuencias es $2 \times 2$).
+
+&nbsp;
+
+Como **curiosidad** dicha prueba nació cuando Fisher trataba de comprobar si una compañera, Muriel Birstol, era capaz de detectar en un té con leche si se había añadido primero el té o la leche en su taza (y del experiemnto del que nació la regla del $\alpha = 5%$).
+
+. . .
+
+Para aplicarlo nos basta con usar `fisher.test()`.
+
+```{r}
+fisher.test(datos$genero, datos$estado_civil)
+```
+
+---
+
+## Prueba de Fisher
+
+Como hemos dicho es especialmente útil cuando tenemos solo 2 modalidades en cada cualitativa ya que nos proporciona [**métricas de asociación**]{.hl-yellow}
+
+Veamos un ejemplo con la tabla `placebo_medicamento.csv`
+
+```{r}
+datos_placebo <- read_csv(file = "./datos/placebo_medicamento.csv")
+datos_placebo
+```
+
+---
+
+## Prueba de Fisher
+
+
+```{r}
+fisher.test(datos_placebo$observado, datos_placebo$grupo_tratamiento)
+```
+
+Si te fijas ahora nos devuelve además un [**contraste de lo que se conoce como odds ratio (OR: razón de probabilidades)**]{.hl-yellow}
+
+`alternative hypothesis: true odds ratio is not equal to 1`
+
+
+---
+
+## Métricas de asociación
+
+```{r}
+table(datos_placebo$observado, datos_placebo$grupo_tratamiento)
+```
+
+La interpretación de [**Odds ratio (OR)**]{.hl-yellow} es cuantificar la [**asociación entre dos variables respecto a una asociación espúrea**]{.hl-yellow} ¿Cuánto [**mejoran los que tomaron medicamento respecto a una posible mejora basal**]{.hl-yellow} (aleatoria) del placebo?
+
+* [**Ratio de mejora en tratados**]{.hl-purple}: $13/3 = 4.33333$
+* [**Ratio de mejora en placebo**]{.hl-purple}: $6/11 = 0.54545$
+
+$$OR = \frac{13/3}{6/11} = \frac{13*11}{6*3} = 7.94$$
+
+Los pacientes sometidos a tratamiento mejoran 7.9 veces más si el placebo mejorase por azar.
+
+---
+
+## Métricas de asociación
+
+```{r}
+table(datos_placebo$observado, datos_placebo$grupo_tratamiento)
+```
+
+Otra de las métricas habituales es la conocida como [**razón de prevalencias (Risk Ratio, RR)**]{.hl-yellow} que nos proporciona un [**ratio entre la probabilidad de prevalencia**]{.hl-yellow} de un evento en dos grupos.
+
+
+* [**Prevalencia de mejora en tratados**]{.hl-purple}: $13/(3+13) = 0.8125$
+* [**Prevalencia de mejora en placebo**]{.hl-purple}: $6/(11+6) = 0.35294$
+
+$$RR = \frac{13/(3+13)}{6/(11+6)} = \frac{13*11}{6*3} = 2.30208$$
+Los pacientes sometidos a tratamiento tienen más del doble de «riesgo» de mejorar que los pacientes con placebo.
+
+---
+
+## Métricas de asociación
+
+Ambas métricas podemos estimarlas también con el paquete `{epitools}`
+
+```{r}
+library(epitools)
+OR <- oddsratio(datos_placebo$observado, datos_placebo$grupo_tratamiento)
+OR$measure
+```
+
+* Si $OR = 1$ no hay asociación entre las variables.
+* Si $OR > 1$ hay una asociación positiva, es decir, la exposición está asociada con un mayor riesgo.
+* Si $OR < 1$ hay una asociación negativa, es decir, la exposición está asociada con un menor riesgo.
+
+
+---
+
+## Métricas de asociación
+
+
+```{r}
+RR <- riskratio(datos_placebo$observado, datos_placebo$grupo_tratamiento)
+RR$measure
+```
+
+
+* Si $RR = 1$ no hay diferencias en el riesgo entre los grupos.
+* Si $RR > 1$ el grupo expuesto (en este caso medicado) tiene mayor riesgo (en este caso de mejorar)
+* Si $RR < 1$ el grupo expuesto tiene menor riesgo.
+
+---
+
+## Gráficos de barras
+
+Volvamos al ejemplo de encuesta de satisfacción: vamos a intentar relacionar las dos variables cualitativas `genero` y `estado_civil` para **complementar el análisis numérico realizado** (amén del `geom_tile()` que hemos hecho para visualizar la tabla de frecuencias)
+
+. . .
+
+Sabemos realizar un diagrama de barras de cada una por separado, [**¿cómo incluir la información de ambas con `geom_bar()`**]{.hl-yellow}
+
+. . .
+
+Piensa cómo hacerlo recordando que `geom_bar()` solo admite una coordenada `x = ...` o `y = ...`. ¿Cómo incluir la info de otra variable que no sea en `x` o `y`?
+
+---
+
+## Gráficos de barras
+
+```{r}
+#| code-fold: true
+ggplot(datos) +
+  geom_bar(aes(x = estado_civil, fill = genero), alpha = 0.6) +
+  ggthemes::scale_fill_colorblind() +
+  labs(x = "Estado civil", y = "Frec. absolutas",
+       fill = "Género") +
+  theme_minimal()
+```
+
+---
+
+## Gráficos de barras
+
+La función `geom_bar()` nos permite jugar un poco con el tipo de barras, que por defecto las muestra `stacked` (apiladas). Dicho ajuste podemos **cambiarlo con el argumento `position`**: si `position = "dodge"` las muestra de [**manera agrupada una detrás de otra**]{.hl-yellow}.
+
+```{r}
+#| code-fold: true
+ggplot(datos) +
+  geom_bar(aes(x = estado_civil, fill = genero),
+           position = "dodge", alpha = 0.6) +
+  ggthemes::scale_fill_colorblind() +
+  labs(x = "Estado civil", y = "Frec. absolutas",
+       fill = "Género") +
+  theme_minimal()
+```
+
+---
+
+## Gráficos de barras
+
+La mejor opción para visualizar si hay asociación es que **cada barra de estado civil representa el total y nos muestre el % de cada sexo** en cada una: si fuesen independientes, el reparto por sexo en cada barra debería ser similar. Lo haremos con `position = "fill"`
+
+```{r}
+#| code-fold: true
+ggplot(datos) +
+  geom_bar(aes(x = estado_civil, fill = genero),
+           position = "fill", alpha = 0.6) +
+  ggthemes::scale_fill_colorblind() +
+  labs(x = "Estado civil", y = "Frec. relativas",
+       fill = "Género") +
+  theme_minimal()
+```
+
+
+---
+
+## Gráficos de barras
+
+```{r}
+#| code-fold: true
+ggplot(datos) +
+  geom_bar(aes(y = estado_civil, fill = genero),
+           position = "fill", alpha = 0.6) +
+  ggthemes::scale_fill_colorblind() +
+  labs(x = "Estado civil", y = "Frec. relativas",
+       fill = "Género") +
+  theme_minimal()
+```
+
+
+---
+
+## 💻 Tu turno {#tu-turno-3-3}
+
+[**Intenta realizar los siguientes ejercicios sin mirar las soluciones**]{style="color:#444442;"}
+
+::: panel-tabset
+### [**Ejercicio 1**]{.hl-yellow}
+
+📝 Carga el fichero `placebo_medicamento_completo.csv` donde tenemos guardado los niveles de colesterol antes y después de un tratamiento: a 76 personas se les dio un medicamento para bajarlo y a 24 personas placebo.
+
+```{r}
+#| code-fold: true
+datos <- read_csv(file = "./datos/placebo_medicamento_completo.csv")
+```
+
+
+### [**Ejercicio 2**]{.hl-yellow}
+
+📝 Añade una nueva variable dicotómica a los datos que nos guarde `mejora` si el paciente mejoró tras el tratamiento y `no mejora` en caso negativo
+
+```{r}
+#| code-fold: true
+datos <-
+  datos |> 
+  mutate("mejora" = if_else(colesterol_post <= colesterol_pre, "mejora",
+                            "no mejora"))
+```
+
+### [**Ejercicio 3**]{.hl-yellow}
+
+📝 Visualiza ambas variables (`mejora` y `tratamiento`) a la vez con un diagrama de barras de manera que podamos observar indicios de una posible independencia o dependencia entre ambas. Hazlo antes a papel y boli si lo necesitas
+
+```{r}
+#| code-fold: true
+#| eval: false
+
+# así pintaríamos en cada barra de tratamiento los mejora o no mejora
+ggplot(datos) +
+  geom_bar(aes(x = tratamiento, fill = mejora), alpha = 0.6) +
+  ggthemes::scale_fill_colorblind() +
+  theme_minimal()
+
+# pero dado que tienes más tratados que del grupo control
+# no permite comparar bien así que igualamos las barras
+# para que cada barra sea el 100% de su categoría
+ggplot(datos) +
+  geom_bar(aes(x = tratamiento, fill = mejora), alpha = 0.6,
+           position = "fill") +
+  ggthemes::scale_fill_colorblind() +
+  theme_minimal()
+
+# Parece evidente visualmente que hay una diferencia entre mejora y no mejora
+# en cada barra
+```
+
+### [**Ejercicio 4**]{.hl-yellow}
+
+📝 Calcula la tabla de frecuencias absoluta y relativa que consideres necesarias para responder a las siguientes preguntas:
+
+a) ¿Cuántas personas de las tratadas con medicamento no mejoraron?
+
+b) ¿Qué de personas del total del estudio acabaron mejorando habiendo tomando placebo?
+
+c) ¿Qué % de personas tomó medicamentos entre los que no mejoraron?
+
+d) ¿Qué % de personas de los que tomaron medicamento mejoraron?
+
+```{r}
+#| code-fold: true
+#| eval: false
+table(datos$tratamiento, datos$mejora)
+prop.table(table(datos$tratamiento, datos$mejora))
+prop.table(table(datos$tratamiento, datos$mejora), margin = 1)
+prop.table(table(datos$tratamiento, datos$mejora), margin = 2)
+# 9 personas de las tratadas con medicamento no mejoraron
+# 9% del total de personas mejoraron y tomaron placebo
+# 37% de los que no mejoraron habían tomado la medicación
+# 88.1% de los que tomaron medicamento mejoraron
+```
+
+### [**Ejercicio 5**]{.hl-yellow}
+
+📝 Para confirmar y cuantificar las evidencias que ya tenemos, vamos a realizar un contraste de hipótesis. Realiza la prueba de chi-cuadrado e interpreta el resultado con $\alpha = 0.05$.
+
+```{r}
+#| code-fold: true
+#| eval: false
+chisq.test(datos$tratamiento, datos$mejora)
+# Dado que p-value = 1.654e-06 << alpha --> debemos rechazar la hipótesis nula -->
+# hay evidencias suficientes para afirmar que hay relación de dependencia
+```
+
+### [**Ejercicio 6**]{.hl-yellow}
+
+
+> Realiza la prueba de chi-cuadrado y Fisher e incluye los p-valores en una tabla resumen haciendo uso de tidyverse. Exporta a un `.csv` dicha tabla resumen
+
+```{r}
+#| code-fold: true
+resumen_pvalores <-
+  datos |> 
+  summarise("sig_chisq" = chisq.test(datos$tratamiento, datos$mejora)$p.value,
+            "sig_fisher" = fisher.test(datos$tratamiento, datos$mejora)$p.value)
+write_csv(resumen_pvalores, file = "./datos/resumen_pvalores.csv")
+```
+
+### [**Ejercicio 7**]{.hl-yellow}
+
+📝 Realiza la prueba de Fisher y mira la salida completa. Interpreta la salida, no solo del contraste sino de los odd ratio.
+
+```{r}
+#| code-fold: true
+fisher.test(datos$tratamiento, datos$mejora)
+
+# OR estimado es de 11.95 --> al ser mayor que 1 implica que
+# hay una asociación positiva entre las variables
+# hay 12 veces más opciones de que te baje el colesterol si tomas el
+# medicamento respecto a una posible mejora aleatoria (porque sí).
+```
+
+:::
+
+---
+
+
+## 🐣 Caso práctico III: bronquitis y tabaco {#caso-practico-3-3}
+
+Vamos a cargar el archivo de datos `fumadores.csv` donde tenemos datos de 96 pacientes sobre sí o fuman y quienes han desarrollado o no bronquitis.
+
+```{r}
+datos <- read_csv(file = "./datos/fumadores.csv")
+datos
+```
+
+&nbsp;
+
+Intenta responder a las preguntas planteadas en el [**workbook**](https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-iii-bronquitis-y-tabaco)
+
+
+---
+
+
+## 🐣 Caso práctico IV: salud mental {#caso-practico-3-4}
+
+Esta la base de datos `datos_salud_mental.csv` tenemos información recopilada de 100 pacientes que acuden a un centro de salud mental. Se quiere realizar un estudio para ver el **impacto que tienen distintas características sobre la ansiedad y depresión** en estos 100 pacientes. Los datos incluyen una variedad de variables relacionadas con la salud mental, así como características demográficas y de estilo de vida.
+
+```{r}
+datos <-
+  read_csv(file = "./datos/datos_salud_mental.csv") |> 
+  janitor::clean_names()
+```
+
+&nbsp;
+
+Intenta responder a las preguntas planteadas en el [**workbook**](https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-iv-salud-mental)
+
+
+---
+
+## Asociación cuanti vs cuanti
+
+
+Como decíamos, la idea detrás de la [**covarianza**]{.hl-yellow} es una "varianza" entre dos variales (la varianza es una covarianza de una variable consigo misma), midiendo el **promedio de lo que se desvía cada una respecto a su media**
+
+$$s_{xy} = \frac{1}{n} \sum_{i=1}^{n} \left(x_i - \overline{x} \right)\left(y_i - \overline{y} \right) = \overline{x*y} - \overline{x}*\overline{y}$$
+
+. . .
+
+Para calcularla en `R` basta con usar la función `cov()`
+
+```{r}
+starwars |> 
+  drop_na(mass, height) |> 
+  summarise(cov(mass, height))
+```
+
+---
+
+## Correlación lineal
+
+Vamos a practicar una vez más como [**hacerlo a mano con el siguiente ejercicio**]{.hl-yellow}.
+
+---
+
+## Correlación lineal
+
+En la tabla inferior se han recopilado (del 2013 al 2022) la **temperatura media en el mes de abril en Madrid (variable X, en ºC)** y el **número de días (variable Y) en el que el nivel de ozono superó las 0.20 ppm (partes por millón)**
+
+* ¿Cuál fue media de días en los que se superó umbral de ozono de 0.20 ppm?
+* ¿Cuál fue media de días en los que se superó umbral de ozono en los años que la temperatura media en marzo superó los 17.4ºC?
+* ¿Cuál es su covarianza?
+
+![](img/tabla-ej-covarianza-sin-agrupar.png)
+
+---
+
+
+## Correlación lineal
+
+Repite el ejercicio con pocas líneas de código `R`
+
+* ¿Cuál fue la media de días en los que se superó el umbral de ozono de 0.20 ppm?
+* ¿Cuál fue la media de días en los que se superó el umbral de ozono en los años que la temperatura media en marzo superó los 17.4ºC?
+* ¿Cuál es su covarianza?
+
+![](img/tabla-ej-covarianza-sin-agrupar.png)
+
+
+---
+
+
+## Correlación lineal
+Realiza lo que consideres tanto a mano como en `R`
+
+* ¿Existe alguna **relación de dependencia entre las variables**? ¿De qué tipo? ¿Cómo de fuerte o débil es dicha relación? ¿En qué dirección es dicha relación?
+
+
+$$s_{xy} = \frac{1}{n} \sum_{i=1}^{n} \left(x_i - \overline{x} \right)\left(y_i - \overline{y} \right) = \overline{x*y} - \overline{x}*\overline{y}$$
+
+$$r_{xy} = \rho_{xy} = \frac{s_{xy}}{s_x s_y}$$
+
+---
+
+## Correlación lineal
+
+No sé si te has fijado qué sucede cuando intentamos [**calcular la covarianza/correlación de varias variables**]{.hl-yellow}, por ejemplo vamos a calcular la (cuasi)covarianza de todas las variables numéricas de starwars.
+
+. . .
+
+```{r}
+starwars |> 
+  select(where(is.numeric)) |> 
+  drop_na() |>
+  cov()
+```
+
+. . .
+
+Podemos usar la función `cov()` sin más, fuera de un resumen, obteniendo lo que se conoce como [**matriz de (cuasi)covarianzas**]{.hl-yellow} y que tendrá un papel fundamental en estadística ya que contiene la información (= varianza) del dataset.
+
+---
+
+## Matriz de covarianzas
+
+
+```{r}
+starwars |> 
+  select(where(is.numeric)) |> 
+  drop_na() |>
+  cov()
+```
+
+Además de ser [**simétrica**]{.hl-yellow}...¿qué tenemos en la [**diagonal**]{.hl-yellow}?
+
+. . .
+
+La [**matriz de (cuasi)covarianzas**]{.hl-yellow} se denota como $\Sigma$ y sus elementos se define como $\Sigma_{ii} = s_{x_i}^{2}$ para la diagonal y $\Sigma_{ij} = \Sigma_{ji} = s_{x_i x_j}$ fuera de ella.
+
+. . .
+
+::: callout-important
+## Importante
+
+Recuerda que los softwares estadísticos nos devuelven siempre la [**cuasi covarianza**]{.hl-purple}, dividido entre $n-1$ y no entre $n$. La cuasivarianza y la cuasicovarianza son los [**mejores estimadores muestrales (insesgados)**]{.hl-yellow} de los respectivos parámetros poblaciones
+
+:::
+
+---
+
+## Matriz de correlaciones
+
+De la misma manera con `cor()` podemos [**calcular la matriz de correlaciones**]{.hl-yellow} (en este caso sin el `cuasi` ya que se cancelan denominadores)
+
+. . .
+
+```{r}
+starwars |> 
+  select(where(is.numeric)) |> 
+  drop_na() |>
+  cor()
+```
+
+. . .
+
+La [**matriz de correlaciones**]{.hl-yellow} se denota como $R$ y sus elementos se define como $r_{ii} = 1$ para la diagonal y $r_{ij} = r_{x_ix_j}$ fuera de ella, y nos proporciona la dependencia lineal entre variables ya de manera **estandarizada**.
+
+---
+
+## Matriz de correlaciones
+
+[**¿Se te ocurre alguna manera de calcular la matriz de correlaciones a partir de la de covarianzas?**]{.hl-yellow}
+
+
+
+---
+
+## Correlación vs dependencia
+
+
+Podemos tener [**variables incorreladas**]{.hl-red}, con correlación nula, pero que [**exista dependencia entre ellas**]{.hl-green}: la covarianza/correlación [**SOLO CAPTURA relaciones lineales**]{.hl-yellow}, nada más.
+
+. . .
+
+Veamos un ejemplo sencillo con $X = \left\lbrace -1, 0, 1 \right\rbrace$ y $Y = X^2 =  \left\lbrace 1, 0, 1 \right\rbrace$. 
+
+* La media de ambas es nula
+* La media del producto es la media de $XY = \left\lbrace -1, 0, 1 \right\rbrace$, que es de nuevo nula
+* Así la covarianza $\overline{x*y} - \overline{x}*\overline{y}$ es nula a pesar de tener la mayor dependencia posible (dependencia funcional)
+
+---
+
+## Correlación vs dependencia
+
+![](img/covarianza-no-lineal.png)
+
+En relaciones no lineales como la de la imagen, la **correlación estará cercana a cero** (ya que no hay relación lineal) pero existe una [**dependencia**]{.hl-yellow}. Diremos que [**dos variables son dependientes entre sí**]{.hl-yellow} cuando existe un **patrón numérico que las relaciona**
+
+. . .
+
+* [**Independencia implica incorrelación**]{.hl-green}
+* [**Incorrelación NO implica independencia**]{.hl-red}
+
+---
+
+## Correlación vs dependencia
+
+![](img/escenarios-covarianza.png)
+
+---
+
+
+## Test de correlaciones
+
+¿Pero cómo saber que la correlación observada es suficientemente pequeña para considerarse incorreladas?
+
+. . .
+
+Con un [**contraste de correlaciones**]{.hl-yellow} haciendo uso de `cor.test()`
+
+
+```{r}
+cor.test(starwars$mass, starwars$height)
+```
+
+
+---
+
+## Otras correlaciones
+
+La [**correlación de Pearson**]{.hl-yellow} asume que las [**variables están distribuidas normalmente**]{.hl-green}, en caso de existir asociación tienen una relación lineal y no tienen valores atípicos.
+
+. . .
+
+Por ello existen dos alternativas: [**correlación de Spearman**]{.hl-yellow} y [**correlación de Kendall**]{.hl-yellow} 
+
+---
+
+## Correlación de Spearman
+
+El [**coeficiente de correlación de Spearman**]{hl-yellow} cuantifica de manera no paramétrica la interdependencia entre dos variables aleatorias (tanto continuas como discretas). Cuantifica el [**grado de asociación monótona entre dos variables ordinales o continuas**]{.hl-yellow} 
+
+$$\rho =1-\frac{6\sum D^{2}}{n (n^{2}-1)}$$
+
+donde $D$ es la diferencia entre los correspondientes estadísticos de orden de $x - y$.
+
+```{r}
+starwars |> 
+  select(where(is.numeric)) |> 
+  drop_na() |> 
+  cor(method = "spearman")
+```
+
+
+---
+
+## Tau de Kendall
+
+
+El [**coeficiente de correlación de rango de Kendall**]{.hl-yellow} ($\tau$ de Kendall) cuantifica la [**asociación ordinal de variables cualitativas**]{.hl-yellow} de manera no paramétrica. 
+
+. . .
+
+Dados $\left(x_1, y_1\right), \ldots, \left(x_n, y_n\right)$ un conjunto de observaciones, se dice  que $\left(x_{i},y_{i}\right)$ y $\left(x_{j},y_{j}\right)$ (con $i < j$) son un [**par concordante**]{.hl-yellow} si el orden de clasificación coincide ($x_i < x_j,~y_i < y_j$ o bien $x_j < x_i,~y_j < y_i$) 
+
+$$\tau =\frac{\text{n pares concordantes} - \text{n pares discordantes}}{n \choose 2}$$
+
+
+---
+
+## 💻 Tu turno {#tu-turno-3-4}
+
+[**Intenta realizar los siguientes ejercicios sin mirar las soluciones**]{style="color:#444442;"}
+
+::: panel-tabset
+### [**Ejercicio 1**]{.hl-yellow}
+
+Vamos a tomar de nuevo nuestros datos de satisfacción de pacientes
+
+```{r}
+library(readr)
+datos <-
+  read_csv(file = "./datos/SatisfaccionPacientes.csv") |> 
+  janitor::clean_names()
+datos
+```
+
+📝 Obtén la matriz de correlaciones haciendo uso de `cor()`. Luego haz uso de `correlate()` del paquete `{corrr}`
+
+```{r}
+#| code-fold: true
+#| eval: false
+datos |> 
+  select(where(is.numeric)) |> 
+  cor()
+
+datos |> 
+  select(where(is.numeric)) |> 
+  corrr::correlate()
+```
+
+
+
+### [**Ejercicio 2**]{.hl-yellow}
+
+📝 Analiza y argumenta, en función de los resultados anteriores, la asociación entre `edad` y `grado_satisfaccion`, y entre `tiempo_espera` y `grado_satisfaccion`
+
+```{r}
+#| code-fold: true
+# Vemos que por ejemplo `edad` no correla con `grado_satisfaccion` ($-0.0339$) pero `tiempo_espera` tiene una correlación negativa ($-0.586$) con `grado_satisfaccion`.
+```
+
+### [**Ejercicio 3**]{.hl-yellow}
+
+📝 Con el paquete `{corrplot}` visualiza la matriz de correlaciones
+
+```{r}
+#| code-fold: true
+datos |> 
+  select(where(is.numeric)) |> 
+  cor() |> 
+  corrplot::corrplot(method = "square")
+```
+
+### [**Ejercicio 4**]{.hl-yellow}
+
+📝 Investiga el paquete `{GGally}` y a función `ggpairs()` para visualizar las correlaciones de todas las variables (salvo `id`)
+
+```{r}
+#| code-fold: true
+library(GGally)
+ggpairs(datos |> select(-id)) +
+  theme_minimal()
+
+# cuali vs cuali: pictogramas (con rectángulos)
+# cuanti vs cuanti: scatter plot
+# cuanti vs cuali: boxplot desagregados
+# variable vs sí misma: densidad
+```
+
+### [**Ejercicio 5**]{.hl-yellow}
+
+📝 ¿Cómo saber que la correlación observada entre `edad` y `grado_satisfaccion` ($-0.0339$) es suficientemente pequeña para considerarse incorreladas? ¿Cómo saber si la correlación entre `tiempo_espera` y `grado_satisfaccion` ($-0.586$) es suficientemente grande para considerar que es **significativa**?
+
+
+```{r}
+#| code-fold: true
+#| eval: false
+cor.test(datos$edad, datos$grado_satisfaccion)
+cor.test(datos$tiempo_espera, datos$grado_satisfaccion)
+
+# En uno el p-valor es bastante alto (**no rechazamos la hipótesis nula de incorrelación**) y en otro el p-valor es prácticamente 0 (rechazamos la hipótesis nula ->  **hay evidencias de correlación significativa**).
+```
+
+
+:::
