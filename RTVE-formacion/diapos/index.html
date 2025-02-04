@@ -8,7 +8,7 @@
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.3.294">
 
   <meta name="author" content="Curso impartido en RTVE • Javier Álvarez Liébana">
   <title>Curso de formación</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css" id="theme">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -414,7 +414,7 @@ Curso impartido en RTVE • Javier Álvarez Liébana
 <p><span class="hl-green"><strong>Correo</strong></span>: <strong><a href="mailto:javalv09@ucm.es" class="email">javalv09@ucm.es</a></strong>.</p>
 <div class="columns">
 <div class="column" style="width:25%;">
-<p><img data-src="img/me.jpeg"></p>
+<p><img data-src="img/me.jpeg" class="quarto-discovered-preview-image"></p>
 </div><div class="column" style="width:75%;">
 <div>
 <ul>
@@ -612,7 +612,7 @@ Curso impartido en RTVE • Javier Álvarez Liébana
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="st">"a"</span> <span class="sc">+</span> <span class="dv">1</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in "a" + 1: non-numeric argument to binary operator</code></pre>
+<pre><code>Error in "a" + 1: argumento no-numérico para operador binario</code></pre>
 </div>
 </div>
 </div>
@@ -624,7 +624,7 @@ Curso impartido en RTVE • Javier Álvarez Liébana
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Ejecuta la orden pero el resultado es NaN, **Not A Number**, un valor que no existe</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="fu">sqrt</span>(<span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning in sqrt(-1): NaNs produced</code></pre>
+<pre><code>Warning in sqrt(-1): Se han producido NaNs</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NaN</code></pre>
@@ -711,7 +711,7 @@ Curso impartido en RTVE • Javier Álvarez Liébana
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>nombre <span class="sc">+</span> <span class="dv">1</span> <span class="co"># error al sumar número a texto</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in nombre + 1: non-numeric argument to binary operator</code></pre>
+<pre><code>Error in nombre + 1: argumento no-numérico para operador binario</code></pre>
 </div>
 </div>
 </div>
@@ -787,7 +787,7 @@ Curso impartido en RTVE • Javier Álvarez Liébana
 </div>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="st">"TRUE"</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in "TRUE" + 1: non-numeric argument to binary operator</code></pre>
+<pre><code>Error in "TRUE" + 1: argumento no-numérico para operador binario</code></pre>
 </div>
 </div>
 </div>
@@ -806,7 +806,7 @@ Curso impartido en RTVE • Javier Álvarez Liébana
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>fecha_char <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in fecha_char + 1: non-numeric argument to binary operator</code></pre>
+<pre><code>Error in fecha_char + 1: argumento no-numérico para operador binario</code></pre>
 </div>
 </div>
 <p>Las fechas <span class="hl-red"><strong>NO pueden ser texto</strong></span>: debemos convertir la cadena de texto a fecha. Para trabajar con fechas usaremos el paquete <code>{lubridate}</code>, que deberemos instalar antes de poder usarlo.</p>
@@ -2552,16 +2552,16 @@ Curso impartido en RTVE • Javier Álvarez Liébana
 <pre><code># A tibble: 3,242 × 17
    num_expediente fecha      hora    localizacion numero distrito tipo_accidente
    &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;         
- 1 2020S018066    10/12/2020 12:15:… CUSTA. SAN … 1      CENTRO   Colisión late…
- 2 2020S005579    08/03/2020 9:50:00 CALL. VELAZ… 31     SALAMAN… Alcance       
- 3 2020S010986    07/08/2020 13:00:… CAL. NUÑEZ … 4      SALAMAN… Colisión fron…
- 4 2020S012900    19/09/2020 2:31:00 AVDA. NUEST… 47     CARABAN… Choque contra…
- 5 2020S018950    21/12/2020 15:25:… CALL. JUAN … 45     CIUDAD … Choque contra…
- 6 2020S005027    05/03/2020 11:15:… AVDA. POBLA… 125    CARABAN… Colisión fron…
- 7 2020S010613    29/07/2020 23:50:… PLAZA. BEAT… 7      ARGANZU… Choque contra…
- 8 2020S004058    21/02/2020 23:00:… GTA. LOS CA… 2      LATINA   Colisión late…
- 9 2020S011142    11/08/2020 12:50:… CALL. ALCAL… 46     CENTRO   Colisión fron…
-10 2020S009457    06/07/2020 13:35:… AVDA. ALBUF… 1      PUENTE … Colisión late…
+ 1 2020S000359    07/01/2020 10:20:… CALL. SAN J… 10     FUENCAR… Colisión fron…
+ 2 2020S012806    17/09/2020 17:40:… AVDA. INSTI… 70     CIUDAD … Alcance       
+ 3 2020S015714    05/11/2020 23:30:… CALL. BENJA… 1      PUENTE … Solo salida d…
+ 4 2020S012273    08/09/2020 10:10:… CALL. SERRA… 236    CHAMART… Colisión fron…
+ 5 2020S007969    08/06/2020 18:55:… CALL. ARACN… 3      SAN BLA… Colisión fron…
+ 6 2020S010781    31/07/2020 19:10:… AUTOV. M-30… +0060… SALAMAN… Alcance       
+ 7 2020S014780    20/10/2020 23:25:… CALL. GOYA … 97     SALAMAN… Choque contra…
+ 8 2020S009584    06/07/2020 19:45:… CALL. MARCE… 8      USERA    Choque contra…
+ 9 2020S008445    18/06/2020 18:15:… CALL. PIRRA… 1      SAN BLA… Colisión fron…
+10 2020S016569    19/11/2020 20:40:… CALL. ALCAL… 50     RETIRO   Alcance       
 # ℹ 3,232 more rows
 # ℹ 10 more variables: estado_meteorológico &lt;chr&gt;, tipo_vehiculo &lt;chr&gt;,
 #   tipo_persona &lt;chr&gt;, rango_edad &lt;chr&gt;, sexo &lt;chr&gt;, lesividad &lt;chr&gt;,
@@ -2595,16 +2595,16 @@ Curso impartido en RTVE • Javier Álvarez Liébana
 <pre><code># A tibble: 3,242 × 17
    num_expediente fecha      hora    localizacion numero distrito tipo_accidente
    &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;         
- 1 2020S014922    23/10/2020 14:50:… CALL. MINER… 79     VICÁLVA… Choque contra…
- 2 2020S008854    25/06/2020 8:00:00 CALL. DOCTO… 177    RETIRO   Alcance       
- 3 2020S019079    23/12/2020 14:26:… AUTOV. M-30… +0110… ARGANZU… Colisión múlt…
- 4 2020S007549    31/05/2020 0:28:00 AUTOV. A-3,… +0060… MORATAL… Otro          
- 5 2020S008474    18/06/2020 19:00:… CALL. EDGAR… 16     TETUÁN   Colisión múlt…
- 6 2020S008533    19/06/2020 20:20:… CALL. PADRE… 3      CHAMART… Colisión late…
- 7 2020S010109    20/07/2020 10:35:… CALL. ORENS… 8      TETUÁN   Choque contra…
- 8 2020S015995    10/11/2020 19:10:… AVDA. DONOS… 14     CIUDAD … Colisión late…
- 9 2020S007269    26/05/2020 7:25:00 CALL. TORRE… 127    CIUDAD … Caída         
-10 2020S002307    31/01/2020 18:30:… CALL. PUERT… 22     PUENTE … Choque contra…
+ 1 2020S019055    23/12/2020 8:30:00 PLAZA. EMPE… 1      CENTRO   Colisión late…
+ 2 2020S012304    09/09/2020 18:30:… CALL. OCA, … 22     CARABAN… Alcance       
+ 3 2020S001350    18/01/2020 12:50:… CALL. CONCE… 1      CENTRO   Alcance       
+ 4 2020S011289    14/08/2020 19:30:… CALL. CIRCU… 2      VILLAVE… Colisión fron…
+ 5 2020S003935    20/02/2020 14:45:… CALL. VILLA… 57     VICÁLVA… Alcance       
+ 6 2020S003808    18/02/2020 9:40:00 CALL. MIRAD… 41     FUENCAR… Choque contra…
+ 7 2020S016894    22/11/2020 21:25:… CALL. SEPUL… 2      LATINA   Caída         
+ 8 2020S005341    08/03/2020 12:50:… AVDA. ALBUF… 147    PUENTE … Alcance       
+ 9 2020S009190    01/07/2020 8:25:00 CALL. ALCOR… 83     HORTALE… Choque contra…
+10 2020S002920    05/02/2020 22:30:… CALL. COSTA… 1      FUENCAR… Choque contra…
 # ℹ 3,232 more rows
 # ℹ 10 more variables: estado_meteorológico &lt;chr&gt;, tipo_vehiculo &lt;chr&gt;,
 #   tipo_persona &lt;chr&gt;, rango_edad &lt;chr&gt;, sexo &lt;chr&gt;, lesividad &lt;chr&gt;,
@@ -4443,13 +4443,13 @@ Desconocido      Hombre       Mujer
 <span id="cb356-4"><a href="#cb356-4"></a>               <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) { y[i] <span class="ot">&lt;-</span> x[i]<span class="sc">^</span><span class="dv">2</span> },</span>
 <span id="cb356-5"><a href="#cb356-5"></a>               <span class="at">times =</span> <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Unit: microseconds
-                                    expr      min       lq        mean   median
-                                y &lt;- x^2    2.009    2.829    3.724522    3.280
- for (i in 1:100) {     y[i] &lt;- x[i]^2 } 1630.898 1998.197 2608.874608 2356.024
-       uq       max neval
-    4.100    22.222   500
- 2703.048 16896.223   500</code></pre>
+<pre><code>Unit: nanoseconds
+                                    expr     min      lq        mean  median
+                                y &lt;- x^2     801    1001    1645.422    1302
+ for (i in 1:100) {     y[i] &lt;- x[i]^2 } 1195301 1256951 1450843.836 1292950
+      uq     max neval cld
+    2101    5500   500  a 
+ 1382551 5135201   500   b</code></pre>
 </div>
 </div>
 </section>
@@ -5051,7 +5051,7 @@ $edad_hermanos
 <div class="sourceCode cell-code" id="cb414"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb414-1"><a href="#cb414-1"></a><span class="fu">library</span>(tibble)</span>
 <span id="cb414-2"><a href="#cb414-2"></a><span class="fu">tibble</span>(<span class="st">"progenitores"</span> <span class="ot">=</span> var_1, <span class="st">"lugar_nac"</span> <span class="ot">=</span> va_2, <span class="st">"edad_hermanos"</span> <span class="ot">=</span> var_3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in eval_tidy(xs[[j]], mask): object 'va_2' not found</code></pre>
+<pre><code>Error in eval_tidy(xs[[j]], mask): objeto 'va_2' no encontrado</code></pre>
 </div>
 </div>
 </section>
@@ -6213,6 +6213,14 @@ Levels: aprobado &lt; notable &lt; suspenso</code></pre>
 <p>Los datos se extraerán del repositorio de Github de <a href="https://raw.githubusercontent.com/ellaudet/DSS/refs/heads/master/BES.csv">Elena Llaudet</a>.</p>
 <p>&nbsp;</p>
 <p>Intenta responder a las preguntas planteadas en el <a href="https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-i-brexit"><strong>workbook</strong></a></p>
+</section></section>
+<section>
+<section id="clase-4" class="title-slide slide level1 center">
+<h1>Clase 4: <span class="flow">intro a la estadística en R</span></h1>
+<p><span style="color:#444442;"><strong>…</strong></span></p>
+<ul>
+<li><a href="#/stats">Estadística bivariante</a></li>
+</ul>
 </section>
 <section id="estadística-bivariante" class="slide level2">
 <h2>Estadística bivariante</h2>
@@ -6260,9 +6268,9 @@ Levels: aprobado &lt; notable &lt; suspenso</code></pre>
 </ul></li>
 </ul>
 </section>
-<section id="repaso-inferencia" class="slide level2">
-<h2>Repaso: inferencia</h2>
-<p>¿Pero que era eso de la <span class="hl-yellow"><strong>inferencia estadística</strong></span>? Es un conjunto de métodos y técnicas que permite <span class="hl-yellow"><strong>inferir conclusiones sobre una población a partir de una muestra</strong></span> de datos.</p>
+<section id="inferencia" class="slide level2">
+<h2>Inferencia</h2>
+<p>¿Pero que es eso de la <span class="hl-yellow"><strong>inferencia estadística</strong></span>? Es un conjunto de métodos y técnicas que permite <span class="hl-yellow"><strong>inferir conclusiones sobre una población a partir de una muestra</strong></span> de datos.</p>
 <div class="fragment">
 <p>Su propósito es utilizar la información muestral para estimar características de la población, probar hipótesis y realizar predicciones, basado en el cálculo de <span class="hl-yellow"><strong>estadísticos</strong></span></p>
 <ul>
@@ -6271,22 +6279,22 @@ Levels: aprobado &lt; notable &lt; suspenso</code></pre>
 </ul>
 </div>
 </section>
-<section id="repaso-inferencia-1" class="slide level2">
-<h2>Repaso: inferencia</h2>
+<section id="inferencia-1" class="slide level2">
+<h2>Inferencia</h2>
 <p>Haciendo uso de <strong>estadísticos que aproximen una correcta estimación de los parámetros</strong>, los <span class="hl-yellow"><strong>contraste de hipótesis</strong></span> son procedimientos estadísticos para <span class="hl-yellow"><strong>tomar decisiones sobre la validez de una afirmación acerca de una población</strong></span> en función de los datos muestrales.</p>
 <div class="fragment">
 <p>La idea es muy parecido a un <strong>juicio</strong>: con las pruebas (muestra) el jurado (estadístico) deben decidir sobre tu culpabilidad real (población), pudiendo ser declarado <strong>culpable</strong> o <strong>no culpable</strong>.</p>
 </div>
 <div class="fragment">
-<p>Este proceso implica formula</p>
+<p>Este proceso implica formular</p>
 <ul>
 <li><p><span class="hl-yellow"><strong>Hipótesis nula</strong> <span class="math inline">\(H_0\)</span></span>: es una afirmación generalmente representa una <strong>posición de no efecto o no diferencia</strong> (ejemplo: entras siendo no culpable a un juicio)</p></li>
 <li><p><span class="hl-yellow"><strong>Hipótesis alternativa</strong> <span class="math inline">\(H_0\)</span></span>: es una afirmación que <span class="hl-yellow"><strong>se acepta si se rechaza la hipótesis nula</strong></span>. Representa un efecto o diferencia (ejemplo: culpable)</p></li>
 </ul>
 </div>
 </section>
-<section id="repaso-inferencia-2" class="slide level2">
-<h2>Repaso: inferencia</h2>
+<section id="inferencia-2" class="slide level2">
+<h2>Inferencia</h2>
 <ul>
 <li><p><span class="hl-yellow"><strong>Hipótesis nula</strong> <span class="math inline">\(H_0\)</span></span>: es una afirmación generalmente representa una <strong>posición de no efecto o no diferencia</strong> (ejemplo: entras siendo no culpable a un juicio)</p></li>
 <li><p><span class="hl-yellow"><strong>Hipótesis alternativa</strong> <span class="math inline">\(H_1\)</span></span>: es una afirmación que <span class="hl-yellow"><strong>se acepta si se rechaza la hipótesis nula</strong></span>. Representa un efecto o diferencia (ejemplo: culpable)</p></li>
@@ -6456,7 +6464,7 @@ Levels: aprobado &lt; notable &lt; suspenso</code></pre>
 
 </div>
 <img data-src="index_files/figure-revealjs/unnamed-chunk-284-1.png" width="960" class="r-stretch"></section>
-<section id="tu-turno-3-2" class="slide level2">
+<section id="tu-turno-4-1" class="slide level2">
 <h2>💻 Tu turno</h2>
 <p><span style="color:#444442;"><strong>Intenta realizar los siguientes ejercicios sin mirar las soluciones</strong></span></p>
 <div class="panel-tabset">
@@ -6576,11 +6584,11 @@ Levels: aprobado &lt; notable &lt; suspenso</code></pre>
 </div>
 </div>
 </section>
-<section id="caso-practico-3-2" class="slide level2">
-<h2>🐣 Caso práctico II: encuesta de satisfacción</h2>
+<section id="caso-practico-4-1" class="slide level2">
+<h2>🐣 Caso práctico I: encuesta de satisfacción</h2>
 <p>Vamos a seguir poniendo en práctica lo aprendido el dataset <code>SatisfaccionPacientes.csv</code></p>
 <p>&nbsp;</p>
-<p>Intenta responder a las preguntas planteadas en el <a href="https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-ii-encuesta-de-satisfacci%C3%B3n"><strong>workbook</strong></a></p>
+<p>Intenta responder a las preguntas planteadas en el <a href="https://dadosdelaplace-workbook-supervisado.share.connect.posit.cloud/#caso-pr%C3%A1ctico-i-encuesta-de-satisfacci%C3%B3n"><strong>workbook</strong></a></p>
 </section>
 <section id="asociación-cuali-vs-cuali-1" class="slide level2">
 <h2>Asociación cuali vs cuali</h2>
@@ -6602,69 +6610,22 @@ Levels: aprobado &lt; notable &lt; suspenso</code></pre>
   Masculino     15          8      20     4</code></pre>
 </div>
 </div>
-<div class="fragment">
 <p><span class="hl-yellow"><strong>Si la hipótesis nula fuese cierta</strong></span>, ¿qué esperaríamos?</p>
+<div class="fragment">
+<p>Si ambas <strong>variables fuesen independientes</strong>, para cada estado civil tendríamos que tener <strong>porcentajes parecidos a cuando lo hacemos sin desagregar</strong> (53% mujeres y 47% hombres). Es decir, del total de casados (26) deberíamos tener <span class="math inline">\(8.48\)</span> mujeres y <span class="math inline">\(7.52\)</span> hombres; del total de divorciados (19) deberíamos tener <span class="math inline">\(10.07\)</span> mujeres y <span class="math inline">\(8.93\)</span> hombres; y así sucesivamente (las llamadas <span class="hl-yellow"><strong>frecuencias esperadas <span class="math inline">\(E_{ij}\)</span></strong></span>).</p>
 </div>
 </section>
 <section id="prueba-chi-cuadrado-1" class="slide level2">
 <h2>Prueba chi-cuadrado</h2>
-<ol type="1">
-<li>Elegimos uno de los factores y calculamos su <strong>proporción en la tabla general</strong> (53% vs 47% en este caso)</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb542"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb542-1"><a href="#cb542-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(datos<span class="sc">$</span>genero))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
- Femenino Masculino 
-     0.53      0.47 </code></pre>
-</div>
-</div>
-<div class="fragment">
-<ol start="2" type="1">
-<li>Calculamos la <strong>tabla de contigencia</strong> de ambas variables obteniendo lo que denotaremos como <span class="hl-yellow"><strong>frecuencias observadas <span class="math inline">\(O_{ij}\)</span></strong></span></li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb544"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb544-1"><a href="#cb544-1"></a><span class="fu">table</span>(datos<span class="sc">$</span>genero, datos<span class="sc">$</span>estado_civil)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>           
-            Casado Divorciado Soltero Viudo
-  Femenino      11         11      22     9
-  Masculino     15          8      20     4</code></pre>
-</div>
-</div>
-</div>
-</section>
-<section id="prueba-chi-cuadrado-2" class="slide level2">
-<h2>Prueba chi-cuadrado</h2>
-<ol start="3" type="1">
-<li><strong>Si ambas variables fuesen independientes</strong>, en cada columna tendríamos que tener <strong>porcentajes parecidos a cuando lo hacemos sin desagregar</strong> (53% mujeres y 47% hombres). Es decir, del total de casados (26) deberíamos tener <span class="math inline">\(8.48\)</span> mujeres y <span class="math inline">\(7.52\)</span> hombres; del total de divorciados (19) deberíamos tener <span class="math inline">\(10.07\)</span> mujeres y <span class="math inline">\(8.93\)</span> hombres; y así sucesivamente. Estas frecuencias las denotaremos como <span class="hl-yellow"><strong>frecuencias esperadas <span class="math inline">\(E_{ij}\)</span></strong></span></li>
-</ol>
-<p><span class="math display">\[E_{ij} = \frac{\text{suma fila i * suma fila j}}{\text{total}}\]</span></p>
-</section>
-<section id="prueba-chi-cuadrado-3" class="slide level2">
-<h2>Prueba chi-cuadrado</h2>
-<ol start="4" type="1">
-<li><span class="hl-yellow"><strong>Resumimos lo que se desvía una de otra</strong></span> mediante el <span class="hl-yellow"><strong>estadístico chi-cuadrado</strong></span>:</li>
-</ol>
-<p><span class="math display">\[\begin{eqnarray}\chi^2 &amp;=&amp; \sum_{i,j} \frac{\left(O_{ij} - E_{ij} \right)^2}{E_{ij}} = \frac{(13.78 - 11)^2}{13.78} + \frac{(12.22 - 15)^2}{12.22} \nonumber \\
-&amp;+&amp; \frac{(10.07 - 11)^2}{10.07} + \ldots + \frac{(6.11 - 4)^2}{6.11} = 2.75731\end{eqnarray}\]</span></p>
-<div class="fragment">
-<ol start="5" type="1">
-<li>Calculamos <span class="hl-yellow"><strong>cómo de extremo es el valor del estadístico si la hipótesis nula fuese cierta</strong></span>, proporcionándonos un <strong>p-valor</strong>.</li>
-</ol>
-</div>
-</section>
-<section id="prueba-chi-cuadrado-4" class="slide level2">
-<h2>Prueba chi-cuadrado</h2>
 <p>Este proceso podemos hacerlo directamente aplicando <code>chisq.test()</code>, indicándole las variables (o su tabla de frecuencias)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb546"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb546-1"><a href="#cb546-1"></a>contraste <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(datos<span class="sc">$</span>genero, datos<span class="sc">$</span>estado_civil)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb542"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb542-1"><a href="#cb542-1"></a>contraste <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(datos<span class="sc">$</span>genero, datos<span class="sc">$</span>estado_civil)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><code>...$statistic</code>: tenemos guardado el valor del estadístico</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb547"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb547-1"><a href="#cb547-1"></a>contraste<span class="sc">$</span>statistic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb543"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb543-1"><a href="#cb543-1"></a>contraste<span class="sc">$</span>statistic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>X-squared 
   2.75731 </code></pre>
@@ -6674,7 +6635,7 @@ Levels: aprobado &lt; notable &lt; suspenso</code></pre>
 <li><code>...$observed</code>: tenemos guardada la tabla de frecuencias observada</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb549"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb549-1"><a href="#cb549-1"></a>contraste<span class="sc">$</span>observed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb545"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb545-1"><a href="#cb545-1"></a>contraste<span class="sc">$</span>observed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            datos$estado_civil
 datos$genero Casado Divorciado Soltero Viudo
@@ -6683,13 +6644,13 @@ datos$genero Casado Divorciado Soltero Viudo
 </div>
 </div>
 </section>
-<section id="prueba-chi-cuadrado-5" class="slide level2">
+<section id="prueba-chi-cuadrado-2" class="slide level2">
 <h2>Prueba chi-cuadrado</h2>
 <ul>
 <li><code>...$expected</code>: tenemos guardada la tabla de frecuencias esperada</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb551"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb551-1"><a href="#cb551-1"></a>contraste<span class="sc">$</span>expected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb547"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb547-1"><a href="#cb547-1"></a>contraste<span class="sc">$</span>expected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            datos$estado_civil
 datos$genero Casado Divorciado Soltero Viudo
@@ -6701,17 +6662,17 @@ datos$genero Casado Divorciado Soltero Viudo
 <li><code>...$p.value</code>: tenemos guardado el p-valor.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb553"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb553-1"><a href="#cb553-1"></a>contraste<span class="sc">$</span>p.value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb549"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb549-1"><a href="#cb549-1"></a>contraste<span class="sc">$</span>p.value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4305757</code></pre>
 </div>
 </div>
 </section>
-<section id="prueba-chi-cuadrado-6" class="slide level2">
+<section id="prueba-chi-cuadrado-3" class="slide level2">
 <h2>Prueba chi-cuadrado</h2>
 <p>¿Cómo <span class="hl-yellow"><strong>interpretar el contraste</strong></span>?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb555"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb555-1"><a href="#cb555-1"></a>contraste</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb551"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb551-1"><a href="#cb551-1"></a>contraste</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test
@@ -6730,7 +6691,7 @@ X-squared = 2.7573, df = 3, p-value = 0.4306</code></pre>
 <div class="fragment">
 <p>Para aplicarlo nos basta con usar <code>fisher.test()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb557"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb557-1"><a href="#cb557-1"></a><span class="fu">fisher.test</span>(datos<span class="sc">$</span>genero, datos<span class="sc">$</span>estado_civil)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb553"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb553-1"><a href="#cb553-1"></a><span class="fu">fisher.test</span>(datos<span class="sc">$</span>genero, datos<span class="sc">$</span>estado_civil)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Fisher's Exact Test for Count Data
@@ -6747,8 +6708,8 @@ alternative hypothesis: two.sided</code></pre>
 <p>Como hemos dicho es especialmente útil cuando tenemos solo 2 modalidades en cada cualitativa ya que nos proporciona <span class="hl-yellow"><strong>métricas de asociación</strong></span></p>
 <p>Veamos un ejemplo con la tabla <code>placebo_medicamento.csv</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb559"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb559-1"><a href="#cb559-1"></a>datos_placebo <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"./datos/placebo_medicamento.csv"</span>)</span>
-<span id="cb559-2"><a href="#cb559-2"></a>datos_placebo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb555"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb555-1"><a href="#cb555-1"></a>datos_placebo <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"./datos/placebo_medicamento.csv"</span>)</span>
+<span id="cb555-2"><a href="#cb555-2"></a>datos_placebo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 33 × 3
    id_paciente grupo_tratamiento observado
@@ -6770,7 +6731,7 @@ alternative hypothesis: two.sided</code></pre>
 <section id="prueba-de-fisher-2" class="slide level2">
 <h2>Prueba de Fisher</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb561"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb561-1"><a href="#cb561-1"></a><span class="fu">fisher.test</span>(datos_placebo<span class="sc">$</span>observado, datos_placebo<span class="sc">$</span>grupo_tratamiento)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb557"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb557-1"><a href="#cb557-1"></a><span class="fu">fisher.test</span>(datos_placebo<span class="sc">$</span>observado, datos_placebo<span class="sc">$</span>grupo_tratamiento)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Fisher's Exact Test for Count Data
@@ -6791,7 +6752,7 @@ odds ratio
 <section id="métricas-de-asociación" class="slide level2">
 <h2>Métricas de asociación</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb563"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb563-1"><a href="#cb563-1"></a><span class="fu">table</span>(datos_placebo<span class="sc">$</span>observado, datos_placebo<span class="sc">$</span>grupo_tratamiento)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb559"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb559-1"><a href="#cb559-1"></a><span class="fu">table</span>(datos_placebo<span class="sc">$</span>observado, datos_placebo<span class="sc">$</span>grupo_tratamiento)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           
             medicamento placebo
@@ -6810,7 +6771,7 @@ odds ratio
 <section id="métricas-de-asociación-1" class="slide level2">
 <h2>Métricas de asociación</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb565"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb565-1"><a href="#cb565-1"></a><span class="fu">table</span>(datos_placebo<span class="sc">$</span>observado, datos_placebo<span class="sc">$</span>grupo_tratamiento)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb561"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb561-1"><a href="#cb561-1"></a><span class="fu">table</span>(datos_placebo<span class="sc">$</span>observado, datos_placebo<span class="sc">$</span>grupo_tratamiento)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           
             medicamento placebo
@@ -6829,9 +6790,9 @@ odds ratio
 <h2>Métricas de asociación</h2>
 <p>Ambas métricas podemos estimarlas también con el paquete <code>{epitools}</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb567"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb567-1"><a href="#cb567-1"></a><span class="fu">library</span>(epitools)</span>
-<span id="cb567-2"><a href="#cb567-2"></a>OR <span class="ot">&lt;-</span> <span class="fu">oddsratio</span>(datos_placebo<span class="sc">$</span>observado, datos_placebo<span class="sc">$</span>grupo_tratamiento)</span>
-<span id="cb567-3"><a href="#cb567-3"></a>OR<span class="sc">$</span>measure</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb563"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb563-1"><a href="#cb563-1"></a><span class="fu">library</span>(epitools)</span>
+<span id="cb563-2"><a href="#cb563-2"></a>OR <span class="ot">&lt;-</span> <span class="fu">oddsratio</span>(datos_placebo<span class="sc">$</span>observado, datos_placebo<span class="sc">$</span>grupo_tratamiento)</span>
+<span id="cb563-3"><a href="#cb563-3"></a>OR<span class="sc">$</span>measure</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           odds ratio with 95% C.I.
 Predictor   estimate    lower    upper
@@ -6848,8 +6809,8 @@ Predictor   estimate    lower    upper
 <section id="métricas-de-asociación-3" class="slide level2">
 <h2>Métricas de asociación</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb569"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb569-1"><a href="#cb569-1"></a>RR <span class="ot">&lt;-</span> <span class="fu">riskratio</span>(datos_placebo<span class="sc">$</span>observado, datos_placebo<span class="sc">$</span>grupo_tratamiento)</span>
-<span id="cb569-2"><a href="#cb569-2"></a>RR<span class="sc">$</span>measure</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb565"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb565-1"><a href="#cb565-1"></a>RR <span class="ot">&lt;-</span> <span class="fu">riskratio</span>(datos_placebo<span class="sc">$</span>observado, datos_placebo<span class="sc">$</span>grupo_tratamiento)</span>
+<span id="cb565-2"><a href="#cb565-2"></a>RR<span class="sc">$</span>measure</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           risk ratio with 95% C.I.
 Predictor   estimate    lower    upper
@@ -6878,67 +6839,67 @@ Predictor   estimate    lower    upper
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb571"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb571-1"><a href="#cb571-1"></a><span class="fu">ggplot</span>(datos) <span class="sc">+</span></span>
-<span id="cb571-2"><a href="#cb571-2"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> estado_civil, <span class="at">fill =</span> genero), <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb571-3"><a href="#cb571-3"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_fill_colorblind</span>() <span class="sc">+</span></span>
-<span id="cb571-4"><a href="#cb571-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Estado civil"</span>, <span class="at">y =</span> <span class="st">"Frec. absolutas"</span>,</span>
-<span id="cb571-5"><a href="#cb571-5"></a>       <span class="at">fill =</span> <span class="st">"Género"</span>) <span class="sc">+</span></span>
-<span id="cb571-6"><a href="#cb571-6"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb567"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb567-1"><a href="#cb567-1"></a><span class="fu">ggplot</span>(datos) <span class="sc">+</span></span>
+<span id="cb567-2"><a href="#cb567-2"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> estado_civil, <span class="at">fill =</span> genero), <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb567-3"><a href="#cb567-3"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_fill_colorblind</span>() <span class="sc">+</span></span>
+<span id="cb567-4"><a href="#cb567-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Estado civil"</span>, <span class="at">y =</span> <span class="st">"Frec. absolutas"</span>,</span>
+<span id="cb567-5"><a href="#cb567-5"></a>       <span class="at">fill =</span> <span class="st">"Género"</span>) <span class="sc">+</span></span>
+<span id="cb567-6"><a href="#cb567-6"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-309-1.png" width="960" class="r-stretch"></section>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-307-1.png" width="960" class="r-stretch"></section>
 <section id="gráficos-de-barras-2" class="slide level2">
 <h2>Gráficos de barras</h2>
 <p>La función <code>geom_bar()</code> nos permite jugar un poco con el tipo de barras, que por defecto las muestra <code>stacked</code> (apiladas). Dicho ajuste podemos <strong>cambiarlo con el argumento <code>position</code></strong>: si <code>position = "dodge"</code> las muestra de <span class="hl-yellow"><strong>manera agrupada una detrás de otra</strong></span>.</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb572"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb572-1"><a href="#cb572-1"></a><span class="fu">ggplot</span>(datos) <span class="sc">+</span></span>
-<span id="cb572-2"><a href="#cb572-2"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> estado_civil, <span class="at">fill =</span> genero),</span>
-<span id="cb572-3"><a href="#cb572-3"></a>           <span class="at">position =</span> <span class="st">"dodge"</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb572-4"><a href="#cb572-4"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_fill_colorblind</span>() <span class="sc">+</span></span>
-<span id="cb572-5"><a href="#cb572-5"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Estado civil"</span>, <span class="at">y =</span> <span class="st">"Frec. absolutas"</span>,</span>
-<span id="cb572-6"><a href="#cb572-6"></a>       <span class="at">fill =</span> <span class="st">"Género"</span>) <span class="sc">+</span></span>
-<span id="cb572-7"><a href="#cb572-7"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb568"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb568-1"><a href="#cb568-1"></a><span class="fu">ggplot</span>(datos) <span class="sc">+</span></span>
+<span id="cb568-2"><a href="#cb568-2"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> estado_civil, <span class="at">fill =</span> genero),</span>
+<span id="cb568-3"><a href="#cb568-3"></a>           <span class="at">position =</span> <span class="st">"dodge"</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb568-4"><a href="#cb568-4"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_fill_colorblind</span>() <span class="sc">+</span></span>
+<span id="cb568-5"><a href="#cb568-5"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Estado civil"</span>, <span class="at">y =</span> <span class="st">"Frec. absolutas"</span>,</span>
+<span id="cb568-6"><a href="#cb568-6"></a>       <span class="at">fill =</span> <span class="st">"Género"</span>) <span class="sc">+</span></span>
+<span id="cb568-7"><a href="#cb568-7"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-310-1.png" width="960" class="r-stretch"></section>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-308-1.png" width="960" class="r-stretch"></section>
 <section id="gráficos-de-barras-3" class="slide level2">
 <h2>Gráficos de barras</h2>
 <p>La mejor opción para visualizar si hay asociación es que <strong>cada barra de estado civil representa el total y nos muestre el % de cada sexo</strong> en cada una: si fuesen independientes, el reparto por sexo en cada barra debería ser similar. Lo haremos con <code>position = "fill"</code></p>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb573"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb573-1"><a href="#cb573-1"></a><span class="fu">ggplot</span>(datos) <span class="sc">+</span></span>
-<span id="cb573-2"><a href="#cb573-2"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> estado_civil, <span class="at">fill =</span> genero),</span>
-<span id="cb573-3"><a href="#cb573-3"></a>           <span class="at">position =</span> <span class="st">"fill"</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb573-4"><a href="#cb573-4"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_fill_colorblind</span>() <span class="sc">+</span></span>
-<span id="cb573-5"><a href="#cb573-5"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Estado civil"</span>, <span class="at">y =</span> <span class="st">"Frec. relativas"</span>,</span>
-<span id="cb573-6"><a href="#cb573-6"></a>       <span class="at">fill =</span> <span class="st">"Género"</span>) <span class="sc">+</span></span>
-<span id="cb573-7"><a href="#cb573-7"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb569"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb569-1"><a href="#cb569-1"></a><span class="fu">ggplot</span>(datos) <span class="sc">+</span></span>
+<span id="cb569-2"><a href="#cb569-2"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> estado_civil, <span class="at">fill =</span> genero),</span>
+<span id="cb569-3"><a href="#cb569-3"></a>           <span class="at">position =</span> <span class="st">"fill"</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb569-4"><a href="#cb569-4"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_fill_colorblind</span>() <span class="sc">+</span></span>
+<span id="cb569-5"><a href="#cb569-5"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Estado civil"</span>, <span class="at">y =</span> <span class="st">"Frec. relativas"</span>,</span>
+<span id="cb569-6"><a href="#cb569-6"></a>       <span class="at">fill =</span> <span class="st">"Género"</span>) <span class="sc">+</span></span>
+<span id="cb569-7"><a href="#cb569-7"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-311-1.png" width="960" class="r-stretch"></section>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-309-1.png" width="960" class="r-stretch"></section>
 <section id="gráficos-de-barras-4" class="slide level2">
 <h2>Gráficos de barras</h2>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb574"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb574-1"><a href="#cb574-1"></a><span class="fu">ggplot</span>(datos) <span class="sc">+</span></span>
-<span id="cb574-2"><a href="#cb574-2"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> estado_civil, <span class="at">fill =</span> genero),</span>
-<span id="cb574-3"><a href="#cb574-3"></a>           <span class="at">position =</span> <span class="st">"fill"</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb574-4"><a href="#cb574-4"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_fill_colorblind</span>() <span class="sc">+</span></span>
-<span id="cb574-5"><a href="#cb574-5"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Estado civil"</span>, <span class="at">y =</span> <span class="st">"Frec. relativas"</span>,</span>
-<span id="cb574-6"><a href="#cb574-6"></a>       <span class="at">fill =</span> <span class="st">"Género"</span>) <span class="sc">+</span></span>
-<span id="cb574-7"><a href="#cb574-7"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb570"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb570-1"><a href="#cb570-1"></a><span class="fu">ggplot</span>(datos) <span class="sc">+</span></span>
+<span id="cb570-2"><a href="#cb570-2"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> estado_civil, <span class="at">fill =</span> genero),</span>
+<span id="cb570-3"><a href="#cb570-3"></a>           <span class="at">position =</span> <span class="st">"fill"</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb570-4"><a href="#cb570-4"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_fill_colorblind</span>() <span class="sc">+</span></span>
+<span id="cb570-5"><a href="#cb570-5"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Estado civil"</span>, <span class="at">y =</span> <span class="st">"Frec. relativas"</span>,</span>
+<span id="cb570-6"><a href="#cb570-6"></a>       <span class="at">fill =</span> <span class="st">"Género"</span>) <span class="sc">+</span></span>
+<span id="cb570-7"><a href="#cb570-7"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-312-1.png" width="960" class="r-stretch"></section>
-<section id="tu-turno-3-3" class="slide level2">
+<img data-src="index_files/figure-revealjs/unnamed-chunk-310-1.png" width="960" class="r-stretch"></section>
+<section id="tu-turno-4-2" class="slide level2">
 <h2>💻 Tu turno</h2>
 <p><span style="color:#444442;"><strong>Intenta realizar los siguientes ejercicios sin mirar las soluciones</strong></span></p>
 <div class="panel-tabset">
@@ -6949,7 +6910,7 @@ Predictor   estimate    lower    upper
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb575"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb575-1"><a href="#cb575-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"./datos/placebo_medicamento_completo.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb571"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb571-1"><a href="#cb571-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"./datos/placebo_medicamento_completo.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -6958,10 +6919,10 @@ Predictor   estimate    lower    upper
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb576"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb576-1"><a href="#cb576-1"></a>datos <span class="ot">&lt;-</span></span>
-<span id="cb576-2"><a href="#cb576-2"></a>  datos <span class="sc">|&gt;</span> </span>
-<span id="cb576-3"><a href="#cb576-3"></a>  <span class="fu">mutate</span>(<span class="st">"mejora"</span> <span class="ot">=</span> <span class="fu">if_else</span>(colesterol_post <span class="sc">&lt;=</span> colesterol_pre, <span class="st">"mejora"</span>,</span>
-<span id="cb576-4"><a href="#cb576-4"></a>                            <span class="st">"no mejora"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb572"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb572-1"><a href="#cb572-1"></a>datos <span class="ot">&lt;-</span></span>
+<span id="cb572-2"><a href="#cb572-2"></a>  datos <span class="sc">|&gt;</span> </span>
+<span id="cb572-3"><a href="#cb572-3"></a>  <span class="fu">mutate</span>(<span class="st">"mejora"</span> <span class="ot">=</span> <span class="fu">if_else</span>(colesterol_post <span class="sc">&lt;=</span> colesterol_pre, <span class="st">"mejora"</span>,</span>
+<span id="cb572-4"><a href="#cb572-4"></a>                            <span class="st">"no mejora"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -6970,23 +6931,23 @@ Predictor   estimate    lower    upper
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb577"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb577-1"><a href="#cb577-1"></a><span class="co"># así pintaríamos en cada barra de tratamiento los mejora o no mejora</span></span>
-<span id="cb577-2"><a href="#cb577-2"></a><span class="fu">ggplot</span>(datos) <span class="sc">+</span></span>
-<span id="cb577-3"><a href="#cb577-3"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> tratamiento, <span class="at">fill =</span> mejora), <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb577-4"><a href="#cb577-4"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_fill_colorblind</span>() <span class="sc">+</span></span>
-<span id="cb577-5"><a href="#cb577-5"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb577-6"><a href="#cb577-6"></a></span>
-<span id="cb577-7"><a href="#cb577-7"></a><span class="co"># pero dado que tienes más tratados que del grupo control</span></span>
-<span id="cb577-8"><a href="#cb577-8"></a><span class="co"># no permite comparar bien así que igualamos las barras</span></span>
-<span id="cb577-9"><a href="#cb577-9"></a><span class="co"># para que cada barra sea el 100% de su categoría</span></span>
-<span id="cb577-10"><a href="#cb577-10"></a><span class="fu">ggplot</span>(datos) <span class="sc">+</span></span>
-<span id="cb577-11"><a href="#cb577-11"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> tratamiento, <span class="at">fill =</span> mejora), <span class="at">alpha =</span> <span class="fl">0.6</span>,</span>
-<span id="cb577-12"><a href="#cb577-12"></a>           <span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
-<span id="cb577-13"><a href="#cb577-13"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_fill_colorblind</span>() <span class="sc">+</span></span>
-<span id="cb577-14"><a href="#cb577-14"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb577-15"><a href="#cb577-15"></a></span>
-<span id="cb577-16"><a href="#cb577-16"></a><span class="co"># Parece evidente visualmente que hay una diferencia entre mejora y no mejora</span></span>
-<span id="cb577-17"><a href="#cb577-17"></a><span class="co"># en cada barra</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb573"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb573-1"><a href="#cb573-1"></a><span class="co"># así pintaríamos en cada barra de tratamiento los mejora o no mejora</span></span>
+<span id="cb573-2"><a href="#cb573-2"></a><span class="fu">ggplot</span>(datos) <span class="sc">+</span></span>
+<span id="cb573-3"><a href="#cb573-3"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> tratamiento, <span class="at">fill =</span> mejora), <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb573-4"><a href="#cb573-4"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_fill_colorblind</span>() <span class="sc">+</span></span>
+<span id="cb573-5"><a href="#cb573-5"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb573-6"><a href="#cb573-6"></a></span>
+<span id="cb573-7"><a href="#cb573-7"></a><span class="co"># pero dado que tienes más tratados que del grupo control</span></span>
+<span id="cb573-8"><a href="#cb573-8"></a><span class="co"># no permite comparar bien así que igualamos las barras</span></span>
+<span id="cb573-9"><a href="#cb573-9"></a><span class="co"># para que cada barra sea el 100% de su categoría</span></span>
+<span id="cb573-10"><a href="#cb573-10"></a><span class="fu">ggplot</span>(datos) <span class="sc">+</span></span>
+<span id="cb573-11"><a href="#cb573-11"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> tratamiento, <span class="at">fill =</span> mejora), <span class="at">alpha =</span> <span class="fl">0.6</span>,</span>
+<span id="cb573-12"><a href="#cb573-12"></a>           <span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb573-13"><a href="#cb573-13"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_fill_colorblind</span>() <span class="sc">+</span></span>
+<span id="cb573-14"><a href="#cb573-14"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb573-15"><a href="#cb573-15"></a></span>
+<span id="cb573-16"><a href="#cb573-16"></a><span class="co"># Parece evidente visualmente que hay una diferencia entre mejora y no mejora</span></span>
+<span id="cb573-17"><a href="#cb573-17"></a><span class="co"># en cada barra</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -7001,14 +6962,14 @@ Predictor   estimate    lower    upper
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb578"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb578-1"><a href="#cb578-1"></a><span class="fu">table</span>(datos<span class="sc">$</span>tratamiento, datos<span class="sc">$</span>mejora)</span>
-<span id="cb578-2"><a href="#cb578-2"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(datos<span class="sc">$</span>tratamiento, datos<span class="sc">$</span>mejora))</span>
-<span id="cb578-3"><a href="#cb578-3"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(datos<span class="sc">$</span>tratamiento, datos<span class="sc">$</span>mejora), <span class="at">margin =</span> <span class="dv">1</span>)</span>
-<span id="cb578-4"><a href="#cb578-4"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(datos<span class="sc">$</span>tratamiento, datos<span class="sc">$</span>mejora), <span class="at">margin =</span> <span class="dv">2</span>)</span>
-<span id="cb578-5"><a href="#cb578-5"></a><span class="co"># 9 personas de las tratadas con medicamento no mejoraron</span></span>
-<span id="cb578-6"><a href="#cb578-6"></a><span class="co"># 9% del total de personas mejoraron y tomaron placebo</span></span>
-<span id="cb578-7"><a href="#cb578-7"></a><span class="co"># 37% de los que no mejoraron habían tomado la medicación</span></span>
-<span id="cb578-8"><a href="#cb578-8"></a><span class="co"># 88.1% de los que tomaron medicamento mejoraron</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb574"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb574-1"><a href="#cb574-1"></a><span class="fu">table</span>(datos<span class="sc">$</span>tratamiento, datos<span class="sc">$</span>mejora)</span>
+<span id="cb574-2"><a href="#cb574-2"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(datos<span class="sc">$</span>tratamiento, datos<span class="sc">$</span>mejora))</span>
+<span id="cb574-3"><a href="#cb574-3"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(datos<span class="sc">$</span>tratamiento, datos<span class="sc">$</span>mejora), <span class="at">margin =</span> <span class="dv">1</span>)</span>
+<span id="cb574-4"><a href="#cb574-4"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(datos<span class="sc">$</span>tratamiento, datos<span class="sc">$</span>mejora), <span class="at">margin =</span> <span class="dv">2</span>)</span>
+<span id="cb574-5"><a href="#cb574-5"></a><span class="co"># 9 personas de las tratadas con medicamento no mejoraron</span></span>
+<span id="cb574-6"><a href="#cb574-6"></a><span class="co"># 9% del total de personas mejoraron y tomaron placebo</span></span>
+<span id="cb574-7"><a href="#cb574-7"></a><span class="co"># 37% de los que no mejoraron habían tomado la medicación</span></span>
+<span id="cb574-8"><a href="#cb574-8"></a><span class="co"># 88.1% de los que tomaron medicamento mejoraron</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -7017,9 +6978,9 @@ Predictor   estimate    lower    upper
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb579"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb579-1"><a href="#cb579-1"></a><span class="fu">chisq.test</span>(datos<span class="sc">$</span>tratamiento, datos<span class="sc">$</span>mejora)</span>
-<span id="cb579-2"><a href="#cb579-2"></a><span class="co"># Dado que p-value = 1.654e-06 &lt;&lt; alpha --&gt; debemos rechazar la hipótesis nula --&gt;</span></span>
-<span id="cb579-3"><a href="#cb579-3"></a><span class="co"># hay evidencias suficientes para afirmar que hay relación de dependencia</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb575"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb575-1"><a href="#cb575-1"></a><span class="fu">chisq.test</span>(datos<span class="sc">$</span>tratamiento, datos<span class="sc">$</span>mejora)</span>
+<span id="cb575-2"><a href="#cb575-2"></a><span class="co"># Dado que p-value = 1.654e-06 &lt;&lt; alpha --&gt; debemos rechazar la hipótesis nula --&gt;</span></span>
+<span id="cb575-3"><a href="#cb575-3"></a><span class="co"># hay evidencias suficientes para afirmar que hay relación de dependencia</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -7030,11 +6991,11 @@ Predictor   estimate    lower    upper
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb580"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb580-1"><a href="#cb580-1"></a>resumen_pvalores <span class="ot">&lt;-</span></span>
-<span id="cb580-2"><a href="#cb580-2"></a>  datos <span class="sc">|&gt;</span> </span>
-<span id="cb580-3"><a href="#cb580-3"></a>  <span class="fu">summarise</span>(<span class="st">"sig_chisq"</span> <span class="ot">=</span> <span class="fu">chisq.test</span>(datos<span class="sc">$</span>tratamiento, datos<span class="sc">$</span>mejora)<span class="sc">$</span>p.value,</span>
-<span id="cb580-4"><a href="#cb580-4"></a>            <span class="st">"sig_fisher"</span> <span class="ot">=</span> <span class="fu">fisher.test</span>(datos<span class="sc">$</span>tratamiento, datos<span class="sc">$</span>mejora)<span class="sc">$</span>p.value)</span>
-<span id="cb580-5"><a href="#cb580-5"></a><span class="fu">write_csv</span>(resumen_pvalores, <span class="at">file =</span> <span class="st">"./datos/resumen_pvalores.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb576"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb576-1"><a href="#cb576-1"></a>resumen_pvalores <span class="ot">&lt;-</span></span>
+<span id="cb576-2"><a href="#cb576-2"></a>  datos <span class="sc">|&gt;</span> </span>
+<span id="cb576-3"><a href="#cb576-3"></a>  <span class="fu">summarise</span>(<span class="st">"sig_chisq"</span> <span class="ot">=</span> <span class="fu">chisq.test</span>(datos<span class="sc">$</span>tratamiento, datos<span class="sc">$</span>mejora)<span class="sc">$</span>p.value,</span>
+<span id="cb576-4"><a href="#cb576-4"></a>            <span class="st">"sig_fisher"</span> <span class="ot">=</span> <span class="fu">fisher.test</span>(datos<span class="sc">$</span>tratamiento, datos<span class="sc">$</span>mejora)<span class="sc">$</span>p.value)</span>
+<span id="cb576-5"><a href="#cb576-5"></a><span class="fu">write_csv</span>(resumen_pvalores, <span class="at">file =</span> <span class="st">"./datos/resumen_pvalores.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -7043,7 +7004,7 @@ Predictor   estimate    lower    upper
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb581"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb581-1"><a href="#cb581-1"></a><span class="fu">fisher.test</span>(datos<span class="sc">$</span>tratamiento, datos<span class="sc">$</span>mejora)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb577"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb577-1"><a href="#cb577-1"></a><span class="fu">fisher.test</span>(datos<span class="sc">$</span>tratamiento, datos<span class="sc">$</span>mejora)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -7060,22 +7021,22 @@ odds ratio
 </div>
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb583"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb583-1"><a href="#cb583-1"></a><span class="co"># OR estimado es de 11.95 --&gt; al ser mayor que 1 implica que</span></span>
-<span id="cb583-2"><a href="#cb583-2"></a><span class="co"># hay una asociación positiva entre las variables</span></span>
-<span id="cb583-3"><a href="#cb583-3"></a><span class="co"># hay 12 veces más opciones de que te baje el colesterol si tomas el</span></span>
-<span id="cb583-4"><a href="#cb583-4"></a><span class="co"># medicamento respecto a una posible mejora aleatoria (porque sí).</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb579"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb579-1"><a href="#cb579-1"></a><span class="co"># OR estimado es de 11.95 --&gt; al ser mayor que 1 implica que</span></span>
+<span id="cb579-2"><a href="#cb579-2"></a><span class="co"># hay una asociación positiva entre las variables</span></span>
+<span id="cb579-3"><a href="#cb579-3"></a><span class="co"># hay 12 veces más opciones de que te baje el colesterol si tomas el</span></span>
+<span id="cb579-4"><a href="#cb579-4"></a><span class="co"># medicamento respecto a una posible mejora aleatoria (porque sí).</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="caso-practico-3-3" class="slide level2">
-<h2>🐣 Caso práctico III: bronquitis y tabaco</h2>
+<section id="caso-practico-4-2" class="slide level2">
+<h2>🐣 Caso práctico II: bronquitis y tabaco</h2>
 <p>Vamos a cargar el archivo de datos <code>fumadores.csv</code> donde tenemos datos de 96 pacientes sobre sí o fuman y quienes han desarrollado o no bronquitis.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb584"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb584-1"><a href="#cb584-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"./datos/fumadores.csv"</span>)</span>
-<span id="cb584-2"><a href="#cb584-2"></a>datos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb580"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb580-1"><a href="#cb580-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"./datos/fumadores.csv"</span>)</span>
+<span id="cb580-2"><a href="#cb580-2"></a>datos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 96 × 3
       id fumador estado    
@@ -7094,18 +7055,18 @@ odds ratio
 </div>
 </div>
 <p>&nbsp;</p>
-<p>Intenta responder a las preguntas planteadas en el <a href="https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-iii-bronquitis-y-tabaco"><strong>workbook</strong></a></p>
+<p>Intenta responder a las preguntas planteadas en el <a href="https://dadosdelaplace-workbook-supervisado.share.connect.posit.cloud/#caso-pr%C3%A1ctico-ii-bronquitis-y-tabaco"><strong>workbook</strong></a></p>
 </section>
-<section id="caso-practico-3-4" class="slide level2">
-<h2>🐣 Caso práctico IV: salud mental</h2>
+<section id="caso-practico-4-3" class="slide level2">
+<h2>🐣 Caso práctico III: salud mental</h2>
 <p>Esta la base de datos <code>datos_salud_mental.csv</code> tenemos información recopilada de 100 pacientes que acuden a un centro de salud mental. Se quiere realizar un estudio para ver el <strong>impacto que tienen distintas características sobre la ansiedad y depresión</strong> en estos 100 pacientes. Los datos incluyen una variedad de variables relacionadas con la salud mental, así como características demográficas y de estilo de vida.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb586"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb586-1"><a href="#cb586-1"></a>datos <span class="ot">&lt;-</span></span>
-<span id="cb586-2"><a href="#cb586-2"></a>  <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"./datos/datos_salud_mental.csv"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb586-3"><a href="#cb586-3"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb582"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb582-1"><a href="#cb582-1"></a>datos <span class="ot">&lt;-</span></span>
+<span id="cb582-2"><a href="#cb582-2"></a>  <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"./datos/datos_salud_mental.csv"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb582-3"><a href="#cb582-3"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>&nbsp;</p>
-<p>Intenta responder a las preguntas planteadas en el <a href="https://javieralvarezliebana.quarto.pub/workbook-rtve/#caso-pr%C3%A1ctico-iv-salud-mental"><strong>workbook</strong></a></p>
+<p>Intenta responder a las preguntas planteadas en el <a href="https://dadosdelaplace-workbook-supervisado.share.connect.posit.cloud/#caso-pr%C3%A1ctico-iii-salud-mental"><strong>workbook</strong></a></p>
 </section>
 <section id="asociación-cuanti-vs-cuanti" class="slide level2">
 <h2>Asociación cuanti vs cuanti</h2>
@@ -7114,9 +7075,9 @@ odds ratio
 <div class="fragment">
 <p>Para calcularla en <code>R</code> basta con usar la función <code>cov()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb587"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb587-1"><a href="#cb587-1"></a>starwars <span class="sc">|&gt;</span> </span>
-<span id="cb587-2"><a href="#cb587-2"></a>  <span class="fu">drop_na</span>(mass, height) <span class="sc">|&gt;</span> </span>
-<span id="cb587-3"><a href="#cb587-3"></a>  <span class="fu">summarise</span>(<span class="fu">cov</span>(mass, height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb583"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb583-1"><a href="#cb583-1"></a>starwars <span class="sc">|&gt;</span> </span>
+<span id="cb583-2"><a href="#cb583-2"></a>  <span class="fu">drop_na</span>(mass, height) <span class="sc">|&gt;</span> </span>
+<span id="cb583-3"><a href="#cb583-3"></a>  <span class="fu">summarise</span>(<span class="fu">cov</span>(mass, height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   `cov(mass, height)`
@@ -7164,10 +7125,10 @@ odds ratio
 <p>No sé si te has fijado qué sucede cuando intentamos <span class="hl-yellow"><strong>calcular la covarianza/correlación de varias variables</strong></span>, por ejemplo vamos a calcular la (cuasi)covarianza de todas las variables numéricas de starwars.</p>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb589"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb589-1"><a href="#cb589-1"></a>starwars <span class="sc">|&gt;</span> </span>
-<span id="cb589-2"><a href="#cb589-2"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">|&gt;</span> </span>
-<span id="cb589-3"><a href="#cb589-3"></a>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span></span>
-<span id="cb589-4"><a href="#cb589-4"></a>  <span class="fu">cov</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb585"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb585-1"><a href="#cb585-1"></a>starwars <span class="sc">|&gt;</span> </span>
+<span id="cb585-2"><a href="#cb585-2"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">|&gt;</span> </span>
+<span id="cb585-3"><a href="#cb585-3"></a>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span></span>
+<span id="cb585-4"><a href="#cb585-4"></a>  <span class="fu">cov</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               height       mass birth_year
 height       957.3802   676.8867   -2164.10
@@ -7183,10 +7144,10 @@ birth_year -2164.1002 17402.5466   28603.04</code></pre>
 <section id="matriz-de-covarianzas" class="slide level2">
 <h2>Matriz de covarianzas</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb591"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb591-1"><a href="#cb591-1"></a>starwars <span class="sc">|&gt;</span> </span>
-<span id="cb591-2"><a href="#cb591-2"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">|&gt;</span> </span>
-<span id="cb591-3"><a href="#cb591-3"></a>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span></span>
-<span id="cb591-4"><a href="#cb591-4"></a>  <span class="fu">cov</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb587"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb587-1"><a href="#cb587-1"></a>starwars <span class="sc">|&gt;</span> </span>
+<span id="cb587-2"><a href="#cb587-2"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">|&gt;</span> </span>
+<span id="cb587-3"><a href="#cb587-3"></a>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span></span>
+<span id="cb587-4"><a href="#cb587-4"></a>  <span class="fu">cov</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               height       mass birth_year
 height       957.3802   676.8867   -2164.10
@@ -7219,10 +7180,10 @@ birth_year -2164.1002 17402.5466   28603.04</code></pre>
 <p>De la misma manera con <code>cor()</code> podemos <span class="hl-yellow"><strong>calcular la matriz de correlaciones</strong></span> (en este caso sin el <code>cuasi</code> ya que se cancelan denominadores)</p>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb593"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb593-1"><a href="#cb593-1"></a>starwars <span class="sc">|&gt;</span> </span>
-<span id="cb593-2"><a href="#cb593-2"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">|&gt;</span> </span>
-<span id="cb593-3"><a href="#cb593-3"></a>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span></span>
-<span id="cb593-4"><a href="#cb593-4"></a>  <span class="fu">cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb589"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb589-1"><a href="#cb589-1"></a>starwars <span class="sc">|&gt;</span> </span>
+<span id="cb589-2"><a href="#cb589-2"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">|&gt;</span> </span>
+<span id="cb589-3"><a href="#cb589-3"></a>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span></span>
+<span id="cb589-4"><a href="#cb589-4"></a>  <span class="fu">cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               height      mass birth_year
 height      1.0000000 0.1016533 -0.4135510
@@ -7272,7 +7233,7 @@ birth_year -0.4135510 0.4781391  1.0000000</code></pre>
 <div class="fragment">
 <p>Con un <span class="hl-yellow"><strong>contraste de correlaciones</strong></span> haciendo uso de <code>cor.test()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb595"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb595-1"><a href="#cb595-1"></a><span class="fu">cor.test</span>(starwars<span class="sc">$</span>mass, starwars<span class="sc">$</span>height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb591"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb591-1"><a href="#cb591-1"></a><span class="fu">cor.test</span>(starwars<span class="sc">$</span>mass, starwars<span class="sc">$</span>height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's product-moment correlation
@@ -7289,40 +7250,78 @@ sample estimates:
 </div>
 </div>
 </section>
-<section id="otras-correlaciones" class="slide level2">
-<h2>Otras correlaciones</h2>
-<p>La <span class="hl-yellow"><strong>correlación de Pearson</strong></span> asume que las <span class="hl-green"><strong>variables están distribuidas normalmente</strong></span>, en caso de existir asociación tienen una relación lineal y no tienen valores atípicos.</p>
+<section id="correlación-de-rango" class="slide level2">
+<h2>Correlación de rango</h2>
+<p>La <span class="hl-yellow"><strong>correlación (lineal) de Pearson</strong></span> asume que las <span class="hl-green"><strong>variables están distribuidas normalmente</strong></span>, en caso de existir asociación tienen una relación lineal y no tienen valores atípicos.</p>
 <div class="fragment">
-<p>Por ello existen dos alternativas: <span class="hl-yellow"><strong>correlación de Spearman</strong></span> y <span class="hl-yellow"><strong>correlación de Kendall</strong></span></p>
+<p>Esto significa que <span class="hl-yellow"><strong>ANTES de aplicar un test de correlación</strong></span> deberíamos de <strong>comprobar que ambas están distribuidas normalmente</strong></p>
 </div>
 </section>
-<section id="correlación-de-spearman" class="slide level2">
-<h2>Correlación de Spearman</h2>
-<p>El [<strong>coeficiente de correlación de Spearman</strong>]{hl-yellow} cuantifica de manera no paramétrica la interdependencia entre dos variables aleatorias (tanto continuas como discretas). Cuantifica el <span class="hl-yellow"><strong>grado de asociación monótona entre dos variables ordinales o continuas</strong></span></p>
-<p><span class="math display">\[\rho =1-\frac{6\sum D^{2}}{n (n^{2}-1)}\]</span></p>
-<p>donde <span class="math inline">\(D\)</span> es la diferencia entre los correspondientes estadísticos de orden de <span class="math inline">\(x - y\)</span>.</p>
+<section id="contraste-de-normalidad" class="slide level2">
+<h2>Contraste de normalidad</h2>
+<ol type="1">
+<li>Antes de nada debemos de eliminar los pares con datos ausentres</li>
+</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb597"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb597-1"><a href="#cb597-1"></a>starwars <span class="sc">|&gt;</span> </span>
-<span id="cb597-2"><a href="#cb597-2"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">|&gt;</span> </span>
-<span id="cb597-3"><a href="#cb597-3"></a>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb597-4"><a href="#cb597-4"></a>  <span class="fu">cor</span>(<span class="at">method =</span> <span class="st">"spearman"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>             height      mass birth_year
-height     1.000000 0.6899000  0.1725850
-mass       0.689900 1.0000000  0.1476468
-birth_year 0.172585 0.1476468  1.0000000</code></pre>
+<div class="sourceCode cell-code" id="cb593"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb593-1"><a href="#cb593-1"></a>starwars_sin_NA <span class="ot">&lt;-</span> starwars <span class="sc">|&gt;</span> <span class="fu">drop_na</span>(mass, height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</section>
-<section id="tau-de-kendall" class="slide level2">
-<h2>Tau de Kendall</h2>
-<p>El <span class="hl-yellow"><strong>coeficiente de correlación de rango de Kendall</strong></span> (<span class="math inline">\(\tau\)</span> de Kendall) cuantifica la <span class="hl-yellow"><strong>asociación ordinal de variables cualitativas</strong></span> de manera no paramétrica.</p>
 <div class="fragment">
-<p>Dados <span class="math inline">\(\left(x_1, y_1\right), \ldots, \left(x_n, y_n\right)\)</span> un conjunto de observaciones, se dice que <span class="math inline">\(\left(x_{i},y_{i}\right)\)</span> y <span class="math inline">\(\left(x_{j},y_{j}\right)\)</span> (con <span class="math inline">\(i &lt; j\)</span>) son un <span class="hl-yellow"><strong>par concordante</strong></span> si el orden de clasificación coincide (<span class="math inline">\(x_i &lt; x_j,~y_i &lt; y_j\)</span> o bien <span class="math inline">\(x_j &lt; x_i,~y_j &lt; y_i\)</span>)</p>
-<p><span class="math display">\[\tau =\frac{\text{n pares concordantes} - \text{n pares discordantes}}{n \choose 2}\]</span></p>
+<ol start="2" type="1">
+<li>Tras ello podemos chequearlo de manera visual</li>
+</ol>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb594"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb594-1"><a href="#cb594-1"></a><span class="fu">ggplot</span>(starwars) <span class="sc">+</span></span>
+<span id="cb594-2"><a href="#cb594-2"></a>  <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">x =</span> height)) <span class="sc">+</span></span>
+<span id="cb594-3"><a href="#cb594-3"></a>  <span class="fu">theme_minimal</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-326-1.png" width="960"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb595"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb595-1"><a href="#cb595-1"></a><span class="fu">ggplot</span>(starwars) <span class="sc">+</span></span>
+<span id="cb595-2"><a href="#cb595-2"></a>  <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">x =</span> mass)) <span class="sc">+</span></span>
+<span id="cb595-3"><a href="#cb595-3"></a>  <span class="fu">theme_minimal</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-327-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+<p>Obviamente ninguna de las dos aparenta ser Gaussiana (por asimetría y por outliers)</p>
 </div>
 </section>
-<section id="tu-turno-3-4" class="slide level2">
+<section id="contraste-de-normalidad-1" class="slide level2">
+<h2>Contraste de normalidad</h2>
+<ol start="3" type="1">
+<li>También podemos cotejarlo mediante una <span class="hl-yellow"><strong>prueba de inferencia no parámetrica contastando la normalidad</strong></span></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb596"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb596-1"><a href="#cb596-1"></a><span class="fu">library</span>(performance)</span>
+<span id="cb596-2"><a href="#cb596-2"></a></span>
+<span id="cb596-3"><a href="#cb596-3"></a><span class="co"># check_normality realiza el Shapiro test</span></span>
+<span id="cb596-4"><a href="#cb596-4"></a><span class="fu">check_normality</span>(starwars_sin_NA<span class="sc">$</span>height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Warning: Non-normality of raw detected (p &lt; .001).</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb598"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb598-1"><a href="#cb598-1"></a><span class="fu">check_normality</span>(starwars_sin_NA<span class="sc">$</span>mass)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Warning: Non-normality of raw detected (p &lt; .001).</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>No deberíamos aplicar (al menos no interpretar) el test de correlaciones</p>
+</div>
+</section>
+<section id="correlación-de-rango-1" class="slide level2">
+<h2>Correlación de rango</h2>
+<p>Por ello existen dos alternativas: <span class="hl-yellow"><strong>correlación de Spearman</strong></span> y <span class="hl-yellow"><strong>correlación de Kendall</strong></span></p>
+<p>&nbsp;</p>
+<p>Ambos coeficientes cuantifican no una mera <strong>correlación lineal</strong> sino una <span class="hl-yellow"><strong>correlación de rango</strong></span>: cuantifica la <strong>relación entre los distintos rankings</strong> de dos variables cuando se ordenan.</p>
+</section>
+<section id="tu-turno-4-3" class="slide level2">
 <h2>💻 Tu turno</h2>
 <p><span style="color:#444442;"><strong>Intenta realizar los siguientes ejercicios sin mirar las soluciones</strong></span></p>
 <div class="panel-tabset">
@@ -7331,11 +7330,11 @@ birth_year 0.172585 0.1476468  1.0000000</code></pre>
 <div id="tabset-9-1">
 <p>Vamos a tomar de nuevo nuestros datos de satisfacción de pacientes</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb599"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb599-1"><a href="#cb599-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb599-2"><a href="#cb599-2"></a>datos <span class="ot">&lt;-</span></span>
-<span id="cb599-3"><a href="#cb599-3"></a>  <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"./datos/SatisfaccionPacientes.csv"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb599-4"><a href="#cb599-4"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
-<span id="cb599-5"><a href="#cb599-5"></a>datos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb600"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb600-1"><a href="#cb600-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb600-2"><a href="#cb600-2"></a>datos <span class="ot">&lt;-</span></span>
+<span id="cb600-3"><a href="#cb600-3"></a>  <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"./datos/SatisfaccionPacientes.csv"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb600-4"><a href="#cb600-4"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb600-5"><a href="#cb600-5"></a>datos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 100 × 8
       id  edad genero    estado_civil tiempo_espera grado_satisfaccion
@@ -7354,17 +7353,17 @@ birth_year 0.172585 0.1476468  1.0000000</code></pre>
 # ℹ 2 more variables: numero_visitas &lt;dbl&gt;, estado_salud &lt;chr&gt;</code></pre>
 </div>
 </div>
-<p>📝 Obtén la matriz de correlaciones haciendo uso de <code>cor()</code>. Luego haz uso de <code>correlate()</code> del paquete <code>{corrr}</code></p>
+<p>📝 Obtén la matriz de correlaciones de Pearson haciendo uso de <code>cor()</code>. Luego haz uso de <code>correlate()</code> del paquete <code>{corrr}</code></p>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb601"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb601-1"><a href="#cb601-1"></a>datos <span class="sc">|&gt;</span> </span>
-<span id="cb601-2"><a href="#cb601-2"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">|&gt;</span> </span>
-<span id="cb601-3"><a href="#cb601-3"></a>  <span class="fu">cor</span>()</span>
-<span id="cb601-4"><a href="#cb601-4"></a></span>
-<span id="cb601-5"><a href="#cb601-5"></a>datos <span class="sc">|&gt;</span> </span>
-<span id="cb601-6"><a href="#cb601-6"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">|&gt;</span> </span>
-<span id="cb601-7"><a href="#cb601-7"></a>  corrr<span class="sc">::</span><span class="fu">correlate</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb602"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb602-1"><a href="#cb602-1"></a>datos <span class="sc">|&gt;</span> </span>
+<span id="cb602-2"><a href="#cb602-2"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">|&gt;</span> </span>
+<span id="cb602-3"><a href="#cb602-3"></a>  <span class="fu">cor</span>()</span>
+<span id="cb602-4"><a href="#cb602-4"></a></span>
+<span id="cb602-5"><a href="#cb602-5"></a>datos <span class="sc">|&gt;</span> </span>
+<span id="cb602-6"><a href="#cb602-6"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">|&gt;</span> </span>
+<span id="cb602-7"><a href="#cb602-7"></a>  corrr<span class="sc">::</span><span class="fu">correlate</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -7373,7 +7372,7 @@ birth_year 0.172585 0.1476468  1.0000000</code></pre>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb602"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb602-1"><a href="#cb602-1"></a><span class="co"># Vemos que por ejemplo `edad` no correla con `grado_satisfaccion` ($-0.0339$) pero `tiempo_espera` tiene una correlación negativa ($-0.586$) con `grado_satisfaccion`.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb603"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb603-1"><a href="#cb603-1"></a><span class="co"># Vemos que por ejemplo `edad` no correla con `grado_satisfaccion` ($-0.0339$ según Pearson) pero `tiempo_espera` tiene una correlación negativa ($-0.586$ según Pearson) con `grado_satisfaccion`.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -7382,13 +7381,13 @@ birth_year 0.172585 0.1476468  1.0000000</code></pre>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb603"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb603-1"><a href="#cb603-1"></a>datos <span class="sc">|&gt;</span> </span>
-<span id="cb603-2"><a href="#cb603-2"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">|&gt;</span> </span>
-<span id="cb603-3"><a href="#cb603-3"></a>  <span class="fu">cor</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb603-4"><a href="#cb603-4"></a>  corrplot<span class="sc">::</span><span class="fu">corrplot</span>(<span class="at">method =</span> <span class="st">"square"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb604"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb604-1"><a href="#cb604-1"></a>datos <span class="sc">|&gt;</span> </span>
+<span id="cb604-2"><a href="#cb604-2"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">|&gt;</span> </span>
+<span id="cb604-3"><a href="#cb604-3"></a>  <span class="fu">cor</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb604-4"><a href="#cb604-4"></a>  corrplot<span class="sc">::</span><span class="fu">corrplot</span>(<span class="at">method =</span> <span class="st">"square"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-331-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-332-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -7397,19 +7396,19 @@ birth_year 0.172585 0.1476468  1.0000000</code></pre>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb604"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb604-1"><a href="#cb604-1"></a><span class="fu">library</span>(GGally)</span>
-<span id="cb604-2"><a href="#cb604-2"></a><span class="fu">ggpairs</span>(datos <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>id)) <span class="sc">+</span></span>
-<span id="cb604-3"><a href="#cb604-3"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb605"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb605-1"><a href="#cb605-1"></a><span class="fu">library</span>(GGally)</span>
+<span id="cb605-2"><a href="#cb605-2"></a><span class="fu">ggpairs</span>(datos <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>id)) <span class="sc">+</span></span>
+<span id="cb605-3"><a href="#cb605-3"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-332-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-333-1.png" width="960"></p>
 </div>
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb605"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb605-1"><a href="#cb605-1"></a><span class="co"># cuali vs cuali: pictogramas (con rectángulos)</span></span>
-<span id="cb605-2"><a href="#cb605-2"></a><span class="co"># cuanti vs cuanti: scatter plot</span></span>
-<span id="cb605-3"><a href="#cb605-3"></a><span class="co"># cuanti vs cuali: boxplot desagregados</span></span>
-<span id="cb605-4"><a href="#cb605-4"></a><span class="co"># variable vs sí misma: densidad</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb606"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb606-1"><a href="#cb606-1"></a><span class="co"># cuali vs cuali: pictogramas (con rectángulos)</span></span>
+<span id="cb606-2"><a href="#cb606-2"></a><span class="co"># cuanti vs cuanti: scatter plot</span></span>
+<span id="cb606-3"><a href="#cb606-3"></a><span class="co"># cuanti vs cuali: boxplot desagregados</span></span>
+<span id="cb606-4"><a href="#cb606-4"></a><span class="co"># variable vs sí misma: densidad</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -7418,15 +7417,872 @@ birth_year 0.172585 0.1476468  1.0000000</code></pre>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb606"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb606-1"><a href="#cb606-1"></a><span class="fu">cor.test</span>(datos<span class="sc">$</span>edad, datos<span class="sc">$</span>grado_satisfaccion)</span>
-<span id="cb606-2"><a href="#cb606-2"></a><span class="fu">cor.test</span>(datos<span class="sc">$</span>tiempo_espera, datos<span class="sc">$</span>grado_satisfaccion)</span>
-<span id="cb606-3"><a href="#cb606-3"></a></span>
-<span id="cb606-4"><a href="#cb606-4"></a><span class="co"># En uno el p-valor es bastante alto (**no rechazamos la hipótesis nula de incorrelación**) y en otro el p-valor es prácticamente 0 (rechazamos la hipótesis nula -&gt;  **hay evidencias de correlación significativa**).</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb607"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb607-1"><a href="#cb607-1"></a><span class="fu">cor.test</span>(datos<span class="sc">$</span>edad, datos<span class="sc">$</span>grado_satisfaccion)</span>
+<span id="cb607-2"><a href="#cb607-2"></a><span class="fu">cor.test</span>(datos<span class="sc">$</span>tiempo_espera, datos<span class="sc">$</span>grado_satisfaccion)</span>
+<span id="cb607-3"><a href="#cb607-3"></a></span>
+<span id="cb607-4"><a href="#cb607-4"></a><span class="co"># En uno el p-valor es bastante alto (**no rechazamos la hipótesis nula de incorrelación**) y en otro el p-valor es prácticamente 0 (rechazamos la hipótesis nula -&gt;  **hay evidencias de correlación significativa**).</span></span>
+<span id="cb607-5"><a href="#cb607-5"></a></span>
+<span id="cb607-6"><a href="#cb607-6"></a><span class="co"># Ninguna de las 3 es normal así que lo apropiado sería</span></span>
+<span id="cb607-7"><a href="#cb607-7"></a><span class="co"># contrastar la correlación de rango</span></span>
+<span id="cb607-8"><a href="#cb607-8"></a>performance<span class="sc">::</span><span class="fu">check_normality</span>(datos<span class="sc">$</span>edad)</span>
+<span id="cb607-9"><a href="#cb607-9"></a>performance<span class="sc">::</span><span class="fu">check_normality</span>(datos<span class="sc">$</span>grado_satisfaccion)</span>
+<span id="cb607-10"><a href="#cb607-10"></a>performance<span class="sc">::</span><span class="fu">check_normality</span>(datos<span class="sc">$</span>tiempo_espera)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
 </div>
 </div>
+</section>
+<section id="cuanti-vs-cuali" class="slide level2">
+<h2>Cuanti vs cuali</h2>
+<p>Ya conocemos herramientas básicas para analizar la dependencia entre dos variables:</p>
+<ul>
+<li><p><span class="hl-yellow"><strong>Cuali vs cuali</strong></span>: test de Fisher o prueba de <span class="math inline">\(\chi^2\)</span>, tablas de contigencia, diagramas de barras.</p></li>
+<li><p><span class="hl-yellow"><strong>Cuanti vs cuanti</strong></span>: correlaciones y test de correlaciones lineal (Pearson), correlaciones y test de correlaciones de rango (Spearman y Kendall), diagramas de dispersión.</p></li>
+</ul>
+<p>¿Pero qué sucede con la <span class="hl-red"><strong>asociación cuali vs cuanti</strong></span>?</p>
+</section>
+<section id="cuanti-vs-cuali-1" class="slide level2">
+<h2>Cuanti vs cuali</h2>
+
+<img data-src="https://bookdown.org/edsaul_perez/bioestadaistica_avanzada/Figuras/Imagenes%20del%20libro_page-0006.jpg" class="r-stretch"></section>
+<section id="cuanti-vs-cuali-2" class="slide level2">
+<h2>Cuanti vs cuali</h2>
+<p>Imagina que tenemos <strong><span class="math inline">\(n\)</span> estudiantes</strong> de los que disponemos sus <strong>notas <span class="math inline">\(y_{ij}\)</span></strong> para <span class="math inline">\(j=1,2\)</span> asignaturas alumnos (datos en <code>notas_1factor_2cat.csv</code>)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb608"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb608-1"><a href="#cb608-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"./datos/notas_1factor_2cat.csv"</span>)</span>
+<span id="cb608-2"><a href="#cb608-2"></a>datos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,000 × 3
+   rowid notas asignatura
+   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     
+ 1     1  8.02 A         
+ 2     2  6.15 B         
+ 3     3  7.94 A         
+ 4     4  6.33 B         
+ 5     5  8.31 A         
+ 6     6  7.75 A         
+ 7     7  8.28 A         
+ 8     8  6.96 B         
+ 9     9  6.35 B         
+10    10  8.57 A         
+# ℹ 990 more rows</code></pre>
+</div>
+</div>
+<p>&nbsp;</p>
+<p>¿Existe <span class="hl-yellow"><strong>dependencia entre la nota y la variable asignatura (cualitativa)</strong></span>? ¿Son <span class="hl-green"><strong>similares (en promedio) entre las asignaturas</strong></span> o hay una de las dos más sencilla?</p>
+</section>
+<section id="análisis-de-la-varianza" class="slide level2">
+<h2>Análisis de la varianza</h2>
+<p>Disponemos de</p>
+<ul>
+<li><p><span class="hl-yellow"><strong>Variable continua</strong></span>: notas de <span class="math inline">\(n\)</span> estudiantes denotadas como <span class="math inline">\(y_{ij}\)</span>, con <span class="math inline">\(i=1,\ldots, n\)</span>.</p></li>
+<li><p><span class="hl-yellow"><strong>Variable cualitativa o factor</strong></span>: dos asignaturas <span class="math inline">\(j=1,2\)</span></p></li>
+</ul>
+<p>El objetivo es ver la posible <span class="hl-yellow"><strong>asociación entre la variable objetivo y el factor</strong></span>, es decir, determinar si existe un <strong>efecto del factor sobre el valor esperado de la variable continua</strong>.</p>
+<div class="fragment">
+<p>A eso se le conoce como <span class="hl-yellow"><strong>análisis de la varianza (ANOVA) o análisis factorial</strong></span>, desarrollada por R. Fisher en 1930, y empezaremos por el ejemplo más sencillo de <strong>un factor</strong> (una sola variable cualitativa).</p>
+</div>
+</section>
+<section id="anova-un-factor" class="slide level2">
+<h2>ANOVA: un factor</h2>
+<p>¿Cómo <span class="hl-yellow"><strong>conceptualizar matemáticamente</strong></span> un modelo que <span class="hl-yellow"><strong>asuma que todas las asignaturas tienen medias similares</strong></span>?</p>
+<div class="fragment">
+<p><span class="math display">\[y_{ij} =  \mu_j + \varepsilon_{ij}, \quad \varepsilon_{ij} \quad \text{perturbación aleatoria}\]</span></p>
+<p>donde <span class="hl-yellow"><strong><span class="math inline">\(\mu_j\)</span> representa la media de los estudiantes en la asignatura <span class="math inline">\(j\)</span></strong></span> y la <span class="hl-yellow"><strong>perturbación <span class="math inline">\(\varepsilon_{ij}\)</span> representa la desviación</strong></span> de la nota en la asignatura <span class="math inline">\(j\)</span> del estudiante <span class="math inline">\(i\)</span> (representan la variabilidad intrínseca del EXPERIMENTO).</p>
+</div>
+<div class="fragment">
+<p>&nbsp;</p>
+<p>Fíjate que el <strong>modelo dice lo siguiente</strong>: las posibles <span class="hl-yellow"><strong>diferencias (variabilidad) entre notas</strong></span> de distintos alumnos se pueden deber a</p>
+<ol type="i">
+<li><p>un grupo distinto (con su media <span class="math inline">\(\mu_j\)</span>), es decir, algo <span class="hl-red"><strong>EXPLICADO por los grupos</strong></span></p></li>
+<li><p>una componente aleatoria (algo <span class="hl-purple"><strong>NO EXPLICADO</strong></span> por los grupos).</p></li>
+</ol>
+</div>
+</section>
+<section id="anova-un-factor-1" class="slide level2">
+<h2>ANOVA: un factor</h2>
+<p>Esas perturbaciones vamos a asumir que cumplen una serie de <span class="hl-green"><strong>hipótesis</strong></span></p>
+<ol type="1">
+<li><span class="hl-green"><strong>Promedio nulo</strong></span>: <span class="math inline">\(E[\varepsilon_{ij}] = 0\)</span> para todo <span class="math inline">\(i,j\)</span> (las desviaciones positivas se compensan con las negativas)</li>
+</ol>
+<div class="fragment">
+<ol start="2" type="1">
+<li><span class="hl-green"><strong>Varianza constante (homocedasticidad)</strong></span>: <span class="math inline">\(V[\varepsilon_{ij}] = cte = \sigma^2\)</span> para todo <span class="math inline">\(i,j\)</span> (las desviaciones respecto a la media son iguales para cada grupo)</li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="3" type="1">
+<li><span class="hl-green"><strong>Normalidad</strong></span>: <span class="math inline">\(\varepsilon_{ij} \sim N\)</span></li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="4" type="1">
+<li><span class="hl-green"><strong>Incorrelación</strong></span>: al ser normales esto automáticamente implica que son <span class="hl-green"><strong>independientes</strong></span> (conocer la desviación de un estudiante no nos da información sobre otro: el <strong>orden de recolección no afecta a los resultados</strong>)</li>
+</ol>
+<p><span class="math display">\[y_{ij} =  \mu_j + \varepsilon_{ij}, \quad \varepsilon_{ij} \sim N (0, \sigma^2) \quad \Rightarrow \quad  y_{ij} \sim N(\mu_j, \sigma^2)\]</span></p>
+</div>
+</section>
+<section id="anova-un-factor-2" class="slide level2">
+<h2>ANOVA: un factor</h2>
+<p>Vamos a visualizar las dos distribuciones</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb610"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb610-1"><a href="#cb610-1"></a><span class="fu">ggplot</span>(datos) <span class="sc">+</span></span>
+<span id="cb610-2"><a href="#cb610-2"></a>    <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">x =</span> notas, <span class="at">color =</span> asignatura, <span class="at">fill =</span> asignatura),</span>
+<span id="cb610-3"><a href="#cb610-3"></a>                 <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb610-4"><a href="#cb610-4"></a>   <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> notas, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">color =</span> asignatura),</span>
+<span id="cb610-5"><a href="#cb610-5"></a>              <span class="at">size =</span> <span class="fl">1.7</span>, <span class="at">alpha =</span> <span class="fl">0.85</span>) <span class="sc">+</span></span>
+<span id="cb610-6"><a href="#cb610-6"></a>    MetBrewer<span class="sc">::</span><span class="fu">scale_color_met_d</span>(<span class="at">palette_name =</span> <span class="st">"Renoir"</span>) <span class="sc">+</span></span>
+<span id="cb610-7"><a href="#cb610-7"></a>    MetBrewer<span class="sc">::</span><span class="fu">scale_fill_met_d</span>(<span class="at">palette_name =</span> <span class="st">"Renoir"</span>) <span class="sc">+</span></span>
+<span id="cb610-8"><a href="#cb610-8"></a>    <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-336-1.png" width="960" class="r-stretch"><p>Aunque la distribución B está más desplazada a la izquierda, la <strong>nota más alta es de la asignatura B</strong>. ¿Es suficiente para decir que <strong>A distinto de B</strong>?</p>
+</section>
+<section id="anova-un-factor-3" class="slide level2">
+<h2>ANOVA: un factor</h2>
+<p><span class="math display">\[y_{ij} =  \mu_j + \varepsilon_{ij}, \quad \varepsilon_{ij} \sim N (0, \sigma^2)\]</span></p>
+<p><span class="math display">\[H_0:~\mu_1 = \mu_2 = cte \quad vs \quad H_1:~\mu_1 \neq \mu_2\]</span></p>
+<p>En el caso de que <strong>solo tengamos dos grupos</strong> la solución es fácil: basta con hacer un <span class="hl-yellow"><strong>contraste de medias conocido como prueba t</strong></span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb611"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb611-1"><a href="#cb611-1"></a><span class="fu">t.test</span>(datos <span class="sc">|&gt;</span> <span class="fu">filter</span>(asignatura <span class="sc">==</span> <span class="st">"A"</span>) <span class="sc">|&gt;</span> <span class="fu">pull</span>(notas),</span>
+<span id="cb611-2"><a href="#cb611-2"></a>       datos <span class="sc">|&gt;</span> <span class="fu">filter</span>(asignatura <span class="sc">==</span> <span class="st">"B"</span>) <span class="sc">|&gt;</span> <span class="fu">pull</span>(notas))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  pull(filter(datos, asignatura == "A"), notas) and pull(filter(datos, asignatura == "B"), notas)
+t = 46.326, df = 836.58, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 1.468714 1.598677
+sample estimates:
+mean of x mean of y 
+ 8.039705  6.506010 </code></pre>
+</div>
+</div>
+</section>
+<section id="anova-un-factor-4" class="slide level2">
+<h2>ANOVA: un factor</h2>
+<p>¿Pero qué pasaría si <span class="hl-yellow"><strong>en lugar de dos asignaturas tuviésemos 6 asignaturas</strong></span>?</p>
+<div class="fragment">
+<p>El <span class="hl-red"><strong>problema de hacer contrastes 2 a 2</strong></span> es que tendríamos que hacer <span class="math inline">\({6 \choose 2} = 15\)</span> comparaciones (1-1, 1-2, …, 1-6, 2-3, …, 5-6).</p>
+</div>
+<div class="fragment">
+<p>No solo son muchos contrastes sino que si cada contraste se hace con una <strong>probabilidad individual de error tipo I</strong> de <span class="math inline">\(\alpha = 0.05\)</span>, y suponiendo que todas las comparaciones fuesen independientes, la <span class="hl-yellow"><strong>probabilidad de que se verifiquen las 15 igualdades de manera conjunta</strong></span> ya no es de 0.95 sino <span class="math inline">\(0.95^{15} = 0.463\)</span>: <strong>si hacemos muchos contrastes es muy probable que, por azar, alguno salga significativo</strong> (aunque realmente no haya diferencia en las medias)</p>
+</div>
+</section>
+<section id="corrección-de-bonferroni" class="slide level2">
+<h2>Corrección de Bonferroni</h2>
+<p>Un paréntesis: para solventar el <span class="hl-red"><strong>problema de las comparaciones múltiples</strong></span> un solución habitual (la más sencilla aunque no siempre la mejor) es lo que se conoce como <span class="hl-yellow"><strong>corrección de Bonferroni</strong></span></p>
+<div class="fragment">
+<p>Sea <span class="math inline">\(A_i\)</span> el suceso “se rechaza la igualdad de medias de la comparación i” (que sucede con probabilidad <span class="math inline">\(\alpha\)</span> si la hipótesis nula es cierta). Y sea <span class="math inline">\(B = \bigcup_i A_i\)</span> el suceso de rechazar alguna de las comparaciones (es decir, no todas son iguales). Entonces, si tenemos <span class="math inline">\(c\)</span> comparaciones</p>
+<p><span class="math display">\[P(B) = P(\bigcup_i A_i) \leq \sum_i P(A_i) = c \alpha := \alpha_T\]</span></p>
+</div>
+<div class="fragment">
+<p>Si queremos que ese <strong><span class="math inline">\(\alpha_T\)</span> conjunto sea (al menos) de 0.05</strong>, necesitamos que cada <span class="math inline">\(\alpha\)</span> individual sea <span class="math inline">\(\alpha = \alpha_T/c\)</span> (demasiado pequeño si <span class="math inline">\(c\)</span> crece), o lo que es lo mismo definir un <strong>pvalor ajustado</strong> <span class="math inline">\(pvalue_{j}^{adj} = c*pvalue_j\)</span></p>
+</div>
+</section>
+<section id="anova-un-factor-5" class="slide level2">
+<h2>ANOVA: un factor</h2>
+<p>No solo existe un <span class="hl-red"><strong>problema de comparaciones múltiples</strong></span> sino que, además, ¡no lo necesitamos!</p>
+<div class="fragment">
+<p>Nosotros (de momento) <strong>no queremos saber cuál de las asignaturas tiene más o menos nota</strong> media sino simplemente contestar a la pregunta: ¿todas tienen la misma nota media o <span class="hl-yellow"><strong>existe un efecto entre la asignatura y la nota</strong></span>?</p>
+</div>
+<div class="fragment">
+<p>Y para responder a dicha pregunta <span class="hl-red"><strong>no necesitamos chequear 2 a 2</strong></span>: basta con que <span class="hl-yellow"><strong>encontremos una que no sea igual</strong></span></p>
+</div>
+</section>
+<section id="anova-un-factor-6" class="slide level2">
+<h2>ANOVA: un factor</h2>
+<p><span class="math display">\[y_{ij} =  \mu_j + \varepsilon_{ij}, \quad \varepsilon_{ij} \sim N (0, \sigma^2)\]</span></p>
+<p>La idea es que <span class="hl-red"><strong>no necesitamos comparar 2 a 2</strong></span>. Si tenemos <span class="math inline">\(c\)</span> grupos sabemos que <span class="hl-yellow"><strong>las medias <span class="math inline">\(\mu_j\)</span> (<span class="math inline">\(j=1,\ldots,c\)</span>) nunca van a ser exactamente iguales</strong></span> aunque el grupo no afecte, debido a la variabilidad intrínseca del experimento <span class="math inline">\(\varepsilon_{ij}\)</span></p>
+<div class="fragment">
+<p>¿Qué contraste deberíamos plantear si queremos <span class="hl-yellow"><strong>comprobar si existe un efecto del factor (asignatura) en la variable objetivo (nota)</strong></span>?</p>
+</div>
+<div class="fragment">
+<p>Si <span class="hl-yellow"><strong>no existiese asociación</strong></span> entre asignatura y nota, tendríamos que todas las medias serían similares</p>
+<p><span class="math display">\[H_0:~independencia \rightarrow \mu_1 = \mu_2 = \ldots = \mu_c = cte \quad vs \quad H_1:~\text{no todas son iguales}\]</span></p>
+</div>
+</section>
+<section id="anova-un-factor-7" class="slide level2">
+<h2>ANOVA: un factor</h2>
+<p><span class="math display">\[H_0:~independencia \rightarrow \mu_1 = \mu_2 = \ldots = \mu_c = cte \quad vs \quad H_1:~\text{no todas son iguales}\]</span></p>
+<p>¿Qué significa que una <span class="hl-yellow"><strong>serie de valores sean constantes</strong></span>? Si tuviésemos una variable <span class="math inline">\(x\)</span> en una tabla, ¿cómo comprobar fácilmente que todos los valores son idénticos?</p>
+<div class="fragment">
+<p>La forma más inmediata es <span class="hl-yellow"><strong>calcular su varianza</strong></span> ya que nos cuantifica la <strong>variabilidad</strong>: si la varianza/variabilidad es nula (o muy pequeña), implica que la variable toma valores constantes.</p>
+</div>
+</section>
+<section id="anova-un-factor-8" class="slide level2">
+<h2>ANOVA: un factor</h2>
+<p><span class="math display">\[H_0:~independencia \rightarrow \mu_1 = \mu_2 = cte \quad vs \quad H_1:~\text{no todas son iguales}\]</span></p>
+<p>Así que podemos <span class="hl-green"><strong>reformular la hipótesis nula</strong></span> en términos de la varianza: si las medias son iguales, la hipótesis nula es lo mismo que decir que las <span class="hl-yellow"><strong>diferencias entre notas (en las distintas asignaturas)</strong></span> se debe únicamente a una variabilidad aleatoria (y no una diferencia sistemática), es decir</p>
+<p><span class="math display">\[H_0:~\text{variab. notas distintas asignaturas es pequeña} = \text{"varianza" medias es pequeña}\]</span></p>
+<p>¿Cómo cuantificar <span class="hl-yellow"><strong>variabilidad entre las medias</strong></span>?</p>
+</section>
+<section id="anova-un-factor-9" class="slide level2">
+<h2>ANOVA: un factor</h2>
+<p><span class="math display">\[H_0:~\text{variab. notas distintas asignaturas es pequeña} = \text{"varianza" medias es pequeña}\]</span></p>
+<p>Para <span class="hl-yellow"><strong>cuantificar la variabilidad</strong></span> de las medias lo más inmediato es calcular su varianza: ¿cuánto se desvían respecto a la media global?</p>
+<p><span class="math display">\[\color{red}{\frac{1}{c}\sum_{j=1}^{c}  \left(\overline{y}_j - \overline{y} \right)^2}\]</span></p>
+<p>Dicha cantidad cuantifica la <span class="hl-red"><strong>variabilidad de las medias de los grupos</strong></span> (cómo fluctua la media entre los grupos), dando a <strong>cada grupo el mismo peso <span class="math inline">\(1/c\)</span></strong>. ¿Y si diésemos <strong>peso a cada grupo en función de su tamaño</strong>?</p>
+</section>
+<section id="anova-un-factor-10" class="slide level2">
+<h2>ANOVA: un factor</h2>
+<p><span class="math display">\[H_0:~\text{variab. notas distintas asignaturas es pequeña} = \text{"varianza" medias es pequeña}\]</span></p>
+<p><span class="math display">\[\color{red}{\sum_{j=1}^{c} \frac{n_j}{n} \left(\overline{y}_j - \overline{y} \right)^2}\]</span></p>
+<p>La cantidad de arriba cuantifica la <span class="hl-red"><strong>variabilidad (PONDERADA) de las medias de los grupos</strong></span>. En otras palabras: es la <span class="hl-red"><strong>variabilidad EXPLICADA por los grupos</strong></span> (variabilidad ENTRE grupos), cuyo <strong>mejor estimador</strong> (se dice insesgado) es</p>
+<p><span class="math display">\[\color{red}{\hat{s}_{e}^2= \frac{1}{n-c}\sum_{j=1}^{c}n_j \left(\overline{y}_j - \overline{y} \right)^2 = \frac{1}{n-c} SSE}\]</span></p>
+</section>
+<section id="anova-un-factor-11" class="slide level2">
+<h2>ANOVA: un factor</h2>
+<p><span class="math display">\[H_0:~\text{variab. notas distintas asignaturas es pequeña} = \text{"varianza" medias es pequeña}\]</span></p>
+<p><span class="math display">\[\color{red}{\hat{s}_{e}^2= \frac{n}{n-c} \sum_{j=1}^{c}n_j \left(\overline{y}_j - \overline{y} \right)^2 = \frac{1}{n-c}\sum_{j=1}^{c} n_j \left(\overline{y}_j - \overline{y} \right)^2 = \frac{1}{n-c} SSE}\]</span></p>
+<p>&nbsp;</p>
+<p>Imagina que al calcularla sale, por ejemplo, <span class="math inline">\(\hat{s}_{e}^2 = 3\)</span>…</p>
+<p><strong>¿Es mucho? ¿Poco?</strong> ¿Está suficientemente alejada de 0 para considerar que las medias son diferentes? ¿De qué depende?</p>
+</section>
+<section id="anova-un-factor-12" class="slide level2">
+<h2>ANOVA: un factor</h2>
+<p>Como siempre sucede con la varianza, per se no nos aporta nada: <strong>debe ser comparada con otra cantidad</strong>. ¿De qué depende?</p>
+<div class="fragment">
+<p>Como (again) siempre sucede con la varianza, la magnitud de dicha variabilidad va a <strong>depender de la propia magnitud de los datos</strong>, en este caso, de la propia <span class="hl-yellow"><strong>variabilidad inherente a la variable</strong></span>: si la varianza basal de los datos es <span class="math inline">\(2.9\)</span>, seguramente <span class="math inline">\(\hat{s}_{e}^2 = 3\)</span> sea poco; si la varianza de los datos es <span class="math inline">\(0.01\)</span>, entonces <span class="math inline">\(\hat{s}_{e}^2 = 3\)</span> es una barbaridad (entre grupos varían 300 veces más que dentro de cada grupo).</p>
+</div>
+<div class="fragment">
+<p>&nbsp;</p>
+<p>¿Cómo <span class="hl-purple"><strong>cuantificar la variabilidad inherente de la variable (variabilidad NO EXPLICADA por los grupos)</strong></span>?</p>
+</div>
+</section>
+<section id="anova-un-factor-13" class="slide level2">
+<h2>ANOVA: un factor</h2>
+<p>El mejor estimador de dicha varianza sería calcular <strong>cuánto se desvía cada dato de la media de su grupo</strong></p>
+<p><span class="math display">\[\hat{\sigma}^2 = \frac{1}{n} \sum_{j=1}^{c}\sum_{i=1}^{n_j} \left(y_{ij} - \overline{y}_j \right)^2 = \sum_{j=1}^{c} \frac{n_j}{n} s_{j}^2\]</span></p>
+<p>es decir, el <span class="hl-purple"><strong>promedio de las desviaciones al cuadrado respecto a la media de cada grupo</strong></span> (también expresado como media ponderada de la varianza de cada grupo)</p>
+</section>
+<section id="anova-un-factor-14" class="slide level2">
+<h2>ANOVA: un factor</h2>
+<p><span class="math display">\[\hat{\sigma}^2 = \frac{1}{n} \sum_{j=1}^{c}\sum_{i=1}^{n_j} \left(y_{ij} - \overline{y}_j \right)^2 = \sum_{j=1}^{c} \frac{n_j}{n} s_{j}^2\]</span></p>
+<p>Sin embargo <span class="math inline">\(\hat{\sigma}^2\)</span> a secas <span class="hl-red"><strong>no es el mejor estimador</strong></span> de <span class="math inline">\(\sigma^2\)</span> así que recitificaremos por un factor definiendo la conocida como <span class="hl-yellow"><strong>varianza residual</strong></span></p>
+<p><span class="math display">\[\color{purple}{\hat{s}_{r}^2 = \frac{n}{n-c}\hat{\sigma}^2 = \frac{1}{n-c} \sum_{j=1}^{c}\sum_{i=1}^{n_j} \left(y_{ij} - \overline{y}_j \right)^2  = \frac{1}{n-c}SSR}\]</span></p>
+</section>
+<section id="anova-un-factor-15" class="slide level2">
+<h2>ANOVA: un factor</h2>
+<p>Si la <span class="hl-green"><strong>hipótesis nula fuese cierta</strong></span> (todas las observaciones vienen de la misma población con misma varianza y media), la <span class="hl-yellow"><strong>varianza entre grupos (explicada por el grupo) sería la misma que la varianza inherente a los datos</strong></span> (calculada como el promedio de las distintas varianzas intra-grupo).</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="./img/anova-1.png"></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="./img/anova-2.png"></p>
+</div>
+</div>
+</section>
+<section id="anova-un-factor-16" class="slide level2">
+<h2>ANOVA: un factor</h2>
+<p>Así tenemos algo que <span class="hl-red"><strong>cuantifica la varianza explicada</strong></span> (variabilidad atribuida a los grupos)</p>
+<p><span class="math display">\[\color{red}{\hat{s}_{e}^2= \frac{1}{n-c}\sum_{j=1}^{c} n_j \left(\overline{y}_j - \overline{y} \right)^2 = \frac{1}{n-c} SSE}\]</span></p>
+<p>y algo que cuantifica <span class="hl-purple"><strong>la varianza no explicada</strong></span> (variabilidad intrínseca de la variable)</p>
+<p><span class="math display">\[\color{purple}{\hat{s}_{r}^2 = \frac{n}{n-c}\hat{\sigma}^2 = \frac{1}{n-c} \sum_{j=1}^{c}\sum_{i=1}^{n_j} \left(y_{ij} - \overline{y}_j \right)^2 = \frac{1}{n-c}SSR}\]</span></p>
+<div class="fragment">
+<p>¿Qué <span class="hl-yellow"><strong>relación hay entre ellas</strong></span>? ¿Están relacionadas? ¿Pueden ambas subir mucho o bajar mucho, o se compensa una con otra?</p>
+</div>
+</section>
+<section id="anova-un-factor-17" class="slide level2">
+<h2>ANOVA: un factor</h2>
+<p>Se puede demostrar (me tendréis que creer salvo que queráis más fórmulas) que la <span class="hl-green"><strong>variabilidad total (SST o VT)</strong></span> de la variable <span class="math inline">\(y\)</span> (su varianza) se define como</p>
+<p><span class="math display">\[\begin{eqnarray}\color{green}{SST} &amp;=&amp;  \color{purple}{\sum_{j=1}^{c} \sum_{i=1}^{n_j} \left(y_{ij} - \overline{y}_j \right)^2} +  \color{red}{\sum_{j=1}^{c} n_j \left(\overline{y}_j - \overline{y} \right)^2} \nonumber \\ &amp;=&amp; \color{purple}{SSR} + \color{red}{SSE} = \color{purple}{(n-c)\hat{s}_{r}^2} + \color{red}{(c-1)\hat{s}_{e}^2}\end{eqnarray}\]</span></p>
+<p>El <span class="hl-purple"><strong>primer término</strong></span> es lo que hemos llamado <span class="hl-purple"><strong>variabilidad inherente de los datos (no explicada por los grupos o residual)</strong></span>. El <span class="hl-red"><strong>segundo término</strong></span> es lo que hemos llamado <span class="hl-red"><strong>variabilidad explicada por los grupos</strong></span> (ENTRE grupos)</p>
+<div class="fragment">
+<p><span class="hl-green"><strong>¡Ambas están relacionadas por SST!</strong></span> ya que la suma de ambas es la variabilidad total de nuestra variable. El objetivo será construir un <strong>estadístico</strong> para cuantificar si <span class="math inline">\(\hat{s}_{e}^2\)</span> es mucho más grande que <span class="math inline">\(\hat{s}_{r}^2\)</span> pero sabiendo que cuando sube una, baja la otra.</p>
+</div>
+</section>
+<section id="anova-un-factor-18" class="slide level2">
+<h2>ANOVA: un factor</h2>
+<p>Ese estadístico se define como el siguiente cociente (cuya distribución conocemos =&gt; podemos hacer inferencia)</p>
+<p><span class="math display">\[F = \frac{\frac{SSE}{c-1}}{\frac{SSR}{n-c}} = \frac{\hat{s}_{e}^2}{\hat{s}_{r}^2} \sim F_{c-1, n-c}\]</span></p>
+<p>Si el numerador (lo que varían los datos debido a los grupos) es mucho más grande que el denominador (lo que varían los datos per se) de lo que cabría esperar (si las medias fuesen iguales), entonces <span class="math inline">\(F &gt;&gt;1\)</span>, y por tanto la hipótesis nula es falsa.</p>
+</section>
+<section id="anova-un-factor-19" class="slide level2">
+<h2>ANOVA: un factor</h2>
+<p>Vamos a ver el ejemplo en <code>R</code> haciendo uso de la función <code>aov()</code></p>
+<ul>
+<li><code>data = ...</code>: la base de datos</li>
+<li><code>formula = ...</code>: indicado como <code>var_objetivo ~ factor</code> (donde <code>~</code> representa un “vs”)</li>
+<li><code>|&gt; summary()</code>: para obtener un resumen</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb613"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb613-1"><a href="#cb613-1"></a><span class="fu">aov</span>(<span class="at">data =</span> datos, <span class="at">formula =</span> notas <span class="sc">~</span> asignatura) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Df Sum Sq Mean Sq F value Pr(&gt;F)    
+asignatura    1  564.5   564.5    2173 &lt;2e-16 ***
+Residuals   998  259.2     0.3                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section id="anova-un-factor-20" class="slide level2">
+<h2>ANOVA: un factor</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb615"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb615-1"><a href="#cb615-1"></a><span class="fu">aov</span>(<span class="at">data =</span> datos, <span class="at">formula =</span> notas <span class="sc">~</span> asignatura) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Df Sum Sq Mean Sq F value Pr(&gt;F)    
+asignatura    1  564.5   564.5    2173 &lt;2e-16 ***
+Residuals   998  259.2     0.3                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>Si <span class="hl-yellow"><strong>analizamos por filas</strong></span> tenemos</p>
+<ul>
+<li><p><code>asignatura</code>: la parte correspondiente la <span class="hl-red"><strong>variabilidad explicada o entre grupos</strong></span></p></li>
+<li><p><code>Residuals</code>: la parte correspondiente la <span class="hl-purple"><strong>variabilidad no explicada o intra grupos</strong></span></p></li>
+</ul>
+</section>
+<section id="anova-un-factor-21" class="slide level2">
+<h2>ANOVA: un factor</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb617"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb617-1"><a href="#cb617-1"></a><span class="fu">aov</span>(<span class="at">data =</span> datos, <span class="at">formula =</span> notas <span class="sc">~</span> asignatura) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Df Sum Sq Mean Sq F value Pr(&gt;F)    
+asignatura    1  564.5   564.5    2173 &lt;2e-16 ***
+Residuals   998  259.2     0.3                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<ul>
+<li><p><code>Df</code>: degrees of freedom (grados de libertad), definidos como <span class="math inline">\(c-1 = 1\)</span> para <span class="math inline">\(SSE/VE\)</span> (ya que <span class="math inline">\(\frac{SSE}{\sigma^2} \sim \chi^2_{c-1}\)</span>) y <span class="math inline">\(n-c = 998\)</span> (ya que <span class="math inline">\(\frac{SSR}{\sigma^2} \sim \chi^2_{n-c}\)</span>).</p></li>
+<li><p><code>Sum Sq</code>: sum of squares (suma de cuadrados), es decir, <span class="math inline">\(SSE\)</span> y <span class="math inline">\(SSR\)</span>.</p></li>
+<li><p><code>Mean Sq</code>: mean of squares (media de la suma de cuadrados, ponderado por <code>Df</code>), es decir, <span class="math inline">\(\hat{s}_{e}^{2}\)</span> y <span class="math inline">\(\hat{s}_{r}^{2}\)</span>.</p></li>
+<li><p><code>F value</code> y <code>Pr(&gt;F)</code>: valor del estadístico <span class="math inline">\(F = \frac{\hat{s}_{e}^{2}}{\hat{s}_{r}^{2}}\)</span> y p-valor del contraste</p></li>
+</ul>
+<div class="fragment">
+<p>En este caso: <span class="hl-yellow"><strong>rechazamos la hipótesis nula</strong></span> de igualdad de medias, es decir, <span class="hl-yellow"><strong>existen evidencias suficientes para concluir que el grupo tiene un efecto en las notas</strong></span></p>
+</div>
+</section>
+<section id="caso-real-crecimiento-bebés" class="slide level2">
+<h2>Caso real: crecimiento bebés</h2>
+<p>Vamos a usar la tabla <code>leche_materna.csv</code> que recopila los resultados obtenidos de <strong>2 tratamientos de leche en polvo distintos para el crecimiento de bebés prematuros</strong> (de los que se miden su peso tras el tratamiento, partiendo de unas características similares, incluyendo además un <strong>grupo control</strong>).</p>
+<p><span class="hl-yellow"><strong>¿El objetivo?</strong></span> Comprobar si alguno de los tratamientos fue efectivo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb619"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb619-1"><a href="#cb619-1"></a>datos <span class="ot">&lt;-</span></span>
+<span id="cb619-2"><a href="#cb619-2"></a>    <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"./datos/leche_materna.csv"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb619-3"><a href="#cb619-3"></a>    janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb619-4"><a href="#cb619-4"></a>datos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 30 × 2
+   weight group
+    &lt;dbl&gt; &lt;chr&gt;
+ 1   4.17 ctrl 
+ 2   5.58 ctrl 
+ 3   5.18 ctrl 
+ 4   6.11 ctrl 
+ 5   4.5  ctrl 
+ 6   4.61 ctrl 
+ 7   5.17 ctrl 
+ 8   4.53 ctrl 
+ 9   5.33 ctrl 
+10   5.14 ctrl 
+# ℹ 20 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="caso-real-crecimiento-bebés-1" class="slide level2">
+<h2>Caso real: crecimiento bebés</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb621"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb621-1"><a href="#cb621-1"></a>datos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 30 × 2
+   weight group
+    &lt;dbl&gt; &lt;chr&gt;
+ 1   4.17 ctrl 
+ 2   5.58 ctrl 
+ 3   5.18 ctrl 
+ 4   6.11 ctrl 
+ 5   4.5  ctrl 
+ 6   4.61 ctrl 
+ 7   5.17 ctrl 
+ 8   4.53 ctrl 
+ 9   5.33 ctrl 
+10   5.14 ctrl 
+# ℹ 20 more rows</code></pre>
+</div>
+</div>
+<p>¿Cómo <span class="hl-yellow"><strong>formulamos el ANOVA</strong></span>?</p>
+<div class="fragment">
+<p><span class="math display">\[y_{ij} = \mu_j + \varepsilon_{ij}, \quad y_{ij} = \text{peso del niño i del grupo j}, \quad j=1,2,3 \text{ (control, trt1, trt2)}\]</span></p>
+<p>donde <span class="math inline">\(\mu_j\)</span> representa la media de peso de cada grupo, cuyo <strong>estimador</strong> insesgado es <span class="math inline">\(\overline{y}_{j}\)</span></p>
+</div>
+</section>
+<section id="caso-real-crecimiento-bebés-2" class="slide level2">
+<h2>Caso real: crecimiento bebés</h2>
+<p>¿La <span class="hl-yellow"><strong>hipótesis nula</strong></span>?</p>
+<div class="fragment">
+<p><span class="math display">\[H_0:~\mu_1 = \mu_2 = \mu_3 \quad \text{(no diferencias entre tratamientos y control)}, \quad H_1:~existe\]</span></p>
+<p>¿Existe una <span class="hl_yellow"><strong>asociación entre el tratamiento/control y el peso</strong></span>?</p>
+</div>
+</section>
+<section id="caso-real-crecimiento-bebés-3" class="slide level2">
+<h2>Caso real: crecimiento bebés</h2>
+<p>Desde un punto de vista <span class="hl_yellow"><strong>descriptivo</strong></span>, ¿cómo resumirlo numérica y gráficamente?</p>
+<div class="columns">
+<div class="column" style="width:47%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb623"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb623-1"><a href="#cb623-1"></a>datos <span class="sc">|&gt;</span> </span>
+<span id="cb623-2"><a href="#cb623-2"></a>  <span class="fu">summarise</span>(<span class="st">"mean_peso"</span> <span class="ot">=</span> <span class="fu">mean</span>(weight),</span>
+<span id="cb623-3"><a href="#cb623-3"></a>            <span class="st">"sd_peso"</span> <span class="ot">=</span> <span class="fu">sd</span>(weight),</span>
+<span id="cb623-4"><a href="#cb623-4"></a>            <span class="at">.by =</span> group)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  group mean_peso sd_peso
+  &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+1 ctrl       5.03   0.583
+2 trt1       4.66   0.794
+3 trt2       5.53   0.443</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:53%;">
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb625"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb625-1"><a href="#cb625-1"></a><span class="fu">ggplot</span>(datos) <span class="sc">+</span></span>
+<span id="cb625-2"><a href="#cb625-2"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> group, <span class="at">y =</span> weight, <span class="at">fill =</span> group,</span>
+<span id="cb625-3"><a href="#cb625-3"></a>                   <span class="at">color =</span> group), <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb625-4"><a href="#cb625-4"></a>  MetBrewer<span class="sc">::</span><span class="fu">scale_color_met_d</span>(<span class="at">palette_name =</span> <span class="st">"Renoir"</span>) <span class="sc">+</span></span>
+<span id="cb625-5"><a href="#cb625-5"></a>  MetBrewer<span class="sc">::</span><span class="fu">scale_fill_met_d</span>(<span class="at">palette_name =</span> <span class="st">"Renoir"</span>) <span class="sc">+</span></span>
+<span id="cb625-6"><a href="#cb625-6"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-344-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="caso-real-crecimiento-bebés-4" class="slide level2">
+<h2>Caso real: crecimiento bebés</h2>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb626"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb626-1"><a href="#cb626-1"></a><span class="fu">ggplot</span>(datos <span class="sc">|&gt;</span></span>
+<span id="cb626-2"><a href="#cb626-2"></a>         <span class="fu">rowid_to_column</span>(<span class="at">var =</span> <span class="st">"id"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb626-3"><a href="#cb626-3"></a>         <span class="fu">mutate</span>(<span class="st">"mean_weight"</span> <span class="ot">=</span> <span class="fu">mean</span>(weight), <span class="at">.by =</span> group)) <span class="sc">+</span></span>
+<span id="cb626-4"><a href="#cb626-4"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> id, <span class="at">y =</span> weight, <span class="at">color =</span> group),</span>
+<span id="cb626-5"><a href="#cb626-5"></a>             <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb626-6"><a href="#cb626-6"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> id, <span class="at">y =</span> mean_weight, <span class="at">color =</span> group),</span>
+<span id="cb626-7"><a href="#cb626-7"></a>            <span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb626-8"><a href="#cb626-8"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">2.5</span>, <span class="fl">7.5</span>)) <span class="sc">+</span></span>
+<span id="cb626-9"><a href="#cb626-9"></a>  MetBrewer<span class="sc">::</span><span class="fu">scale_color_met_d</span>(<span class="at">palette_name =</span> <span class="st">"Renoir"</span>) <span class="sc">+</span></span>
+<span id="cb626-10"><a href="#cb626-10"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-345-1.png" width="960" class="r-stretch"></section>
+<section id="caso-real-crecimiento-bebés-5" class="slide level2">
+<h2>Caso real: crecimiento bebés</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb627"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb627-1"><a href="#cb627-1"></a><span class="fu">aov</span>(<span class="at">data =</span> datos, <span class="at">formula =</span> weight <span class="sc">~</span> group) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)  
+group        2  3.766  1.8832   4.846 0.0159 *
+Residuals   27 10.492  0.3886                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>El resultado del <span class="hl-yellow"><strong>ANOVA de un factor (one-way ANOVA)</strong></span> es el siguiente:</p>
+<p>Si <span class="hl-yellow"><strong>analizamos por filas</strong></span> tenemos</p>
+<ul>
+<li><p><code>group</code>: la parte correspondiente la <span class="hl-red"><strong>variabilidad explicada o entre grupos de tratamiento</strong></span></p></li>
+<li><p><code>Residuals</code>: la parte correspondiente la <span class="hl-purple"><strong>variabilidad no explicada o intra grupos</strong></span></p></li>
+</ul>
+</section>
+<section id="caso-real-crecimiento-bebés-6" class="slide level2">
+<h2>Caso real: crecimiento bebés</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb629"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb629-1"><a href="#cb629-1"></a><span class="fu">aov</span>(<span class="at">data =</span> datos, <span class="at">formula =</span> weight <span class="sc">~</span> group) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)  
+group        2  3.766  1.8832   4.846 0.0159 *
+Residuals   27 10.492  0.3886                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>Si <span class="hl-yellow"><strong>analizamos por columnas</strong></span> tenemos</p>
+<ul>
+<li><p><code>Df</code>: tenemos 2 grados de libertad (3 grupos - 1) para la varianza explicada y 27 grados de libertad (30 - 3 grupos) para la varianza no explicada.</p></li>
+<li><p><code>Sum Sq</code>: <span class="math inline">\(SSE = 3.766\)</span> y <span class="math inline">\(SSR = 10.492\)</span>,</p></li>
+<li><p><code>Mean Sq</code>: <span class="math inline">\(\hat{s}_{e}^{2} = 1.8832\)</span> y <span class="math inline">\(\hat{s}_{r}^{2} = 0.3886\)</span>.</p></li>
+<li><p><code>F value</code> y <code>Pr(&gt;F)</code>: valor del estadístico <span class="math inline">\(F = \frac{\hat{s}_{e}^{2}}{\hat{s}_{r}^{2}} = \frac{1.8832}{0.3886} = 4.846\)</span> y p-valor</p></li>
+</ul>
+<div class="fragment">
+<p><span class="hl-yellow"><strong>Rechazamos la hipótesis nula</strong></span>: <span class="hl-yellow"><strong>existen evidencias para concluir que el tratamiento tiene un efecto en el peso</strong></span></p>
+</div>
+</section>
+<section id="caso-real-crecimiento-bebés-7" class="slide level2">
+<h2>Caso real: crecimiento bebés</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb631"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb631-1"><a href="#cb631-1"></a><span class="fu">aov</span>(<span class="at">data =</span> datos, <span class="at">formula =</span> weight <span class="sc">~</span> group) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)  
+group        2  3.766  1.8832   4.846 0.0159 *
+Residuals   27 10.492  0.3886                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>¿El <span class="hl-red"><strong>problema</strong></span>?</p>
+<div class="fragment">
+<p>Sabemos que el tratamiento (bien sea “real” bien sea el grupo control) tiene un efecto (al menos estadístico) y que se observan <span class="hl-yellow"><strong>medias distintas</strong></span>.</p>
+</div>
+<div class="fragment">
+<p><span class="hl-purple"><strong>¿Pero cuáles son distintas 2 a 2</strong></span>? ¿Son distintas entre los tratamientos? ¿Son distintas tratamientos vs control? ¿Solo uno de los tratamientos es distinto o ambos?</p>
+<p>En este caso necesitamos <strong>3 comparaciones</strong>.</p>
+</div>
+</section>
+<section id="pruebas-post-hoc" class="slide level2">
+<h2>Pruebas post-hoc</h2>
+<p>Tras obtener un <span class="hl-green"><strong>resultado significativo en un ANOVA</strong></span> el siguiente objetivo sería determinar <span class="hl-yellow"><strong>cuál de los grupos bajo estudio contribuye a esta significación estadística</strong></span> (pruebas post-hoc).</p>
+<div class="fragment">
+<p>Pero como hemos explicado, la estrategia de aplicar <span class="hl-yellow"><strong>repetidamente pruebas t-Student</strong></span> puede conllevar un <span class="hl-red"><strong>aumento desmesurado de la probabilidad de cometer un error de Tipo I</strong></span> (detectar diferencias por pura aleatoriedad)</p>
+</div>
+<div class="fragment">
+<p>&nbsp;</p>
+<p>Alguno de los <span class="hl-yellow"><strong>métodos post-hoc más comunes</strong></span> (ver <a href="https://journals.lww.com/jspinaldisorders/abstract/2022/06000/the_role_of_family_wise_error_rate_in_determining.7.aspx"><strong>más</strong></a>) son <strong>Bonferroni</strong>, <strong>Tukey</strong> y <strong>Dunnett</strong>.</p>
+</div>
+</section>
+<section id="post-hoc-bonferroni" class="slide level2">
+<h2>post-hoc: bonferroni</h2>
+<p>El <span class="hl-yellow"><strong>método de corrección Bonferroni</strong></span> ya lo hemos explicado anteriormente y para implementarlo basta con usar <code>pairwise.t.test()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb633"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb633-1"><a href="#cb633-1"></a><span class="co"># `pool.sd = FALSE` implica que, para cada comparativa, se calcula una desv en cada grupo</span></span>
+<span id="cb633-2"><a href="#cb633-2"></a><span class="co"># `pool.sd = TRUE` --&gt; la desviación estándar agrupada es un promedio ponderado de las sd de</span></span>
+<span id="cb633-3"><a href="#cb633-3"></a><span class="co"># dos o más grupos, tal que las sd individuales se promedian, con más "peso" dado a</span></span>
+<span id="cb633-4"><a href="#cb633-4"></a><span class="co"># tamaños de muestra más grandes. solo usar cuando los tamaños de cada grupo sean muy distintos</span></span>
+<span id="cb633-5"><a href="#cb633-5"></a><span class="fu">pairwise.t.test</span>(datos<span class="sc">$</span>weight, datos<span class="sc">$</span>group, <span class="at">p.adjust.method =</span> <span class="st">"bonferroni"</span>, <span class="at">pool.sd =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pairwise comparisons using t tests with non-pooled SD 
+
+data:  datos$weight and datos$group 
+
+     ctrl  trt1 
+trt1 0.751 -    
+trt2 0.144 0.028
+
+P value adjustment method: bonferroni </code></pre>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li><p><strong>ctrl vs trt 1</strong>: p-valor ajustado 0.751 –&gt; <span class="hl-red"><strong>sin diferencias significativas</strong></span></p></li>
+<li><p><strong>ctrl vs trt 2</strong>: p-valor ajustado 0.144 –&gt; <span class="hl-red"><strong>sin diferencias significativas</strong></span></p></li>
+<li><p><strong>trt 1 vs trt 2</strong>: p-valor ajustado 0.028 –&gt; <span class="hl-yellow"><strong>dif sig de los tratamientos</strong></span></p></li>
+</ul>
+</div>
+</section>
+<section id="pruebas-post-hoc-1" class="slide level2">
+<h2>Pruebas post-hoc</h2>
+<ul>
+<li><span class="hl-yellow"><strong>Bonferroni</strong></span>:
+<ul>
+<li><span class="hl-green"><strong>Ventajas</strong></span>: simplicidad y <strong>no paramétrico</strong></li>
+<li><span class="hl-red"><strong>Desventajas</strong></span>: al intentar controlar tanto error tipo I (rechazar <span class="math inline">\(H_0\)</span> sin que existan diferencias) es un <strong>método muy conservador</strong> -&gt; cuesta mucho que se rechace <span class="math inline">\(H_0\)</span> -&gt; <span class="hl-red"><strong>alta tasa de errores tipo II según aumentan comparaciones</strong></span></li>
+</ul></li>
+</ul>
+<div class="fragment">
+<p>Para evitar los problemas de Bonferroni cuando hay un alto número de comparaciones existe una alternativa conocida como <span class="hl-yellow"><strong>test de Tukey</strong></span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb635"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb635-1"><a href="#cb635-1"></a><span class="fu">aov</span>(<span class="at">data =</span> datos, <span class="at">formula =</span> weight <span class="sc">~</span> group) <span class="sc">|&gt;</span> <span class="fu">TukeyHSD</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = weight ~ group, data = datos)
+
+$group
+            diff        lwr       upr     p adj
+trt1-ctrl -0.371 -1.0622161 0.3202161 0.3908711
+trt2-ctrl  0.494 -0.1972161 1.1852161 0.1979960
+trt2-trt1  0.865  0.1737839 1.5562161 0.0120064</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="post-hoc-tukey" class="slide level2">
+<h2>post-hoc: Tukey</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb637"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb637-1"><a href="#cb637-1"></a><span class="fu">aov</span>(<span class="at">data =</span> datos, <span class="at">formula =</span> weight <span class="sc">~</span> group) <span class="sc">|&gt;</span> <span class="fu">TukeyHSD</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = weight ~ group, data = datos)
+
+$group
+            diff        lwr       upr     p adj
+trt1-ctrl -0.371 -1.0622161 0.3202161 0.3908711
+trt2-ctrl  0.494 -0.1972161 1.1852161 0.1979960
+trt2-trt1  0.865  0.1737839 1.5562161 0.0120064</code></pre>
+</div>
+</div>
+<ul>
+<li><span class="hl-yellow"><strong>Tukey</strong></span>:
+<ul>
+<li><span class="hl-green"><strong>Ventajas</strong></span>: controla eficazmente la tasa de error tipo I, muy útil para <strong>muchas comparaciones</strong> y <span class="hl-yellow"><strong>mayor poder estadístico* vs Bonferroni</strong></span></li>
+<li><span class="hl-red"><strong>Desventajas</strong></span>: sensible a valores atípicos y es <span class="hl-red"><strong>paramétrico (requiere normalidad, grupos de tamaño similar e igualdad de varianzas)</strong></span></li>
+</ul></li>
+</ul>
+<p><span class="hl-pruple"><strong>Poder o potencia estadística</strong></span>: probabilidad de rechazar <span class="math inline">\(H_0\)</span> cuando dicha hipótesis es falsa (probabilidad de no cometer un error del tipo II).</p>
+</section>
+<section id="post-hoc-dunnet" class="slide level2">
+<h2>post-hoc: Dunnet</h2>
+<p>En muchas ocasiones <strong>no siempre queremos comparaciones 2 a 2 indistintamente</strong> sino que querremos <span class="hl-yellow"><strong>confrontar el resto de grupos respecto a un grupo control</strong></span> (en nuestro caso: 2 tratamientos vs control, no los tratamientos entre sí).</p>
+<div class="fragment">
+<p>Para ello disponemos del <span class="hl-yellow"><strong>test de Dunnet</strong></span></p>
+<p><span class="math display">\[H_0:~\mu_{tr_{j}} = \mu_{ctrl}, \quad H_1:~\mu_{tr_{j}} \neq \mu_{ctrl}\]</span></p>
+<ul>
+<li><span class="hl-yellow"><strong>Dunnet</strong></span>:
+<ul>
+<li><span class="hl-green"><strong>Ventajas</strong></span>: el contraste con mayor potencia cuando se trata de comaprar contra un grupo contorl</li>
+<li><span class="hl-red"><strong>Desventajas</strong></span>: <span class="hl-red"><strong>paramétrico (requiere normalidad, igualdad de varianzas e independencia entre grupos)</strong></span></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="pruebas-post-hoc-2" class="slide level2">
+<h2>Pruebas post-hoc</h2>
+<p>Para implementarlo <strong>primero chequeamos igualdad de varianzas entre los grupos</strong> (por ejemplo, con <code>car::leveneTest()</code>)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb639"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb639-1"><a href="#cb639-1"></a>car<span class="sc">::</span><span class="fu">leveneTest</span>(datos<span class="sc">$</span>weight <span class="sc">~</span> datos<span class="sc">$</span>group)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = median)
+      Df F value Pr(&gt;F)
+group  2  1.1192 0.3412
+      27               </code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>Y luego <code>DunnettTest()</code> del paquete <code>{DescTools}</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb641"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb641-1"><a href="#cb641-1"></a>DescTools<span class="sc">::</span><span class="fu">DunnettTest</span>(<span class="at">x =</span> datos<span class="sc">$</span>weight, <span class="at">g =</span> datos<span class="sc">$</span>group, <span class="at">control =</span> <span class="st">"ctrl"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  Dunnett's test for comparing several treatments with a control :  
+    95% family-wise confidence level
+
+$ctrl
+            diff     lwr.ci    upr.ci   pval    
+trt1-ctrl -0.371 -1.0215695 0.2795695 0.3227    
+trt2-ctrl  0.494 -0.1565695 1.1445695 0.1535    
+
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>Obtenemos que <span class="hl-yellow"><strong>no hay dif. sig. entre ctrl y tratamientos</strong></span></p>
+</div>
+</section>
+<section id="tu-turno-4-4" class="slide level2">
+<h2>💻 Tu turno</h2>
+<p><span style="color:#444442;"><strong>Intenta realizar los siguientes ejercicios sin mirar las soluciones</strong></span></p>
+<div class="panel-tabset">
+<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1"><span class="hl-yellow"><strong>Datos</strong></span></a></li><li><a href="#tabset-10-2"><span class="hl-yellow"><strong>Ej 1</strong></span></a></li><li><a href="#tabset-10-3"><span class="hl-yellow"><strong>Ej 2</strong></span></a></li><li><a href="#tabset-10-4"><span class="hl-yellow"><strong>Ej 3</strong></span></a></li><li><a href="#tabset-10-5"><span class="hl-yellow"><strong>Ej 4</strong></span></a></li><li><a href="#tabset-10-6"><span class="hl-yellow"><strong>Ej 5</strong></span></a></li><li><a href="#tabset-10-7"><span class="hl-yellow"><strong>Ej 6</strong></span></a></li><li><a href="#tabset-10-8"><span class="hl-yellow"><strong>Ej 7</strong></span></a></li><li><a href="#tabset-10-9"><span class="hl-yellow"><strong>Ej 8</strong></span></a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1">
+<p>Vamos a usar el fichero <code>cushing_syndrome.csv</code> que contiene datos del síndrome de Cushing, un trastorno hormonal asociado con un alto nivel de cortisol. Para cada individuo de la muestra tenemos recopiladas las tasas de excreción urinaria de dos metabolitos de esteroides (tetrahidrocortisona y pregnanetriol). La variable <code>type</code> recopila el tipo de síndrome: adenoma (a), hiperplasia bilateral (b), carcinoma (c) y desconocido (u)</p>
+</div>
+<div id="tabset-10-2">
+<p>📝 Carga el fichero <code>cushing_syndrome.csv</code></p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb643"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb643-1"><a href="#cb643-1"></a>datos <span class="ot">&lt;-</span></span>
+<span id="cb643-2"><a href="#cb643-2"></a>  <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"./datos/cushing_syndrome.csv"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb643-3"><a href="#cb643-3"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb643-4"><a href="#cb643-4"></a>datos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 27 × 3
+   tetrahydrocortisone pregnanetriol type 
+                 &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;
+ 1                 3.1         11.7  a    
+ 2                 3            1.3  a    
+ 3                 1.9          0.1  a    
+ 4                 3.8          0.04 a    
+ 5                 4.1          1.1  a    
+ 6                 1.9          0.4  a    
+ 7                 8.3          1    b    
+ 8                 3.8          0.2  b    
+ 9                 3.9          0.6  b    
+10                 7.8          1.2  b    
+# ℹ 17 more rows</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-10-3">
+<p>📝 Calcula la media global de <code>tetrahydrocortisone</code>. Calcula la media para cada uno de los tipos de síndrome así como su tamaño muestral</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb645"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb645-1"><a href="#cb645-1"></a>datos <span class="sc">|&gt;</span> </span>
+<span id="cb645-2"><a href="#cb645-2"></a>  <span class="fu">summarise</span>(<span class="st">"mean_global"</span> <span class="ot">=</span> <span class="fu">mean</span>(tetrahydrocortisone))</span>
+<span id="cb645-3"><a href="#cb645-3"></a></span>
+<span id="cb645-4"><a href="#cb645-4"></a>datos <span class="sc">|&gt;</span> </span>
+<span id="cb645-5"><a href="#cb645-5"></a>  <span class="fu">summarise</span>(<span class="st">"mean_groups"</span> <span class="ot">=</span> <span class="fu">mean</span>(tetrahydrocortisone),</span>
+<span id="cb645-6"><a href="#cb645-6"></a>            <span class="st">"n"</span> <span class="ot">=</span> <span class="fu">n</span>(), <span class="at">.by =</span> type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+<div id="tabset-10-4">
+<p>📝 Calcula la varianza global de <code>tetrahydrocortisone</code>. Calcula la varianza para cada uno de los tipos de síndrome así como la varianza ponderada (cada varianza de grupo multiplicada por su proporción muestral)</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb646"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb646-1"><a href="#cb646-1"></a>datos <span class="sc">|&gt;</span> </span>
+<span id="cb646-2"><a href="#cb646-2"></a>  <span class="fu">summarise</span>(<span class="st">"var_global"</span> <span class="ot">=</span> <span class="fu">var</span>(tetrahydrocortisone))</span>
+<span id="cb646-3"><a href="#cb646-3"></a></span>
+<span id="cb646-4"><a href="#cb646-4"></a>datos <span class="sc">|&gt;</span> </span>
+<span id="cb646-5"><a href="#cb646-5"></a>  <span class="fu">summarise</span>(<span class="st">"var_groups"</span> <span class="ot">=</span> <span class="fu">var</span>(tetrahydrocortisone),</span>
+<span id="cb646-6"><a href="#cb646-6"></a>            <span class="st">"n"</span> <span class="ot">=</span> <span class="fu">n</span>(), <span class="at">.by =</span> type) <span class="sc">|&gt;</span> </span>
+<span id="cb646-7"><a href="#cb646-7"></a>  <span class="fu">mutate</span>(<span class="st">"var_weighted"</span> <span class="ot">=</span> <span class="fu">sum</span>(var_groups<span class="sc">*</span>n)<span class="sc">/</span><span class="fu">sum</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+<div id="tabset-10-5">
+<p>📝 Visualiza con boxplot <code>tetrahydrocortisone</code> para cada grupo</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb647"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb647-1"><a href="#cb647-1"></a><span class="fu">ggplot</span>(datos) <span class="sc">+</span></span>
+<span id="cb647-2"><a href="#cb647-2"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> type, <span class="at">y =</span> tetrahydrocortisone,</span>
+<span id="cb647-3"><a href="#cb647-3"></a>                   <span class="at">fill =</span> type, <span class="at">color =</span> type), <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb647-4"><a href="#cb647-4"></a>  MetBrewer<span class="sc">::</span><span class="fu">scale_color_met_d</span>(<span class="at">palette_name =</span> <span class="st">"Renoir"</span>) <span class="sc">+</span></span>
+<span id="cb647-5"><a href="#cb647-5"></a>  MetBrewer<span class="sc">::</span><span class="fu">scale_fill_met_d</span>(<span class="at">palette_name =</span> <span class="st">"Renoir"</span>) <span class="sc">+</span></span>
+<span id="cb647-6"><a href="#cb647-6"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-357-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-10-6">
+<p>📝 Visualiza los puntos de <code>tetrahydrocortisone</code> junto con sus medias distinguiendo para cada uno de los grupos</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb648"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb648-1"><a href="#cb648-1"></a><span class="fu">ggplot</span>(datos <span class="sc">|&gt;</span></span>
+<span id="cb648-2"><a href="#cb648-2"></a>         <span class="fu">rowid_to_column</span>(<span class="at">var =</span> <span class="st">"id"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb648-3"><a href="#cb648-3"></a>         <span class="fu">mutate</span>(<span class="st">"mean"</span> <span class="ot">=</span> <span class="fu">mean</span>(tetrahydrocortisone), <span class="at">.by =</span> type)) <span class="sc">+</span></span>
+<span id="cb648-4"><a href="#cb648-4"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> id, <span class="at">y =</span> tetrahydrocortisone, <span class="at">color =</span> type),</span>
+<span id="cb648-5"><a href="#cb648-5"></a>             <span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb648-6"><a href="#cb648-6"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> id, <span class="at">y =</span> mean, <span class="at">color =</span> type), <span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb648-7"><a href="#cb648-7"></a>  MetBrewer<span class="sc">::</span><span class="fu">scale_color_met_d</span>(<span class="at">palette_name =</span> <span class="st">"Renoir"</span>) <span class="sc">+</span></span>
+<span id="cb648-8"><a href="#cb648-8"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-358-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-10-7">
+<p>📝 Plantea la formulación del ANOVA <code>tetrahydrocortisone</code> vs <code>type</code>. Ejecuta el código que consideres y saca conclusiones: ¿hay diferencias significativas de dicha hormona entre los síndromes con <span class="math inline">\(\alpha = 0.05\)</span> y <span class="math inline">\(\alpha = 0.01\)</span>?</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb649"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb649-1"><a href="#cb649-1"></a><span class="fu">aov</span>(<span class="at">data =</span> datos, <span class="at">formula =</span> tetrahydrocortisone <span class="sc">~</span> type) <span class="sc">|&gt;</span></span>
+<span id="cb649-2"><a href="#cb649-2"></a>  <span class="fu">summary</span>()</span>
+<span id="cb649-3"><a href="#cb649-3"></a><span class="co"># p-valor: 0.01 &gt; 0.05 ==&gt; no rechazamos H_0 ==&gt;</span></span>
+<span id="cb649-4"><a href="#cb649-4"></a><span class="co"># no dif sig a ese nivel de sig. ==&gt; no se continuaría</span></span>
+<span id="cb649-5"><a href="#cb649-5"></a></span>
+<span id="cb649-6"><a href="#cb649-6"></a><span class="co"># p-valor: 0.0412 &lt; 0.05 ==&gt; rechazamos H_0 ==&gt;</span></span>
+<span id="cb649-7"><a href="#cb649-7"></a><span class="co"># hay diferencias sig. entre síndromes ==&gt; ¿entre cuáles?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+<div id="tabset-10-8">
+<p>📝 En los casos en los que se haya obtenido una dif significativa, ¿cuáles son diferentes entre sí? Haz pruebas post-hoc usando Bonferroni y Tukey (realizando comprobaciones previas que consideres). ¿Cuál sería más adecuado?</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb650"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb650-1"><a href="#cb650-1"></a><span class="fu">pairwise.t.test</span>(datos<span class="sc">$</span>tetrahydrocortisone, datos<span class="sc">$</span>type, <span class="at">p.adjust.method =</span> <span class="st">"bonferroni"</span>, <span class="at">pool.sd =</span> <span class="cn">FALSE</span>) </span>
+<span id="cb650-2"><a href="#cb650-2"></a><span class="co"># solo diferencia significativas a vs b (0.01 p-valor ajustado)</span></span>
+<span id="cb650-3"><a href="#cb650-3"></a></span>
+<span id="cb650-4"><a href="#cb650-4"></a><span class="co"># ¿varianzas iguales?</span></span>
+<span id="cb650-5"><a href="#cb650-5"></a>car<span class="sc">::</span><span class="fu">leveneTest</span>(datos<span class="sc">$</span>tetrahydrocortisone <span class="sc">~</span> datos<span class="sc">$</span>type)</span>
+<span id="cb650-6"><a href="#cb650-6"></a><span class="fu">aov</span>(<span class="at">data =</span> datos, <span class="at">formula =</span> tetrahydrocortisone <span class="sc">~</span> type) <span class="sc">|&gt;</span></span>
+<span id="cb650-7"><a href="#cb650-7"></a>  <span class="fu">TukeyHSD</span>()</span>
+<span id="cb650-8"><a href="#cb650-8"></a><span class="co"># solo dif significativa c vs a </span></span>
+<span id="cb650-9"><a href="#cb650-9"></a><span class="co"># dif medias = 16.753, IC bajo de 0.65, IC alto de 32.85</span></span>
+<span id="cb650-10"><a href="#cb650-10"></a><span class="co"># p-valor ajustado 0.039</span></span>
+<span id="cb650-11"><a href="#cb650-11"></a></span>
+<span id="cb650-12"><a href="#cb650-12"></a><span class="co"># en este caso mejor bonferroni porque a) no hay tamaños iguales y b) no son normales</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+<div id="tabset-10-9">
+<p>📝 Por último vamos a considerar que el tipo <code>"a"</code> es nuestro grupo de referencia/control. ¿Cómo comparar todas vs control en lugar de todas vs todas (asumimos que son independientes)?</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb651"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb651-1"><a href="#cb651-1"></a><span class="co"># ¿varianzas iguales?</span></span>
+<span id="cb651-2"><a href="#cb651-2"></a>car<span class="sc">::</span><span class="fu">leveneTest</span>(datos<span class="sc">$</span>tetrahydrocortisone <span class="sc">~</span> datos<span class="sc">$</span>type)</span>
+<span id="cb651-3"><a href="#cb651-3"></a></span>
+<span id="cb651-4"><a href="#cb651-4"></a><span class="co"># ¿Normalidad? ==&gt; no parece</span></span>
+<span id="cb651-5"><a href="#cb651-5"></a>olsrr<span class="sc">::</span><span class="fu">ols_test_normality</span>(datos<span class="sc">$</span>tetrahydrocortisone)</span>
+<span id="cb651-6"><a href="#cb651-6"></a></span>
+<span id="cb651-7"><a href="#cb651-7"></a><span class="co"># Dunnet test</span></span>
+<span id="cb651-8"><a href="#cb651-8"></a>DescTools<span class="sc">::</span><span class="fu">DunnettTest</span>(<span class="at">x =</span> datos<span class="sc">$</span>tetrahydrocortisone, <span class="at">g =</span> datos<span class="sc">$</span>type)</span>
+<span id="cb651-9"><a href="#cb651-9"></a><span class="co"># nos devuelve que el único sig diferente al control es c (como antes)</span></span>
+<span id="cb651-10"><a href="#cb651-10"></a><span class="co"># resultados "con pinzas" ya que no cumple la normalidad de momento</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="caso-practico-4-4" class="slide level2">
+<h2>🐣 Caso práctico IV: participación vs candidatos</h2>
+<p>El fichero <code>blackturnout.csv</code> contiene los datos de participación en las elecciones midterm en EEUU de los años 2006, 2008 y 2010: <code>turnout</code> proporción de participación de la población negra (respecto a población negra en edad de votar), <code>cvap</code> proporción de habitantes de población negra del distrito y <code>candidate</code> 1 si el candidato pertenece a la población negra.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb652"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb652-1"><a href="#cb652-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"./datos/blackturnout.csv"</span>) <span class="sc">|&gt;</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb652-2"><a href="#cb652-2"></a>datos <span class="sc">|&gt;</span> <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 7
+     x1  year state district turnout   cvap candidate
+  &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;
+1     1  2008 AK           0   0.710 0.0350         0
+2     2  2010 AK           0   0.448 0.0323         0
+3     3  2010 AK           1   0.448 0.0323         0
+4     4  2008 AK           1   0.710 0.0350         0
+5     5  2006 AK           1   0.439 0.0318         0</code></pre>
+</div>
+</div>
+<p>Intenta responder a las preguntas planteadas en el <a href="https://dadosdelaplace-workbook-supervisado.share.connect.posit.cloud/#caso-pr%C3%A1ctico-i-participaci%C3%B3n-vs-candidatos"><strong>workbook</strong></a></p>
+</section>
+<section id="caso-practico-4-5" class="slide level2">
+<h2>🐣 Caso práctico V: atractivo vs alcohol</h2>
+<p>Los datos los tenemos cargados directamente en <code>beer_goggles_effect.csv</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb654"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb654-1"><a href="#cb654-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"./datos/beer_goggles_effect.csv"</span>) <span class="sc">|&gt;</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb654-2"><a href="#cb654-2"></a>datos <span class="sc">|&gt;</span> <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  gender alcohol attractiveness
+  &lt;chr&gt;  &lt;chr&gt;            &lt;dbl&gt;
+1 Female None              67.4
+2 Female None              69.9
+3 Female None              61.0
+4 Female None              58.5
+5 Female None              59.7</code></pre>
+</div>
+</div>
+<p>Tenemos guardado el género de 48 estudiantes, divididos en 3 grupos de ingesta de alcohol, que han encontrado pareja que les atrae en un bar. También tenemos el <strong>atractivo medido (puntuación del 0 al 100)</strong>, otorgada por unos “jueces” externos, de la pareja encontrada por cada participante.</p>
+<p>Intenta responder a las preguntas planteadas en el <a href="https://dadosdelaplace-workbook-supervisado.share.connect.posit.cloud/#caso-pr%C3%A1ctico-ii-atractivo-vs-alcohol"><strong>workbook</strong></a></p>
 <div class="footer footer-default">
 <p><a href="..."><strong>Javier Álvarez Liébana</strong></a> • Curso de R impartido en RTVE</p>
 </div>
